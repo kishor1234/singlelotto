@@ -71,6 +71,11 @@
                                                                 </div>
                                                                 <span id="error_name" class=""></span>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label">Password </label>
+                                                                <input type="password" name="password" id="password" placeholder="Create Password" title="Create Password" autocomplete="off" class="form-control">
+                                                                <span id="error_name" class=""></span>
+                                                            </div>
                                                             <!--                                                            <div class="form-group">
                                                                                                                             <label class="form-control-label">Device </label>
                                                                                                                             <input type="text" name="device" id="device" placeholder="Enter Device MAC" title="Enter Device MAC" autocomplete="off" class="form-control">
@@ -80,6 +85,7 @@
                                                                 <input type='hidden' name='m' value='<?= $_REQUEST["m"] ?>'>
                                                                 <input type="hidden" name="action" id="action" value="addSubAdmin">
                                                                 <input type="hidden" name="subadmin_id" id="subadmin_id" value="0">
+                                                                <input type="hidden" name="created_by" id="created_by" value="<?= $_SESSION["userid"]?>">
                                                                 <button class="btn btn-primary btn-sm form-control" id="myMainSubmit">Save</button>
                                                             </div>
                                                         </form>
@@ -215,7 +221,7 @@
                 url: '<?= api_url ?>/?r=CAddSubAdmin',
                 type: "post", // method  , by default get
                 dataType: "json",
-                data: {action: "loadTable", m: "<?= $_REQUEST["m"] ?>"},
+                data: {action: "loadTable", m: "<?= $_REQUEST["m"] ?>", id: "<?= $_SESSION["userid"] ?>"},
                 error: function () {  // error handling
                     $(".data-grid-error").html("");
                     $("#data-grid").append('<tbody class="data-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');

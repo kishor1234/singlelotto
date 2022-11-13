@@ -33,7 +33,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        
+
                         <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=user', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -104,35 +104,87 @@
                     </ul>
                 </li>
                 <?php
-                if($_SESSION["m"]==="main"){
+                if ($_SESSION["m"] === "main") {
                     ?>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-alt-slash"></i>
-                        <p>
-                            Sub Main
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=admin', '#app-container', false)" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sub Admin Registration</p>
-                            </a>
-                        </li>
-                    </ul>
-<!--                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sub Main Registration</p>
-                            </a>
-                        </li>
-                    </ul>-->
-                </li>
-
-                <?php
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-alt-slash"></i>
+                            <p>
+                                Super Distributor
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=distributor&m=main', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Registration</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                    <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Sub Main Registration</p>
+                                                    </a>
+                                                </li>
+                                            </ul>-->
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-alt-slash"></i>
+                            <p>
+                                Distributor
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=distributor&m=admin', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Registration</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                    <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Sub Main Registration</p>
+                                                    </a>
+                                                </li>
+                                            </ul>-->
+                    </li>
+                    <?php
+                } else {
+                    ?>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-alt-slash"></i>
+                            <p>
+                                Distributor
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=distributor&m=admin', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Registration</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                    <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Sub Main Registration</p>
+                                                    </a>
+                                                </li>
+                                            </ul>-->
+                    </li>
+                    <?php
                 }
                 ?>
                 <li class="nav-item has-treeview">
@@ -174,12 +226,12 @@
                                 <p>Ticket Played Report</p>
                             </a>
                         </li>
-<!--                        <li class="nav-item">
-                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=commisionReport', '#app-container', false)" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Agent Commission</p>
-                            </a>
-                        </li>-->
+                        <!--                        <li class="nav-item">
+                                                    <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=commisionReport', '#app-container', false)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Agent Commission</p>
+                                                    </a>
+                                                </li>-->
                     </ul>
                 </li>
                 <li class="nav-item">

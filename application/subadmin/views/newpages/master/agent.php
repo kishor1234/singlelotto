@@ -47,6 +47,11 @@
                                                                 <input type="number" step="0.01" max="0.1" min="0" name="comission" id="comission" placeholder="Enter user Commission Percenatage Ex 10% than put 0.1" title="Commission Percenatage" required autocomplete="off" class="form-control">
                                                                 <span id="error_name" class=""></span>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label">Password </label>
+                                                                <input type="password" name="password" id="password" placeholder="Create Password" title="Create Password"  autocomplete="off" class="form-control">
+                                                                <span id="error_name" class=""></span>
+                                                            </div>
                                                             <!--                                                            <div class="form-group">
                                                                                                                             <label class="form-control-label">Device </label>
                                                                                                                             <input type="text" name="device" id="device" placeholder="Enter Device MAC" title="Enter Device MAC" autocomplete="off" class="form-control">

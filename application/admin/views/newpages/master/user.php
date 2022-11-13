@@ -52,6 +52,11 @@
                                                                 <input type="text" name="device" id="device" placeholder="Enter Device MAC" title="Enter Device MAC" autocomplete="off" class="form-control">
                                                                 <span id="error_name" class=""></span>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label">Password </label>
+                                                                <input type="password" name="password" id="password" placeholder="Create Password" title="Create Password"  autocomplete="off" class="form-control">
+                                                                <span id="error_name" class=""></span>
+                                                            </div>
 <!--                                                            <div class="form-group">
                                                             <label class="form-control-label">Winning Percentage(10% or 10%) </label>
                                                             <input type="number" name="winper" required id="winper"  step="1"  min="10" placeholder="Enter User Wining Percentage" title="Enter User Wining Percentage" autocomplete="off" class="form-control">

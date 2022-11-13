@@ -1,8 +1,8 @@
 .body
 {
     margin: 0;
-    padding: 0;
-    background-color: #e6a5ad !important;
+    background-color: #201e1e !important;
+    color: #FFF;
 }
 
 
@@ -189,7 +189,7 @@
 
 .headgame {
     text-align: center;
-    color: #000; 
+    color: #FFF; 
     font-family : Arial;
     font-size: 18px;
     font-weight: bold;
@@ -1414,7 +1414,7 @@ tr#game_series_list{
 .headgame1 {
 
 
-    color: #410008; 
+    color: #FFF; 
     font-family: "Arial";
     font-size: 14px;
     font-weight: bold;

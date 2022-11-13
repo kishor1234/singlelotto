@@ -126,6 +126,31 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user-alt-slash"></i>
                         <p>
+                            Super Distributor
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <!-- <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=distributor&m=admin', '#app-container', false)" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Distributor Registration</p>
+                            </a>
+                        </li>
+                    </ul> -->
+                   <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=distributor&m=main', '#app-container', false)" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Super Distributor Registration</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-alt-slash"></i>
+                        <p>
                             Distributor
                             <i class="right fas fa-angle-left"></i>
                         </p>

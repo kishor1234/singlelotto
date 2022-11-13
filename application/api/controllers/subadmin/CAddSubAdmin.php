@@ -229,7 +229,11 @@ class CAddSubAdmin extends CAaskController {
                 9 => 'create_on',
                 10 => 'isdate'
             );
-            $sql = $this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("m" => $request["m"]));
+            $where = $this->ask_mysqli->whereSingle(array("m" => $request["m"]));
+            if (isset($request["id"])) {
+                $where = $this->ask_mysqli->where(array("m" => $request["m"], "created_by" => $request["id"]), "AND");
+            }
+            $sql = $this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $where;
             $query = $this->executeQuery($_SESSION["db_1"], $sql);
             $totalData = $query->num_rows;
             $totalFilter = $totalData;
@@ -329,13 +333,18 @@ class CAddSubAdmin extends CAaskController {
         } else {
             $data["auto"] = 0;
         }
+        if (isset($data["password"]) && !empty($data["password"])) {
+            $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+        } else {
+            unset($data['password']);
+        }
         $pre;
         switch ($data["m"]) {
             case "main":
-                $pre="SMA";
+                $pre = "SMA";
                 break;
             case "admin":
-                $pre="SA";
+                $pre = "SA";
                 break;
             default :
                 echo json_encode(array("toast" => array("danger", "Agent", " Added failed Please select correct type"), "status" => 0, "message" => "Insert Failed.. Please select correct type"));
@@ -472,6 +481,11 @@ class CAddSubAdmin extends CAaskController {
                 $data["auto"] = 1;
             } else {
                 $data["auto"] = 0;
+            }
+            if (isset($data["password"]) && !empty($data["password"])) {
+                $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+            } else {
+                unset($data['password']);
             }
             unset($data['action']);
             $where = $this->ask_mysqli->whereSingle(array("subadmin_id" => $data["subadmin_id"]));

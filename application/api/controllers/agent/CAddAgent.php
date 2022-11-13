@@ -475,6 +475,11 @@ class CAddAgent extends CAaskController {
         unset($data["action"]);
         $data["ip"] = $_SERVER["REMOTE_ADDR"];
         $data["is_active"] = 1;
+        if (isset($data["password"]) && !empty($data["password"])) {
+            $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+        } else {
+            unset($data['password']);
+        }
         $data["create_on"] = date("Y-m-d");
         $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
         $sql = $this->ask_mysqli->insert("agent", $data);
@@ -603,6 +608,11 @@ class CAddAgent extends CAaskController {
                 $data["auto"] = 0;
             }
             unset($data['action']);
+            if (isset($data["password"]) && !empty($data["password"])) {
+                $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
+            } else {
+                unset($data['password']);
+            }
             $where = $this->ask_mysqli->whereSingle(array("agent_id" => $data["agent_id"]));
             unset($data[["agent_id"]]);
             $error = array();
@@ -798,7 +808,7 @@ class CAddAgent extends CAaskController {
             
         }
     }
-    
+
     function allAgentadmin() {
         try {
             $sql = $this->ask_mysqli->select("agent", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("createBy" => $_POST["id"]));

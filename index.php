@@ -23,11 +23,11 @@ if (!isset($_SESSION["cart"])) {
 }
 //$_SESSION["msg"]="work";
 define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-define("domain", "http://classicstar.club/");
-define("game", "http://classicstar.club/");
+define("domain", "http://lotto.lcl/");
+define("game", "http://lotto.lcl/");
 define("company", "LOTTO");
 define("image", "assets/yatara/images/classic.webp");
-define("api_url", "http://api.classicstar.club/");
+define("api_url", "http://api.lotto.lcl");
 //define("api_url", "http://api.lotto.lcl");
 define("noreplayid", "no-replay@lotto.lcl");
 define("GST","27AALCS8098XXXX");
