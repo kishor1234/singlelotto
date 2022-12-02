@@ -38,7 +38,7 @@
                             <td>
                                 <table>
                                     <tr>
-                                        <td align="center"><span class="tdr0" id="res0">S0</span></td>
+                                        <td align="center" style="height: 46px;"><span class="tdr0" id="res0">S0</span></td>
                                         <td align="center"><span class="tdr1" id="res1">S1</span></td>
                                         <td align="center"><span class="tdr2" id="res2">S2</span></td>
                                         <td align="center"><span class="tdr3" id="res3">S3</span></td>
@@ -81,8 +81,8 @@
                                         <td> <button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" onclick="reprintlist();">Reprint</button></td>
                                         <td> <button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" disabled>Complaint</button></td>
                                         <td><button class="bottombtn" id="btncan" style="background-color: #fbf180;  height: 30px;font-size: 14px;" onclick="canlist();">Cancel</button></td>
-                                        <td><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" disabled> Legal Info</button></td>
-                                        <td><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" disabled>Auto Claim</button></td>
+                                        <td><a href="/?r=document"><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;"> Legal Info</button></a></td>
+                                        <td><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" onclick="direactClaim();" >Auto Claim</button></td>
                                         <td><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" disabled> User GST</button></td>
 
                                     </tr>
@@ -126,13 +126,13 @@
                                     <td class="tdaeob w150"><span id="agentdet">Sachin Online</span></td>
                                     <td class="tdaeob w50">
                                         <span>
-                                            <label for="seven"> Even</label><br>
+                                            <label> Even</label><br>
                                             <input type="checkbox" name="cbeven" id="cbeven" onclick="cbeven_Click();">
                                         </span>
                                     </td>
                                     <td class="tdaeob w50">
                                         <span>
-                                            <label for="sodd"> Odd&nbsp;</label><br>
+                                            <label> Odd&nbsp;</label><br>
                                             <input type="checkbox" name="chodd" id="chodd" onclick="cbodd_Click();">
                                         </span>
                                     </td>
@@ -154,7 +154,7 @@
                                     </td>
                                     <td class="tdaeob w50">
                                         <span>
-                                            <label for="sall">All&nbsp;</label><br>
+                                            <label>All&nbsp;</label><br>
                                             <input type="checkbox" name="cballlow" id="cballlow" onclick="cballlow_click();">
                                         </span>
                                     </td>
@@ -221,7 +221,7 @@
                                             <td class="tdgw tdg4"><input type="checkbox" name="cblow4" id="cblow4" value="0" onclick="cblow0_Click(4)" /></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" class="tdgw color5" id="lblleft5" onclick="leftset(5);"> <span> Mega Jackpot </span></td>
+                                            <td colspan="2" class="tdgw" id="lblleft5" onclick="leftset(5);"> <span> Mega Jackpot </span></td>
                                             <td class="tdgwr"><span> S5 </span></td>
                                             <td class="tdgw tdg5"><input type="checkbox" name="cblow5" id="cblow5" value="0" onclick="cblow0_Click(5)" /></td>
                                         </tr>
@@ -248,7 +248,7 @@
                                     </table>
                                 </td>
                                 <td class="col-60">
-                                    <table>
+                                    <table style="border-spacing: 3px 2px !important;">
                                         <tr>
                                             <td class="gptd">All</td>
                                             <td align="center">
@@ -637,7 +637,7 @@
                                     </table>
                                 </td>
                                 <td class="col-40">
-                                    <table style="margin-top: 0;border-spacing: 2px 4px;">
+                                    <table style="margin-top: 0;border-spacing: 10px 10px;">
                                         <tr>
                                             <td class="white">QTY.</td>
                                             <td class="white">Point</td>
@@ -646,52 +646,52 @@
                                         <tr>
                                             <td class="tdqty color12" id="tbqa">&nbsp;</td>
                                             <td class="tdamt color11" id="tbaa">&nbsp;</td>
-                                            <td align="center"><span class="tdr0 color0" id="rres0">S0</span></td>
+                                            <td align="center"><span class="tdr0 color0" style="padding: 3px !important;" id="rres0">S0</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqb">&nbsp;</td>
                                             <td class="tdamt color11" id="tbab">&nbsp;</td>
-                                            <td align="center"><span class="tdr1 color1" id="rres1">S1</span></td>
+                                            <td align="center"><span class="tdr1 color1" id="rres1" style="padding: 3px !important;">S1</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqc">&nbsp;</td>
                                             <td class="tdamt color11" id="tbac">&nbsp;</td>
-                                            <td align="center"><span class="tdr2 color2" id="rres2">S2</span></td>
+                                            <td align="center"><span class="tdr2 color2" id="rres2" style="padding: 3px !important;">S2</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqd">&nbsp;</td>
                                             <td class="tdamt color11" id="tbad">&nbsp;</td>
-                                            <td align="center"><span class="tdr3 color3" id="rres3">S3</span></td>
+                                            <td align="center"><span class="tdr3 color3" id="rres3" style="padding: 3px !important;">S3</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqe">&nbsp;</td>
                                             <td class="tdamt color11" id="tbae">&nbsp;</td>
-                                            <td align="center"><span class="tdr4 color4" id="rres4">S4</span></td>
+                                            <td align="center"><span class="tdr4 color4" id="rres4" style="padding: 3px !important;">S4</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqf">&nbsp;</td>
                                             <td class="tdamt color11" id="tbaf">&nbsp;</td>
-                                            <td align="center"><span class="tdr5 color5" id="rres5">S5</span></td>
+                                            <td align="center"><span class="tdr5 color5" id="rres5" style="padding: 3px !important;">S5</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqg">&nbsp;</td>
                                             <td class="tdamt color11" id="tbag">&nbsp;</td>
-                                            <td align="center"><span class="tdr6 color6" id="rres6">S6</span></td>
+                                            <td align="center"><span class="tdr6 color6" id="rres6" style="padding: 3px !important;">S6</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqh">&nbsp;</td>
                                             <td class="tdamt color11" id="tbah">&nbsp;</td>
-                                            <td align="center"><span class="tdr7 color7" id="rres7">S7</span></td>
+                                            <td align="center"><span class="tdr7 color7" id="rres7" style="padding: 3px !important;">S7</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqi">&nbsp;</td>
                                             <td class="tdamt color11" id="tbai">&nbsp;</td>
-                                            <td align="center"><span class="tdr8 color8" id="rres8">S8</span></td>
+                                            <td align="center"><span class="tdr8 color8" id="rres8" style="padding: 3px !important;">S8</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tbqj">&nbsp;</td>
                                             <td class="tdamt color11" id="tbaj">&nbsp;</td>
-                                            <td align="center"><span class="tdr9 color9" id="rres9">S9</span></td>
+                                            <td align="center"><span class="tdr9 color9" id="rres9" style="padding: 3px !important;">S9</span></td>
                                         </tr>
                                         <tr>
                                             <td class="tdqty color12" id="tblcqty">&nbsp;</td>
@@ -771,6 +771,111 @@
                 <td class="tdorange" nowrap valign=top><input type="checkbox" name="s9" id="s9" value="9" onclick="seriesclick();"><label for="s9">&nbsp;&nbsp;9000-9999</label></td>
             </tr>
         </table>
+        <div style="display: none !important;">
+            <table border="0" width="100%">
+                <tr>
+                    <td class="tdg0">
+                        <input type="checkbox" name="cblow0" id="cblow0" value="0" onclick="cblow0_Click(0)"><label for="cblow0" id="lbllow0">(Rs. 2)</label>
+                    </td>
+                    <td rowspan="10">
+                        <table border="1" width="100%" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <table border="0" width="100%" cellspacing="0" cellpadding="5">
+                                        <tr>
+                                            <td>
+                                                <input type="radio" id="rbmul1" name="rbmul1" value="V1" checked onclick="rbmulall_Click(1);"><label for="rbmul1">2.00</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="radio" id="rbmul2" name="rbmul2" value="V1" onclick="rbmulall_Click(2);"><label for="rbmul2">4.00</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="radio" id="rbmul5" name="rbmul5" value="V1" onclick="rbmulall_Click(5);"><label for="rbmul5">10.00</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="radio" id="rbmul10" name="rbmul10" value="V1" onclick="rbmulall_Click(10);"><label for="rbmul10">20.00</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="radio" id="rbmul20" name="rbmul20" value="V1" onclick="rbmulall_Click(20);"><label for="rbmul20">40.00</label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg1">
+                        <input type="checkbox" name="cblow1" id="cblow1" value="0" onclick="cblow0_Click(1)"><label for="cblow1" id="lbllow1">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg2">
+                        <input type="checkbox" name="cblow2" id="cblow2" value="0" onclick="cblow0_Click(2)"><label for="cblow2" id="lbllow2">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg3">
+                        <input type="checkbox" name="cblow3" id="cblow3" value="0" onclick="cblow0_Click(3)"><label for="cblow3" id="lbllow3">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg4">
+                        <input type="checkbox" name="cblow4" id="cblow4" value="0" onclick="cblow0_Click(4)"><label for="cblow4" id="lbllow4">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg5">
+                        <input type="checkbox" name="cblow5" id="cblow5" value="0" onclick="cblow0_Click(5)"><label for="cblow5" id="lbllow5">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg6">
+                        <input type="checkbox" name="cblow6" id="cblow6" value="0" onclick="cblow0_Click(6)"><label for="cblow6" id="lbllow6">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg7">
+                        <input type="checkbox" name="cblow7" id="cblow7" value="0" onclick="cblow0_Click(7)"><label for="cblow7" id="lbllow7">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg8">
+                        <input type="checkbox" name="cblow8" id="cblow8" value="0" onclick="cblow0_Click(8)"><label for="cblow8" id="lbllow8">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg9">
+                        <input type="checkbox" name="cblow9" id="cblow9" value="0" onclick="cblow0_Click(9)"><label for="cblow9" id="lbllow9">(Rs. 2)</label>
+                    </td>
+                </tr>
+            </table>
+            <table border="0" width="100%" cellpadding="2">
+                <tr>
+                    <td class="tdaeoo">
+                        <input type="checkbox" name="sall" id="sall" value="A" onclick="seriesclickall();">&nbsp;
+                        <label for="sall">All&nbsp;</label>
+                    </td>
+                    <td class="tdaeob">
+                        <input type="checkbox" name="seven" id="seven" value="E" onclick="seriesclickeven();">&nbsp;
+                        <label for="seven"> Even</label>
+                    </td>
+                    <td class="tdaeop">
+                        <input type="checkbox" name="sodd" id="sodd" value="O" onclick="seriesclickodd();">&nbsp;
+                        <label for="sodd"> Odd&nbsp;</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
     <marquee bgcolor="#000000">
         <div id="spannews" class="newsdv">
@@ -978,8 +1083,27 @@
             </tr>
         </table>
     </div>
-    <div id="divlow" style="display: block;">
+    <div id="divlow" style="display: none !important;">
         <table border="0" width="100%;" style="margin-top: 37px;">
+            <tr>
+                <td class="tdaeogp" nowrap="">
+                    <input type="checkbox" name="cball" id="cball" checked="" onclick="cball_Click();">&nbsp;
+                    <label for="cball">All&nbsp;</label>
+                </td>
+                <td class="tdaeogp" nowrap="">
+                    <input type="checkbox" name="cbeven" id="cbeven" onclick="cbeven_Click();">&nbsp;
+                    <label for="cbeven">Even</label>
+                </td>
+                <td class="tdaeogp" nowrap="">
+                    <input type="checkbox" name="chodd" id="chodd" onclick="cbodd_Click();">&nbsp;
+                    <label for="chodd">Odd&nbsp; </label>
+                </td>
+                <td align="right">
+                    <input type="textbox" name="txtLuckyStone" id="txtLuckyStone" class="tbmp" size="5" maxlength="2">&nbsp;&nbsp;
+                </td>
+                <td class="tdorange" onclick="btnLuckyStone_Click()">LP</td>
+
+            </tr>
             <tr>
 
                 <td rowspan="10">
@@ -1020,6 +1144,7 @@
             </tr>
 
         </table>
+
     </div>
     <script>
         // Get the claim
@@ -1213,8 +1338,12 @@
         }
 
         function showAnimation() {
-            document.getElementById("ani_rel").location.reload();
+            
+            console.log("animation",animation);
+            //document.getElementById("ani_rel").location.reload();
+            document.getElementById('ani_rel').contentWindow.location.reload()
             animation.style.display = "block";
+            console.log("animation",animation);
 
         }
 

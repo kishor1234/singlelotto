@@ -602,9 +602,9 @@ tr#game_series_list{
 }
 
 .tdr0{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #f5daf1;
+    background-color: #a6ce39;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -615,9 +615,9 @@ tr#game_series_list{
 }
 
 .tdr1{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #b0a7b8;
+    background-color: #00adef;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -628,9 +628,9 @@ tr#game_series_list{
 }
 
 .tdr2{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #f2f567;
+    background-color: #a25541;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -641,9 +641,9 @@ tr#game_series_list{
 }
 
 .tdr3{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #6fe3d9;
+    background-color: #f6821f;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -654,9 +654,9 @@ tr#game_series_list{
 }
 
 .tdr4{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #6fade3;
+    background-color: #fef200;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -668,9 +668,9 @@ tr#game_series_list{
 
 
 .tdr5{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #9c0046;
+    background-color: #c656a0;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -681,9 +681,9 @@ tr#game_series_list{
 }
 
 .tdr6{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #afd6a3;
+    background-color: #4fa393;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -694,9 +694,9 @@ tr#game_series_list{
 }
 
 .tdr7{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #e8a56b;
+    background-color: #d2ab66;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -707,9 +707,9 @@ tr#game_series_list{
 }
 
 .tdr8{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: #e78deb;
+    background-color: #6c8cc7;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -720,9 +720,9 @@ tr#game_series_list{
 }
 
 .tdr9{
-    padding: 1px;
+    padding: 10px;
     border-radius:50%;
-    background-color: Moccasin;
+    background-color: #fed09e;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -733,7 +733,16 @@ tr#game_series_list{
 }
 
 
-
+/* Chrome, Safari and Opera */
+::-webkit-scrollbar {
+    display: none;
+  }
+  /* Edge, Firefox */
+  body, html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  /* I removed IE because IE is gone */
 
 .tdcounter{
     padding: 0px 5px;
@@ -804,7 +813,7 @@ tr#game_series_list{
     background-color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    color: #000000;
+    color: #F00;
 }
 .tbmp-lucky {
     border:1px solid #000000;
@@ -872,7 +881,10 @@ tr#game_series_list{
     text-align: right;
     color: #000000;
 }
-
+#tblcqty, #tblcamt {
+    color: red;
+    font-size: 33px;
+}
 
 .tball {
     border:1px solid #000000;
@@ -881,7 +893,7 @@ tr#game_series_list{
     width: 33px;
     font-size: 1em;
     font-weight: bold;
-    background-color: #af11ec;
+    background-color: #ed008c;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: #FFFFFF;
@@ -1756,7 +1768,7 @@ td > span
     border-radius: 0px;
     padding: 5px;
     border: 1px solid;
-    font-size: 30px;
+    font-size: 16px;
     font-weight: 500;
 }
 samp#username {
@@ -1857,6 +1869,6 @@ td.tdaeob.w150 {
     cursor: pointer;
 }
 #gamepan, #advpan {
-    margin: 40px 1px;
+    margin: 10px 1px;
     background: #000;
 }

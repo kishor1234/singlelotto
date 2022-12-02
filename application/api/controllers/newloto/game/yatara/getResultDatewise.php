@@ -71,7 +71,7 @@ class getResultDatewise extends CAaskController {
 
                 $j = 0;
                 for ($i = $series[0]; $i <= $series[1]; $i = $i + 100) {
-                    $lastres = str_pad($i + $row[$j], 4, "0", STR_PAD_LEFT);
+                    $lastres = str_pad($row[$j], 2, "0", STR_PAD_LEFT);
                     array_push($temp[$series["0"]], $lastres);
                     $j++;
                 }

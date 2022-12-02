@@ -12,7 +12,7 @@
         <table border="0" width="100%" cellspacing="0" cellpadding="0">
             <tr>
                 <td width="7%" align=center><img class="img-board" src="<?= image ?>" border="5" align=middle></td>
-                <td class="tdtitle" width="14%" valign="top">&nbsp;<?= company ?></td><td id="agentdet" class="tdtitle"></td>
+                <td style="display: none;" class="tdtitle" width="14%" valign="top">&nbsp;<?= company ?></td><td id="agentdet" class="tdtitle"></td>
                 <td class="tdtitleright" valign="top"><a href="?r=gameboard" ><input type="button" value="Back" class="buttonback"></a>
                     <a href="?r=logout"><input type="button" class="buttonlogout" value="Logout"></a>
                 </td>
@@ -124,11 +124,11 @@
                 font-size: 24px !important;
             }
             body {
-                background: yellow;
+                background: black;
             }
 
             table tr td {
-                background: yellow;
+                background: black;
             }
         </style>
     </body>

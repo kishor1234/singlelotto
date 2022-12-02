@@ -1850,16 +1850,16 @@ function setlabel(key, seriesas) {
     // document.getElementById("lblleft9").innerText = point + "900-" + point + "999";
     
 
-    document.getElementById("lblleft0").innerText = "LOT247-"+point + "0";
-    document.getElementById("lblleft1").innerText = "LOTLAN-"+point + "1";
-    document.getElementById("lblleft2").innerText = "PWRBAL-"+point + "2";
-    document.getElementById("lblleft3").innerText = "EUOJKT-"+point + "3";
-    document.getElementById("lblleft4").innerText = "LOTKNO-"+point + "4";
-    document.getElementById("lblleft5").innerText = "SPRLOT-"+point + "5";
-    document.getElementById("lblleft6").innerText = "LOTKNG-"+point + "6";
-    document.getElementById("lblleft7").innerText = "MGCLOT-"+point + "7";
-    document.getElementById("lblleft8").innerText = "FSTLOT-"+point + "8";
-    document.getElementById("lblleft9").innerText = "MEGJPT-"+point + "9";
+    document.getElementById("lblleft0").innerText = "Lottoland";
+    document.getElementById("lblleft1").innerText = "Lotto 247";
+    document.getElementById("lblleft2").innerText = "Lotto Keno";
+    document.getElementById("lblleft3").innerText = "Multi Lotto";
+    document.getElementById("lblleft4").innerText = "Fast Lotto";
+    document.getElementById("lblleft5").innerText = "Mega Jackpot";
+    document.getElementById("lblleft6").innerText = "Super Lotto";
+    document.getElementById("lblleft7").innerText = "Power Ball";
+    document.getElementById("lblleft8").innerText = "Magic Lotto";
+    document.getElementById("lblleft9").innerText = "Lotto Jackpot";
     if (lastres != "") {
         var resultArray;
         resultArray = lastres.split(",");
