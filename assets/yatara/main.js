@@ -531,11 +531,12 @@ function load_frm() {
 
     document.getElementById("divhigh").style.display = "none";
     document.getElementById("divlow").style.display = "block";
-    document.getElementById("resdiv").style.display = "none";
-    document.getElementById("qtyamt").style.display = "block";
+    // document.getElementById("resdiv").style.display = "none";
+    // document.getElementById("qtyamt").style.display = "block";
     //    document.getElementById("btnadv").disabled = true;
     document.getElementById("advpan").style.display = "none";
     document.getElementById("gamepan").style.display = "block";
+    document.getElementById("advpan").style.display = "none";
     pagemin = 0;
 
     for (i = 0; i < 100; i++) {
@@ -1832,9 +1833,9 @@ function setlabel(key, seriesas) {
     seriesloc = point;
     for (i = 0; i < 100; i++) {
         if (i < 10) {
-            document.getElementById("lbl" + i).innerText = point + "" + key + "0" + i;
+           // document.getElementById("lbl" + i).innerText = point + "" + key + "" + i;
         } else {
-            document.getElementById("lbl" + i).innerText = point + "" + key + "" + i;
+            //document.getElementById("lbl" + i).innerText = point + "" + key + "" + i;
         }
     }
     // document.getElementById("lblleft0").innerText = point + "000-" + point + "099";
@@ -2242,43 +2243,43 @@ function checkhighclick(_0x18BDF, _0x18BF1) {
 }
 function pancolorcheckclick(_0x189E7) {
     if (_0x189E7 == 0) {
-        document.getElementById("lblleft0").className = "tdg0";
+        document.getElementById("lblleft0").className = "color0";
         aClicked = true;
     } else {
         if (_0x189E7 == 1) {
-            document.getElementById("lblleft1").className = "tdg1";
+            document.getElementById("lblleft1").className = "color1";
             bClicked = true;
         } else {
             if (_0x189E7 == 2) {
-                document.getElementById("lblleft2").className = "tdg2";
+                document.getElementById("lblleft2").className = "color2";
                 cClicked = true;
             } else {
                 if (_0x189E7 == 3) {
-                    document.getElementById("lblleft3").className = "tdg3";
+                    document.getElementById("lblleft3").className = "color3";
                     dClicked = true;
                 } else {
                     if (_0x189E7 == 4) {
-                        document.getElementById("lblleft4").className = "tdg4";
+                        document.getElementById("lblleft4").className = "color4";
                         eClicked = true;
                     } else {
                         if (_0x189E7 == 5) {
-                            document.getElementById("lblleft5").className = "tdg5";
+                            document.getElementById("lblleft5").className = "color5";
                             fClicked = true;
                         } else {
                             if (_0x189E7 == 6) {
-                                document.getElementById("lblleft6").className = "tdg6";
+                                document.getElementById("lblleft6").className = "color6";
                                 gClicked = true;
                             } else {
                                 if (_0x189E7 == 7) {
-                                    document.getElementById("lblleft7").className = "tdg7";
+                                    document.getElementById("lblleft7").className = "color7";
                                     hClicked = true;
                                 } else {
                                     if (_0x189E7 == 8) {
-                                        document.getElementById("lblleft8").className = "tdg8";
+                                        document.getElementById("lblleft8").className = "color8";
                                         iClicked = true;
                                     } else {
                                         if (_0x189E7 == 9) {
-                                            document.getElementById("lblleft9").className = "tdg9";
+                                            document.getElementById("lblleft9").className = "color9";
                                             jClicked = true;
                                         }
                                     }

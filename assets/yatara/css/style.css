@@ -1,3 +1,7 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
 .body
 {
     margin: 0;
@@ -223,16 +227,19 @@
 
 
 .tdblack{
-    border-radius:2px 2px 2px 2px;
-    background-color: black;
-    color: wheat; 
-    font-family : Arial;
-    font-size: 15px;
+    display: flex;
+    /* border-radius: 2px 2px 2px 2px; */
+    background-color: f6accd;
+    color: #000;
+    font-family: Arial;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     border-style: solid;
-    border-color: maroon;
+    border-color: #000;
     border-width: 1px;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .tdaeoo{
@@ -382,16 +389,22 @@ tr#game_series_list{
     height: auto;
 }
 .tdtimer{
-    border-radius:2px 2px 2px 2px;
-    background: #ffffcc;;
-    color: black; 
-    font-family : Arial;
-    font-size: 18px;
+    border-radius: 2px 2px 2px 2px;
+    background: #8dd8f8;
+    color: black;
+    font-family: Arial;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     border-style: solid;
-    border-color: maroon;
+    border-color: #000;
     border-width: 1px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }	
 
 
@@ -451,24 +464,26 @@ tr#game_series_list{
     font-weight: bold;
     height: 35px;
     width: 30px;
+    border: 1px solid black;
 }
 .tdgwr{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
     background-color: #FFFFFF;
-    color: red; 
+    color: #000; 
     text-align: center;
     font-family : Arial;
     font-size: 16px;
     font-weight: bold;
     height: 35px;
     width: 10px;
+    border: 1px solid black;
 }
 
 .tdg0{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #f5daf1;
+    background-color: #a6ce39;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -480,7 +495,7 @@ tr#game_series_list{
 .tdg1{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #b0a7b8;
+    background-color: #00adef;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -492,7 +507,7 @@ tr#game_series_list{
 .tdg2{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #f2f567;
+    background-color: #a25541;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -504,7 +519,7 @@ tr#game_series_list{
 .tdg3{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #6fe3d9;
+    background-color: #f6821f;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -516,7 +531,7 @@ tr#game_series_list{
 .tdg4{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #6fade3;
+    background-color: #fef200;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -529,7 +544,7 @@ tr#game_series_list{
 .tdg5{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #9c0046;
+    background-color: #c656a0;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -541,7 +556,7 @@ tr#game_series_list{
 .tdg6{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #afd6a3;
+    background-color: #4fa393;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -553,7 +568,7 @@ tr#game_series_list{
 .tdg7{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #e8a56b;
+    background-color: #d2ab66;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -565,7 +580,7 @@ tr#game_series_list{
 .tdg8{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: #e78deb;
+    background-color: #6c8cc7;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -577,7 +592,7 @@ tr#game_series_list{
 .tdg9{
     padding: 0px 5px;
     border-radius:2px 2px 2px 2px;
-    background-color: Moccasin;
+    background-color: fed09e;
     color: black; 
     text-align: center;
     font-family : Arial;
@@ -753,7 +768,7 @@ tr#game_series_list{
 
 .bottombtn {
     padding: 2px 2px;
-    font-size: 14px;
+    font-size: 14px !important;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
@@ -761,7 +776,7 @@ tr#game_series_list{
     color: black;
     border: none;
     border-radius: 3px;
-    width: 105px;
+    width: 100% !important;
     height: 25px;
     border-style: solid;
     border-color: maroon;
@@ -773,7 +788,7 @@ tr#game_series_list{
 .gptd{
     color: white; 
     font-family : Arial;
-    font-size: 11px;
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
 }
@@ -1717,4 +1732,131 @@ img.img-board {
 .img {
     width: 40%;
     height: auto;
+}
+table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0;
+}
+td > *{
+    width: 100%;
+}
+td > span
+{
+    width: 100% !important;
+}
+.align-center{
+    text-align: center;
+}
+.brand{
+    width: 130px;
+}
+.btn{
+
+    border-radius: 0px;
+    padding: 5px;
+    border: 1px solid;
+    font-size: 30px;
+    font-weight: 500;
+}
+samp#username {
+    background: red;
+    color: #fff;
+    padding: 2px;
+    height: 8px;
+}
+td.tdaeob.w50 {
+    width: 50px;
+    background: #FFF;
+    height: 40px;
+}
+td.tdaeob.w150 {
+    width: 150px;
+    background: red;
+    color: #FFF;
+}
+.col-30{
+    width: 20%;
+}
+.col-40{
+    width: 40%;
+}
+.col-60{
+    width: 60%;
+}
+.white{
+    background-color: #FFF;
+    padding: 10px;
+}
+.color0{
+    background-color: #a6ce39;
+    color: #000;
+}
+.color1{
+    background-color: #00adef;
+    color: #000;
+}
+.color2{
+    background-color: #a25541;
+    color: #000;
+}
+.color3{
+    background-color: #f6821f;
+    color: #000;
+}
+.color4{
+    background-color: #fef200;
+    color: #000;
+}
+.color5{
+    background-color: #c656a0;
+    color: #000;
+}
+.color6{
+    background-color: #4fa393;
+    color: #000;
+}
+.color7{
+    background-color: #d2ab66;
+    color: #000;
+}
+.color8{
+    background-color: #6c8cc7;
+    color: #000;
+}
+.color9{
+    background-color: #fed09e;
+    color: #000;
+}
+.color10{
+    background-color: #ed008c;
+}
+.color11{
+    background-color: #fff9ad;
+}
+.color12{
+    background-color: #e6e7e9;
+}
+.color13{
+    background-color: #ed1b24;
+}
+.color5l{
+    background-color: #f48489;
+    color: #000;
+    text-align: center;
+    font-weight: 500;
+    padding: 9px;
+    cursor: pointer;
+}
+.color6h{
+    background-color: #fff8ac;
+    color: #000;
+    text-align: center;
+    font-weight: 500;
+    padding: 9px;
+    cursor: pointer;
+}
+#gamepan, #advpan {
+    margin: 40px 1px;
+    background: #000;
 }
