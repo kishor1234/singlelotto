@@ -604,7 +604,7 @@ function load_frm() {
                 waitTimeOut = setInterval(displaycurr, 1000);
                 if (inflag == "true") {
                     document.getElementById("creditlimit").innerHTML = climit;
-                    document.getElementById("agentdet").innerHTML = "   WELCOME " + uname + " (" + agentname + ")";
+                    document.getElementById("agentdet").innerHTML = uname;// "   WELCOME " + uname + " (" + agentname + ")";
                 } else {
                 }
 
@@ -2243,43 +2243,43 @@ function checkhighclick(_0x18BDF, _0x18BF1) {
 }
 function pancolorcheckclick(_0x189E7) {
     if (_0x189E7 == 0) {
-        document.getElementById("lblleft0").className = "color0";
+        document.getElementById("lblleft0").className = "tdg0";
         aClicked = true;
     } else {
         if (_0x189E7 == 1) {
-            document.getElementById("lblleft1").className = "color1";
+            document.getElementById("lblleft1").className = "tdg1";
             bClicked = true;
         } else {
             if (_0x189E7 == 2) {
-                document.getElementById("lblleft2").className = "color2";
+                document.getElementById("lblleft2").className = "tdg2";
                 cClicked = true;
             } else {
                 if (_0x189E7 == 3) {
-                    document.getElementById("lblleft3").className = "color3";
+                    document.getElementById("lblleft3").className = "tdg3";
                     dClicked = true;
                 } else {
                     if (_0x189E7 == 4) {
-                        document.getElementById("lblleft4").className = "color4";
+                        document.getElementById("lblleft4").className = "tdg4";
                         eClicked = true;
                     } else {
                         if (_0x189E7 == 5) {
-                            document.getElementById("lblleft5").className = "color5";
+                            document.getElementById("lblleft5").className = "tdg5";
                             fClicked = true;
                         } else {
                             if (_0x189E7 == 6) {
-                                document.getElementById("lblleft6").className = "color6";
+                                document.getElementById("lblleft6").className = "tdg6";
                                 gClicked = true;
                             } else {
                                 if (_0x189E7 == 7) {
-                                    document.getElementById("lblleft7").className = "color7";
+                                    document.getElementById("lblleft7").className = "tdg7";
                                     hClicked = true;
                                 } else {
                                     if (_0x189E7 == 8) {
-                                        document.getElementById("lblleft8").className = "color8";
+                                        document.getElementById("lblleft8").className = "tdg8";
                                         iClicked = true;
                                     } else {
                                         if (_0x189E7 == 9) {
-                                            document.getElementById("lblleft9").className = "color9";
+                                            document.getElementById("lblleft9").className = "tdg9";
                                             jClicked = true;
                                         }
                                     }

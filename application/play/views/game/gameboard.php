@@ -26,7 +26,7 @@
 <!--onload="load_frm();-->
 
 <body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" onload="load_frm();">
-    <div>
+    <div style="width: 800px;border: 1px solid #FFF;margin: 0px auto;">
         <table>
             <tr>
                 <td class="brand">
@@ -82,7 +82,7 @@
                                         <td> <button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" disabled>Complaint</button></td>
                                         <td><button class="bottombtn" id="btncan" style="background-color: #fbf180;  height: 30px;font-size: 14px;" onclick="canlist();">Cancel</button></td>
                                         <td><a href="/?r=document"><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;"> Legal Info</button></a></td>
-                                        <td><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" onclick="direactClaim();" >Auto Claim</button></td>
+                                        <td><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" onclick="direactClaim();">Auto Claim</button></td>
                                         <td><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" disabled> User GST</button></td>
 
                                     </tr>
@@ -126,7 +126,7 @@
                                     <td class="tdaeob w150"><span id="agentdet">Sachin Online</span></td>
                                     <td class="tdaeob w50">
                                         <span>
-                                            <label> Even</label><br>
+                                            <label for="cbeven"> Even</label><br>
                                             <input type="checkbox" name="cbeven" id="cbeven" onclick="cbeven_Click();">
                                         </span>
                                     </td>
@@ -145,11 +145,7 @@
                                     <td class="tdaeob w50">
                                         <span>
                                             <label for="cblp">LP</label><br>
-                                            <input style="
-                                                        border-radius: 0%;
-                                                        height: 20px;
-                                                        margin-bottom: 2px;
-                                                    " type="textbox" name="txtLuckyStone" id="txtLuckyStone" class="tbmp" size="5" maxlength="2" autocomplete="off">
+                                            <input  type="checkbox" name="txtLuckyStone" id="txtLuckyStone" >
                                         </span>
                                     </td>
                                     <td class="tdaeob w50">
@@ -184,72 +180,23 @@
                                 <td class="col-30">
                                     <table>
                                         <tr>
-                                            <td class=" color5l"><span onclick="showhide('L', 'L');">LOW</span></td>
-                                            <td class=" color6h"><span onclick="showhide('L', 'H');">HIGH</span> </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td class=" color5l"><span onclick="showhide('L', 'L');">LOW</span></td>
+                                                        <td class=" color6h"><span onclick="showhide('L', 'H');">HIGH</span> </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td onclick="pageupre()" class=" color6h">Lotto UP</td>
+                                                        <td onclick="pagedownre()" class=" color5l">Lotto DOWN</td>
+
+                                                    </tr>
+                                                </table>
+                                            </td>
                                             <td>&nbsp;</td>
-                                            <td style="width: 30px;">&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td onclick="pageupre()" class=" color6h">Lotto UP</td>
-                                            <td onclick="pagedownre()" class=" color5l">Lotto DOWN</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw" id="lblleft0" onclick="leftset(0);"><span> Lottoland </span></td>
-                                            <td class="tdgwr"> <span> S0 </span></td>
-                                            <td class="tdgw tdg0"><input type="checkbox" name="cblow0" id="cblow0" value="0" onclick="cblow0_Click(0)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw" id="lblleft1" onclick="leftset(1);"> <span> Lotto 247 </span></td>
-                                            <td class="tdgwr"> <span> S1 </span> </td>
-                                            <td class="tdgw tdg1"><input type="checkbox" name="cblow1" id="cblow1" value="0" onclick="cblow0_Click(1)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw " id="lblleft2" onclick="leftset(2);"> <span> Lotto Keno </span></td>
-                                            <td class="tdgwr"> <span> S2 </span></td>
-                                            <td class="tdgw tdg2"><input type="checkbox" name="cblow2" id="cblow2" value="0" onclick="cblow0_Click(2)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw " id="lblleft3" onclick="leftset(3);"> <span> Multi Lotto </span></td>
-                                            <td class="tdgwr"><span> S3 </span></td>
-                                            <td class="tdgw tdg3"><input type="checkbox" name="cblow3" id="cblow3" value="0" onclick="cblow0_Click(3)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw " id="lblleft4" onclick="leftset(4);"> <span> Fast Lotto </span></td>
-                                            <td class="tdgwr"><span> S4 </span></td>
-                                            <td class="tdgw tdg4"><input type="checkbox" name="cblow4" id="cblow4" value="0" onclick="cblow0_Click(4)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw" id="lblleft5" onclick="leftset(5);"> <span> Mega Jackpot </span></td>
-                                            <td class="tdgwr"><span> S5 </span></td>
-                                            <td class="tdgw tdg5"><input type="checkbox" name="cblow5" id="cblow5" value="0" onclick="cblow0_Click(5)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw " id="lblleft6" onclick="leftset(6);"> <span> Super Lotto </span></td>
-                                            <td class="tdgwr"><span> S6 </span></td>
-                                            <td class="tdgw tdg6"><input type="checkbox" name="cblow6" id="cblow6" value="0" onclick="cblow0_Click(6)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw " id="lblleft7" onclick="leftset(7);"> <span> Power Ball </span></td>
-                                            <td class="tdgwr"><span> S7 </span></td>
-                                            <td class="tdgw tdg7"><input type="checkbox" name="cblow7" id="cblow7" value="0" onclick="cblow0_Click(7)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw " id="lblleft8" onclick="leftset(8);"> <span> Magic Lotto </span></td>
-                                            <td class="tdgwr"><span> S8 </span></td>
-                                            <td class="tdgw tdg8"><input type="checkbox" name="cblow8" id="cblow8" value="0" onclick="cblow0_Click(8)" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="tdgw " id="lblleft9" onclick="leftset(9);"> <span> Lotto Jackpot </span></td>
-                                            <td class="tdgwr"><span> S9 </span></td>
-                                            <td class="tdgw tdg9"><input type="checkbox" name="cblow9" id="cblow9" value="0" onclick="cblow0_Click(9)" /></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td class="col-60">
-                                    <table style="border-spacing: 3px 2px !important;">
-                                        <tr>
                                             <td class="gptd">All</td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbv0" id="tbv0" class="tball" size=5 oninput="allvh(this,0,'V');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmovev(window.event, 0);">
@@ -281,8 +228,14 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbv9" id="tbv9" class="tball" size=5 oninput="allvh(this,9,'V');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmovev(window.event, 9);">
                                             </td>
+                                            <td class="white">QTY.</td>
+                                            <td class="white">Point</td>
+                                            <td class="white">Wining Ball</td>
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw" id="lblleft0" onclick="leftset(0);"><span> Lottoland </span></td>
+                                            <td class="tdgwr"> <span> S0 </span></td>
+                                            <td class="tdgw tdg0"><input type="checkbox" name="cblow0" id="cblow0" value="0" onclick="cblow0_Click(0)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh0" id="tbh0" class="tball" size=5 oninput="allvh(this,0,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 0);">
                                             </td>
@@ -316,8 +269,14 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num9" id="num9" class="tbmp" size=5 oninput="calculateamtqty(this,9)" onfocus="myFunction(this, 'N', '09');" onblur="myFunctionrev(this, 'N', '09');" placeholder="09" onkeydown="arrowmove(window.event, 9);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqa">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbaa">&nbsp;</td>
+                                            <td align="center"><span class="tdr0 color0" style="padding: 3px !important;" id="rres0">S0</span></td>
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw" id="lblleft1" onclick="leftset(1);"> <span> Lotto 247 </span></td>
+                                            <td class="tdgwr"> <span> S1 </span> </td>
+                                            <td class="tdgw tdg1"><input type="checkbox" name="cblow1" id="cblow1" value="0" onclick="cblow0_Click(1)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh1" id="tbh1" class="tball" size=5 oninput="allvh(this,10,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 1);">
                                             </td>
@@ -351,8 +310,14 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num19" id="num19" class="tbmp" size=5 oninput="calculateamtqty(this,19)" onfocus="myFunction(this, 'N', '19');" onblur="myFunctionrev(this, 'N', '19');" placeholder="19" onkeydown="arrowmove(window.event, 19);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqb">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbab">&nbsp;</td>
+                                            <td align="center"><span class="tdr1 color1" id="rres1" style="padding: 3px !important;">S1</span></td>
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw " id="lblleft2" onclick="leftset(2);"> <span> Lotto Keno </span></td>
+                                            <td class="tdgwr"> <span> S2 </span></td>
+                                            <td class="tdgw tdg2"><input type="checkbox" name="cblow2" id="cblow2" value="0" onclick="cblow0_Click(2)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh2" id="tbh2" class="tball" size=5 oninput="allvh(this,20,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 2);">
                                             </td>
@@ -386,8 +351,15 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num29" id="num29" class="tbmp" size=5 oninput="calculateamtqty(this,29)" onfocus="myFunction(this, 'N', '29');" onblur="myFunctionrev(this, 'N', '29');" placeholder="29" onkeydown="arrowmove(window.event, 29);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqc">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbac">&nbsp;</td>
+                                            <td align="center"><span class="tdr2 color2" id="rres2" style="padding: 3px !important;">S2</span></td>
+
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw " id="lblleft3" onclick="leftset(3);"> <span> Multi Lotto </span></td>
+                                            <td class="tdgwr"><span> S3 </span></td>
+                                            <td class="tdgw tdg3"><input type="checkbox" name="cblow3" id="cblow3" value="0" onclick="cblow0_Click(3)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh3" id="tbh3" class="tball" size=5 oninput="allvh(this,30,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 3);">
                                             </td>
@@ -421,9 +393,15 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num39" id="num39" class="tbmp" size=5 oninput="calculateamtqty(this,39)" onfocus="myFunction(this, 'N', '39');" onblur="myFunctionrev(this, 'N', '39');" placeholder="39" onkeydown="arrowmove(window.event, 39);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqd">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbad">&nbsp;</td>
+                                            <td align="center"><span class="tdr3 color3" id="rres3" style="padding: 3px !important;">S3</span></td>
 
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw " id="lblleft4" onclick="leftset(4);"> <span> Fast Lotto </span></td>
+                                            <td class="tdgwr"><span> S4 </span></td>
+                                            <td class="tdgw tdg4"><input type="checkbox" name="cblow4" id="cblow4" value="0" onclick="cblow0_Click(4)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh4" id="tbh4" class="tball" size=5 oninput="allvh(this,40,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 4);">
                                             </td>
@@ -457,8 +435,15 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num49" id="num49" class="tbmp" size=5 oninput="calculateamtqty(this,49)" onfocus="myFunction(this, 'N', '49');" onblur="myFunctionrev(this, 'N', '49');" placeholder="49" onkeydown="arrowmove(window.event, 49);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqe">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbae">&nbsp;</td>
+                                            <td align="center"><span class="tdr4 color4" id="rres4" style="padding: 3px !important;">S4</span></td>
+
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw" id="lblleft5" onclick="leftset(5);"> <span> Mega Jackpot </span></td>
+                                            <td class="tdgwr"><span> S5 </span></td>
+                                            <td class="tdgw tdg5"><input type="checkbox" name="cblow5" id="cblow5" value="0" onclick="cblow0_Click(5)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh5" id="tbh5" class="tball" size=5 oninput="allvh(this,50,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 5);">
                                             </td>
@@ -492,8 +477,15 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num59" id="num59" class="tbmp" size=5 oninput="calculateamtqty(this,59)" onfocus="myFunction(this, 'N', '59');" onblur="myFunctionrev(this, 'N', '59');" placeholder="59" onkeydown="arrowmove(window.event, 59);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqf">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbaf">&nbsp;</td>
+                                            <td align="center"><span class="tdr5 color5" id="rres5" style="padding: 3px !important;">S5</span></td>
+
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw " id="lblleft6" onclick="leftset(6);"> <span> Super Lotto </span></td>
+                                            <td class="tdgwr"><span> S6 </span></td>
+                                            <td class="tdgw tdg6"><input type="checkbox" name="cblow6" id="cblow6" value="0" onclick="cblow0_Click(6)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh6" id="tbh6" class="tball" size=5 oninput="allvh(this,60,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 6);">
                                             </td>
@@ -527,9 +519,15 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num69" id="num69" class="tbmp" size=5 oninput="calculateamtqty(this,69)" onfocus="myFunction(this, 'N', '69');" onblur="myFunctionrev(this, 'N', '69');" placeholder="69" onkeydown="arrowmove(window.event, 69);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqg">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbag">&nbsp;</td>
+                                            <td align="center"><span class="tdr6 color6" id="rres6" style="padding: 3px !important;">S6</span></td>
 
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw " id="lblleft7" onclick="leftset(7);"> <span> Power Ball </span></td>
+                                            <td class="tdgwr"><span> S7 </span></td>
+                                            <td class="tdgw tdg7"><input type="checkbox" name="cblow7" id="cblow7" value="0" onclick="cblow0_Click(7)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh7" id="tbh7" class="tball" size=5 oninput="allvh(this,70,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 7);">
                                             </td>
@@ -563,8 +561,15 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num79" id="num79" class="tbmp" size=5 oninput="calculateamtqty(this,79)" onfocus="myFunction(this, 'N', '79');" onblur="myFunctionrev(this, 'N');" placeholder="79" onkeydown="arrowmove(window.event, 79);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqh">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbah">&nbsp;</td>
+                                            <td align="center"><span class="tdr7 color7" id="rres7" style="padding: 3px !important;">S7</span></td>
+
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw " id="lblleft8" onclick="leftset(8);"> <span> Magic Lotto </span></td>
+                                            <td class="tdgwr"><span> S8 </span></td>
+                                            <td class="tdgw tdg8"><input type="checkbox" name="cblow8" id="cblow8" value="0" onclick="cblow0_Click(8)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh8" id="tbh8" class="tball" size=5 oninput="allvh(this,80,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 8);">
                                             </td>
@@ -598,8 +603,15 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num89" id="num89" class="tbmp" size=5 oninput="calculateamtqty(this,89)" onfocus="myFunction(this, 'N', '89');" onblur="myFunctionrev(this, 'N', '89');" placeholder="89" onkeydown="arrowmove(window.event, 89);">
                                             </td>
+                                            <td class="tdqty color12" id="tbqi">&nbsp;</td>
+                                            <td class="tdamt color11" id="tbai">&nbsp;</td>
+                                            <td align="center"><span class="tdr8 color8" id="rres8" style="padding: 3px !important;">S8</span></td>
+
                                         </tr>
                                         <tr>
+                                            <td colspan="2" class="tdgw " id="lblleft9" onclick="leftset(9);"> <span> Lotto Jackpot </span></td>
+                                            <td class="tdgwr"><span> S9 </span></td>
+                                            <td class="tdgw tdg9"><input type="checkbox" name="cblow9" id="cblow9" value="0" onclick="cblow0_Click(9)" /></td>
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="tbh9" id="tbh9" class="tball" size=5 oninput="allvh(this,90,'H');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmoveh(window.event, 9);">
                                             </td>
@@ -633,74 +645,60 @@
                                             <td align="center">
                                                 <input type="textbox" maxlength=3 name="num99" id="num99" class="tbmp" size=5 oninput="calculateamtqty(this,99)" onfocus="myFunction(this, 'N', '99');" onblur="myFunctionrev(this, 'N', '99');" placeholder="99" onkeydown="arrowmove(window.event, 99);">
                                             </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td class="col-40">
-                                    <table style="margin-top: 0;border-spacing: 10px 10px;">
-                                        <tr>
-                                            <td class="white">QTY.</td>
-                                            <td class="white">Point</td>
-                                            <td class="white">Wining Ball</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqa">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbaa">&nbsp;</td>
-                                            <td align="center"><span class="tdr0 color0" style="padding: 3px !important;" id="rres0">S0</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqb">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbab">&nbsp;</td>
-                                            <td align="center"><span class="tdr1 color1" id="rres1" style="padding: 3px !important;">S1</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqc">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbac">&nbsp;</td>
-                                            <td align="center"><span class="tdr2 color2" id="rres2" style="padding: 3px !important;">S2</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqd">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbad">&nbsp;</td>
-                                            <td align="center"><span class="tdr3 color3" id="rres3" style="padding: 3px !important;">S3</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqe">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbae">&nbsp;</td>
-                                            <td align="center"><span class="tdr4 color4" id="rres4" style="padding: 3px !important;">S4</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqf">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbaf">&nbsp;</td>
-                                            <td align="center"><span class="tdr5 color5" id="rres5" style="padding: 3px !important;">S5</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqg">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbag">&nbsp;</td>
-                                            <td align="center"><span class="tdr6 color6" id="rres6" style="padding: 3px !important;">S6</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqh">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbah">&nbsp;</td>
-                                            <td align="center"><span class="tdr7 color7" id="rres7" style="padding: 3px !important;">S7</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tdqty color12" id="tbqi">&nbsp;</td>
-                                            <td class="tdamt color11" id="tbai">&nbsp;</td>
-                                            <td align="center"><span class="tdr8 color8" id="rres8" style="padding: 3px !important;">S8</span></td>
-                                        </tr>
-                                        <tr>
                                             <td class="tdqty color12" id="tbqj">&nbsp;</td>
                                             <td class="tdamt color11" id="tbaj">&nbsp;</td>
                                             <td align="center"><span class="tdr9 color9" id="rres9" style="padding: 3px !important;">S9</span></td>
+
                                         </tr>
                                         <tr>
+                                            <td colspan="15">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <button class="bottombtn" id="btnbg0" style="background-color: red;color: white;height: 30px; " onclick="betreg();">BUY (F6)</button>
+                                                        </td>
+                                                        <td>
+                                                            <button class="bottombtn" id="btnbg0" style="height: 30px;" onclick="btnlow_Click();">RESET</button>
+
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" placeholder="F7 Scan Barcode Here" class="bottombtn" onkeyup="getClime(event)" id="scancode" name="scancode" style="background-color: white;width:200px; height: 30px;">
+
+                                                        </td>
+                                                        <td style="
+                                                    background: #FFF;
+                                                    border-radius: 4px;
+                                                    height: 30px;
+                                                    display: flex;
+                                                    flex-direction: column;
+                                                    align-content: center;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                ">
+                                                            <span id="msg">HI shi</span>
+                                                        </td>
+                                                        <td>
+                                                            <button class="bottombtn" id="btnbets" style="background-color: #fbf180;font-size: 20px; padding-left:10px; padding-right:10px; height: 30px;">Transaction</button>
+
+                                                        </td>
+                                                        <td>
+                                                            <button class="bottombtn" id="btnadv" style="background-color: #fbf180;font-size: 20px;padding-left:10px; padding-right:10px;height: 30px;" onclick="adv_click();">Advance Draw</button>
+
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+
                                             <td class="tdqty color12" id="tblcqty">&nbsp;</td>
                                             <td class="tdamt color11" id="tblcamt">&nbsp;</td>
                                             <td align="center">&nbsp;</td>
+                                            <td class="tdtime" style="display: none;" id="lastdrawr"></td>
+                                            <td class="tdtitleright" style="display: none;"><a href="/?r=logout"><input type="button" class="buttonlogout" value="Logout"></a></td>
                                         </tr>
-
                                     </table>
                                 </td>
+
                             </tr>
                         </table>
                     </div>
@@ -728,28 +726,11 @@
                     <table>
                         <tr>
                             <td style="display: flex;">
-                                <button class="bottombtn" id="btnbg0" style="background-color: red;color: white;height: 30px; " onclick="betreg();">BUY (F6)</button>
 
-                                <button class="bottombtn" id="btnbg0" style="height: 30px;" onclick="btnlow_Click();">RESET</button>
 
-                                <input type="text" placeholder="F7 Scan Barcode Here" class="bottombtn" onkeyup="getClime(event)" id="scancode" name="scancode" style="background-color: white;width:200px; height: 30px;">
-                                <span id="msg" style="
-                                                    background: #FFF;
-                                                    border-radius: 4px;
-                                                    height: 30px;
-                                                    display: flex;
-                                                    flex-direction: column;
-                                                    align-content: center;
-                                                    justify-content: center;
-                                                    align-items: center;
-                                                ">HI shi</span>
-                                <button class="bottombtn" id="btnbets" style="background-color: #fbf180;font-size: 20px;width:  auto ; padding-left:10px; padding-right:10px; height: 30px;">Transaction</button>
-                                <button class="bottombtn" id="btnadv" style="background-color: #fbf180;font-size: 20px;width: auto; padding-left:10px; padding-right:10px;height: 30px;" onclick="adv_click();">Advance Draw</button>
 
                             </td>
 
-                            <td class="tdtime" id="lastdrawr"></td>
-                            <td class="tdtitleright"><a href="/?r=logout"><input type="button" class="buttonlogout" value="Logout"></a></td>
                         </tr>
                     </table>
                 </td>
@@ -876,12 +857,13 @@
                 </tr>
             </table>
         </div>
-    </div>
-    <marquee bgcolor="#000000">
-        <div id="spannews" class="newsdv">
+        <marquee bgcolor="#000000">
+            <div id="spannews" class="newsdv">
 
-        </div>
-    </marquee>
+            </div>
+        </marquee>
+    </div>
+
 
 
     <!--Bet Details modal-->
@@ -941,6 +923,12 @@
 
         body {
             background: #000;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
         }
 
         table tr td {
@@ -1002,7 +990,7 @@
             <span class="close" id="close-btn" onclick="closebtn()">&times;</span>
             <p id="claim-msg"></p>
             <div id="claim-ms">
-                <iframe id="ani_rel" src="/lotto/" style="width: 100%; height:100%;"></iframe>
+                <iframe id="ani_rel" src="/lotto/" style="width: 100%; height:100%; border:none;"></iframe>
             </div>
 
         </div>
@@ -1338,12 +1326,12 @@
         }
 
         function showAnimation() {
-            
-            console.log("animation",animation);
+
+            console.log("animation", animation);
             //document.getElementById("ani_rel").location.reload();
             document.getElementById('ani_rel').contentWindow.location.reload()
             animation.style.display = "block";
-            console.log("animation",animation);
+            console.log("animation", animation);
 
         }
 
