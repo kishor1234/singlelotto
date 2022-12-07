@@ -59,6 +59,12 @@
                                 <p>Document's Desk</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=compliance', '#app-container', false)" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Compliance</p>
+                            </a>
+                        </li>
 <!--                        <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=logo and name', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

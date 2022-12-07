@@ -145,7 +145,7 @@
                                     <td class="tdaeob w50">
                                         <span>
                                             <label for="cblp">LP</label><br>
-                                            <input  type="checkbox" name="txtLuckyStone" id="txtLuckyStone" >
+                                            <input type="checkbox" name="txtLuckyStone" id="txtLuckyStone">
                                         </span>
                                     </td>
                                     <td class="tdaeob w50">
@@ -1331,6 +1331,9 @@
             //document.getElementById("ani_rel").location.reload();
             document.getElementById('ani_rel').contentWindow.location.reload()
             animation.style.display = "block";
+            setTimeout(function() {
+                animation.style.display = "none";
+            }, 25000)
             console.log("animation", animation);
 
         }

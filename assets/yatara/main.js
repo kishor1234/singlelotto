@@ -616,7 +616,7 @@ function load_frm() {
                     document.getElementById("msg").innerHTML = "Draw Over";
                 }
                 loadadv();
-                loadAnimation();
+                // loadAnimation();
                 btnlow_Click();
                 //leftset(0);
                 // loadOldSeries();
@@ -667,7 +667,7 @@ function loadadv() {
     document.getElementById("advpan").innerHTML = "";
     var _0x1899F = "<table width='100%' border='0' height=400 bgcolor=#ffffc0><tr><td align=center><table width='80%'>";
     if (_0x1897B.length != 0) {
-        _0x1899F = _0x1899F + "<tr><td colspan=4 class=\"tdorange\"><input type=\"checkbox\" id=\"cballad\" value=\"0\" onclick=\"alladv();\">ALL</td><td class=\"tdorange\"><label onclick=\"closeadv();\">Close</label></td></tr>";
+        _0x1899F = _0x1899F + "<tr><td><button class='btn' onclick=\"closeadv()\">Back to Game</button></td><td colspan=3 class=\"tdorange\"><input type=\"checkbox\" id=\"cballad\" value=\"0\" onclick=\"alladv();\">ALL</td><td class=\"tdorange\"><label onclick=\"closeadv();\">Close</label></td></tr>";
         for (i = 0; i < _0x1897B.length; i++) {
             _0x1898D = _0x1897B[i].split("-");
             if (i % 5 == 0) {
@@ -2448,6 +2448,16 @@ function mulfunc(key) {
     document.getElementById("lbllow7").innerText = mrps;
     document.getElementById("lbllow8").innerText = mrps;
     document.getElementById("lbllow9").innerText = mrps;
+    // document.getElementById("lblleft0").innerText = "Lottoland "+mrps;
+    // document.getElementById("lblleft1").innerText = mrps;
+    // document.getElementById("lblleft2").innerText = mrps;
+    // document.getElementById("lblleft3").innerText = mrps;
+    // document.getElementById("lblleft4").innerText = mrps;
+    // document.getElementById("lblleft5").innerText = mrps;
+    // document.getElementById("lblleft6").innerText = mrps;
+    // document.getElementById("lblleft7").innerText = mrps;
+    // document.getElementById("lblleft8").innerText = mrps;
+    // document.getElementById("lblleft9").innerText = mrps;
     betcollectionlc();
     calcalllc();
 }
@@ -3012,9 +3022,9 @@ function adv_click() {
     //console.log(advstr);
     document.getElementById("advpan").style.display = "block";
     document.getElementById("gamepan").style.display = "none";
-    var _0x1899F = "<table width='100%' border='0' height=400 bgcolor=#ffffc0><tr><td align=center><table width='80%'>";
+    var _0x1899F = "<table width='100%' border='0' height=400 ><tr><td align=center><table width='80%'>";
     if (_0x1897B.length != 0) {
-        _0x1899F = _0x1899F + "<tr><td colspan=4 class=\"tdorange\"><input type=\"checkbox\" id=\"cballad\" value=\"0\" onclick=\"alladv();\">ALL</td><td class=\"tdorange\"><label onclick=\"closeadv();\">Close</label></td></tr>";
+        _0x1899F = _0x1899F + "<tr>td><button class='btn' onclick=\"closeadv()\">Back to Game</button> </td> <td colspan=3 class=\"tdorange\"><input type=\"checkbox\" id=\"cballad\" value=\"0\" onclick=\"alladv();\">ALL</td><td class=\"tdorange\"><label onclick=\"closeadv();\">Close</label></td></tr>";
         for (i = 0; i < _0x1897B.length; i++) {
             _0x1898D = _0x1897B[i].split("-");
             if (i % 5 == 0) {
