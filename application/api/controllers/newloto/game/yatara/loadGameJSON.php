@@ -75,7 +75,7 @@ class loadGameJSON extends CAaskController
         } else {
             $id = $last["id"] - 1;
         }
-        $last = $this->module->getSingleGameTiemByid($id);
+        $last = $this->module->getSingleGameTiemByid($id+1);
         $data2["drawid"] = $last;
         $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND") . $this->ask_mysqli->orderBy("ASC", "series");
         $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
