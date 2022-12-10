@@ -148,7 +148,7 @@
                                                 <input type="text" name="txtLuckyStone" id="txtLuckyStone" style="width: 35px; background: #000; text-align: center; color: #FFF;">
                                             </span>
                                         </td>
-                                        <td class="tdaeob w50">
+                                        <td class="tdaeob w50" style="display: none;">
                                             <span>
                                                 <label>All&nbsp;</label><br>
                                                 <input type="checkbox" name="cballlow" id="cballlow" onclick="cballlow_click();">
@@ -370,7 +370,12 @@
                                         <table>
                                             <tr>
 
-                                                <td>&nbsp;</td>
+                                                <td class="tdaeob w50">
+                                                    <span>
+                                                        <label>All&nbsp;</label><br>
+                                                        <input type="checkbox" name="cballlow" id="cballlow" onclick="cballlow_click();">
+                                                    </span>
+                                                </td>
                                                 <td>&nbsp;</td>
                                                 <td class="last-o"><span>tto</span></td>
                                                 <td class="gptd">All</td>
