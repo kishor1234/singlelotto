@@ -105,7 +105,7 @@
                 </li>
                 <?php
                 if ($_SESSION["m"] === "main") {
-                    ?>
+                ?>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-alt-slash"></i>
@@ -156,10 +156,10 @@
                                                 </li>
                                             </ul>-->
                     </li>
-                    <?php
+                <?php
                 } else {
-                    ?>
-                    <li class="nav-item has-treeview">
+                ?>
+                    <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-alt-slash"></i>
                             <p>
@@ -175,16 +175,16 @@
                                 </a>
                             </li>
                         </ul>
-                        <!--                    <ul class="nav nav-treeview">
+                                           <ul class="nav nav-treeview">
                                                 <li class="nav-item">
                                                     <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
                                                         <i class="far fa-circle nav-icon"></i>
                                                         <p>Sub Main Registration</p>
                                                     </a>
                                                 </li>
-                                            </ul>-->
-                    </li>
-                    <?php
+                                            </ul>
+                    </li> -->
+                <?php
                 }
                 ?>
                 <li class="nav-item has-treeview">
@@ -239,7 +239,7 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Change Password
-<!--                            <span class="right badge badge-danger">New</span>-->
+                            <!--                            <span class="right badge badge-danger">New</span>-->
                         </p>
                     </a>
                 </li>
@@ -248,7 +248,7 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Transaction
-<!--                            <span class="right badge badge-danger">New</span>-->
+                            <!--                            <span class="right badge badge-danger">New</span>-->
                         </p>
                     </a>
                 </li>
@@ -266,4 +266,4 @@
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-</aside> 
+</aside>

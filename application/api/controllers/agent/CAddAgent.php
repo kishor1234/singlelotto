@@ -325,7 +325,8 @@ class CAddAgent extends CAaskController {
                         $sql .= " WHERE createBy!='1'";
                         break;
                     default :
-                        $sql .= $this->ask_mysqli->whereSingle(array("1" => "1"));
+                        // $sql .= $this->ask_mysqli->whereSingle(array("1" => "1"));
+                        $sql .= $this->ask_mysqli->whereSingle(array("createBy" => $request["createBy"]));
                         break;
                 }
             } else {

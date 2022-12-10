@@ -129,6 +129,7 @@
                     "agent_id": obj._id,
                     "userid": obj.user_id,
                     "ap": obj.ap,
+                    "m": obj.m,
                     "commission": obj.commission,
                     "createBy": obj.createBy
                 }, function(data) {
