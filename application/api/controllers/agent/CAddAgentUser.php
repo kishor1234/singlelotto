@@ -276,8 +276,8 @@ class CAddAgentUser extends CAaskController {
                 $subdata[] = $row['isdate'];
                 $active = '<button onclick="deleteFullAccount(' . $row["id"] . ',0)" class="btn btn-danger btn-xs"> <i class="fa fa-trash-o"></i></button>';
                 $active .= ' <button onclick="editAccount(' . $row["id"] . ',\'' . $row["name"] . '\',\'' . $row["mobileno"] . '\',\'' . $row["comission"] . '\',\'' . $row["device"] . '\',\'' . $row["winper"] . '\',\'' . $row["blockper"] . '\')" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-xs"> <i class="fa fa-edit"></i> Edit</button>';
-                $active .= ' <button onclick="putPoint(' . $row["userid"] . ',\'' . $row["name"] . '\',\'' . $row["balance"] . '\')" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-xs"> <i class="fa fa-edit"></i>Add Point</button>';
-                $active .= ' <button onclick="getPoint(' . $row["userid"] . ',\'' . $row["name"] . '\',\'' . $row["balance"] . '\')" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-xs"> <i class="fa fa-edit"></i>Remove Point</button>';
+                $active .= ' <button onclick="putPoint(\'' . $row["userid"] . '\',\'' . $row["name"] . '\',\'' . $row["balance"] . '\')" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-xs"> <i class="fa fa-edit"></i>Add Point</button>';
+                $active .= ' <button onclick="getPoint(\'' . $row["userid"] . '\',\'' . $row["name"] . '\',\'' . $row["balance"] . '\')" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-xs"> <i class="fa fa-edit"></i>Remove Point</button>';
                 $b = array(1 => "danger", 0 => "success");
                 $b2 = array(1 => "Suspend", 0 => "Active");
                 $ac = array(0 => 1, 1 => 0);

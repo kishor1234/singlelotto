@@ -378,7 +378,7 @@
                                                 </td>
                                                 <td>&nbsp;</td>
                                                 <td class="last-o"><span>tto</span></td>
-                                                <td class="gptd">All</td>
+                                                <td class="gptd">&nbsp;</td>
                                                 <td align="center">
                                                     <input type="textbox" maxlength=3 name="tbv0" id="tbv0" class="tball" size=5 oninput="allvh(this,0,'V');" onfocus="myFunction(this, 'A');" onblur="myFunctionrev(this, 'A');" onkeydown="arrowmovev(window.event, 0);">
                                                 </td>
