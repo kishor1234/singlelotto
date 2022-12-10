@@ -177,6 +177,7 @@ class loadGameJSON extends CAaskController
         $data2["lastTrno"] = $ltsn;
         $data2["gst"] = $gst;
         $data2["lastTramt"] = $lpt;
+        $data2["ctime"]=date("H:i:s");
         // echo date("H:i:s") . "!" . $gmtm . "!" . $schcd . "!" . $gmcd . "!" . $mrp . "!" . $lastdrtm . "!" .
         // $lastres . "!" . $resstr . "!" . $uname . "!" . $climit . "!" .
         // $inflag . "!" . $newsstr . "!" . $agentname . "!" . $advstr . "!" . $ltsn . "!" . $lpt;
