@@ -174,8 +174,8 @@ class loadGameJSON extends CAaskController
         if ($qrow = $query->fetch_assoc()) {
             $gst=$qrow["gst"];
         }
-        $data2["gst"] = $ltsn;
-        $data2["lastTrno"] = $gst;
+        $data2["lastTrno"] = $ltsn;
+        $data2["gst"] = $gst;
         $data2["lastTramt"] = $lpt;
         // echo date("H:i:s") . "!" . $gmtm . "!" . $schcd . "!" . $gmcd . "!" . $mrp . "!" . $lastdrtm . "!" .
         // $lastres . "!" . $resstr . "!" . $uname . "!" . $climit . "!" .
