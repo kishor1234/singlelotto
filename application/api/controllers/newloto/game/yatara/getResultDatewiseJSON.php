@@ -58,7 +58,7 @@ class getResultDatewiseJSON extends CAaskController {
         $request = json_decode($postdata, true);
         $date = $request["date"];
         $game = $this->module->getAllTiem();
-       
+        $Data=array();
         foreach ($game as $k => $games) {
             $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $games["id"], "gamestime" => $games["stime"], "gameetime" => $games["etime"], "gdate" => $date), "AND") . $this->ask_mysqli->orderBy("ASC", "gameid");
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
@@ -67,26 +67,28 @@ class getResultDatewiseJSON extends CAaskController {
             while ($row = $result->fetch_assoc()) {
 
                 $series = explode("-", $row["series"]);
-                $temp[$series["0"]] = array();
+                $temp["Result"] = array();
 
                 $j = 0;
                 for ($i = $series[0]; $i <= $series[1]; $i = $i + 100) {
                     $lastres = str_pad($row[$j], 2, "0", STR_PAD_LEFT);
-                    array_push($temp[$series["0"]], $lastres);
+                    array_push($temp["Result"], $lastres);
                     $j++;
                 }
             }
+           
             if (!empty($temp)) {
                 $data[$games["id"]]["data"] = $temp;
+                array_push($Data, $data[$games["id"]]);
             } else {
                 unset($data[$games["id"]]);
             }
 
-
+            //print_r($Data);die;
 //            array_push($data[$games["id"]]["data"], $temp);
         }
 //        print_r($data);
-        echo json_encode(array("status"=>1,"msg"=>"Success","data"=>$data));
+        echo json_encode(array("status"=>1,"msg"=>"Success","data"=>$Data));
 
         return;
     }
