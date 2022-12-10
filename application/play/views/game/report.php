@@ -63,8 +63,9 @@
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($rdata["totalPoint"], 2) ?></td>
                                             </tr> -->
                                             <tr>
-                                                <td align='right' width='60%' class='tdseries'>Terminal Profit: </td>
-                                                <td align='right' width='40%' class='tdseries'><?= number_format($rdata["netPayble"], 2) ?></td>
+                                                <td align='right' width='60%' class='tdseries'>Final Amount: </td>
+                                                <?php $final=(float)$rdata["totalNetPoint"]-(float)$rdata["winPoint"];?>
+                                                <td align='right' width='40%' class='tdseries'><?= number_format($final, 2) ?></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -105,7 +106,8 @@
                                         <table align='center' width='40%' border=2 bgcolor='#003366' bordercolor=white cellpadding=5>
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Terminal Sale: </td>
-                                                <td align='right' width='40%' class='tdseries'><?= number_format($rdata["totalNetPoint"] - $rdata["cancelPoint"], 2) ?></td>
+                                                <?php $tsele=$rdata["totalNetPoint"] - $rdata["cancelPoint"];?>
+                                                <td align='right' width='40%' class='tdseries'><?= number_format($tsele, 2) ?></td>
                                             </tr>
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Terminal Win: </td>
@@ -123,7 +125,7 @@
                                             <tr >
                                                 <td style="background: blue;" align='right' width='60%' class='tdseries'>Company Payable : </td>
                                                 <?php
-                                                $snap = ((float) $rdata["netPayble"] + (float) $rdata["totalPoint"]);
+                                                $snap = ((float) $tsele - (float) $rdata["totalPoint"]-(float) $rdata["winPoint"]);
                                                 ?>
                                                 <td style="background: blue;" align='right' width='40%' class='tdseries'><?= number_format($snap, 2) ?></td>
                                             </tr>
