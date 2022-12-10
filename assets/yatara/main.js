@@ -523,20 +523,23 @@ function betrun(field) {
     }
     colorClear(field);
 }
-function loadAnimation(){
-    
+function loadAnimation() {
+
     showAnimation();
 }
 function load_frm() {
 
     document.getElementById("divhigh").style.display = "none";
-    document.getElementById("divlow").style.display = "block";
+    document.getElementById("divlow").style.display = "none";
+    document.getElementById("divplat").style.display = "block";
     // document.getElementById("resdiv").style.display = "none";
     // document.getElementById("qtyamt").style.display = "block";
     //    document.getElementById("btnadv").disabled = true;
     document.getElementById("advpan").style.display = "none";
     document.getElementById("gamepan").style.display = "block";
     document.getElementById("advpan").style.display = "none";
+
+    lowlable();
     pagemin = 0;
 
     for (i = 0; i < 100; i++) {
@@ -567,6 +570,7 @@ function load_frm() {
                 //                console.log("last", response[14]);
                 document.getElementById("lasttsn").innerHTML = response[14];
                 document.getElementById("lasttamt").innerHTML = response[15];
+                document.getElementById("gmsg").innerHTML = "<marquee >"+response[16]+"</marquee>";
                 document.getElementById("lastdraw").innerHTML = lastdrtm;
                 document.getElementById("lastdrawr").innerText = lastdrtm;
                 document.getElementById("nextdraw").innerHTML = gmtm;
@@ -604,7 +608,8 @@ function load_frm() {
                 waitTimeOut = setInterval(displaycurr, 1000);
                 if (inflag == "true") {
                     document.getElementById("creditlimit").innerHTML = climit;
-                    document.getElementById("agentdet").innerHTML = uname;// "   WELCOME " + uname + " (" + agentname + ")";
+                    var name=uname.split(" ");
+                    document.getElementById("agentdet").innerHTML = name[0]+" Online";// "   WELCOME " + uname + " (" + agentname + ")";
                 } else {
                 }
 
@@ -1727,12 +1732,74 @@ function calculateamtqty(field, key) {
     betcollectionlc();
     calcalllc();
 }
+function highlable() {
+    document.getElementById("cbhigh0").style.display = "block";
+    document.getElementById("cbhigh1").style.display = "block";
+    document.getElementById("cbhigh2").style.display = "block";
+    document.getElementById("cbhigh3").style.display = "block";
+    document.getElementById("cbhigh4").style.display = "block";
+    document.getElementById("cbhigh5").style.display = "block";
+    document.getElementById("cbhigh6").style.display = "block";
+    document.getElementById("cbhigh7").style.display = "block";
+    document.getElementById("cbhigh8").style.display = "block";
+    document.getElementById("cbhigh9").style.display = "block";
+    
+    document.getElementById("cblow0").style.display = "none";
+    document.getElementById("cblow1").style.display = "none";
+    document.getElementById("cblow2").style.display = "none";
+    document.getElementById("cblow3").style.display = "none";
+    document.getElementById("cblow4").style.display = "none";
+    document.getElementById("cblow5").style.display = "none";
+    document.getElementById("cblow6").style.display = "none";
+    document.getElementById("cblow7").style.display = "none";
+    document.getElementById("cblow8").style.display = "none";
+    document.getElementById("cblow9").style.display = "none";
+    
+}
+function lowlable(){
+    document.getElementById("cblow0").style.display = "block";
+    document.getElementById("cblow1").style.display = "block";
+    document.getElementById("cblow2").style.display = "block";
+    document.getElementById("cblow3").style.display = "block";
+    document.getElementById("cblow4").style.display = "block";
+    document.getElementById("cblow5").style.display = "block";
+    document.getElementById("cblow6").style.display = "block";
+    document.getElementById("cblow7").style.display = "block";
+    document.getElementById("cblow8").style.display = "block";
+    document.getElementById("cblow9").style.display = "block";
+
+    document.getElementById("cbhigh0").style.display = "none";
+    document.getElementById("cbhigh1").style.display = "none";
+    document.getElementById("cbhigh2").style.display = "none";
+    document.getElementById("cbhigh3").style.display = "none";
+    document.getElementById("cbhigh4").style.display = "none";
+    document.getElementById("cbhigh5").style.display = "none";
+    document.getElementById("cbhigh6").style.display = "none";
+    document.getElementById("cbhigh7").style.display = "none";
+    document.getElementById("cbhigh8").style.display = "none";
+    document.getElementById("cbhigh9").style.display = "none";
+}
+function shownormal(func) {
+    if (func == "L") {
+        document.getElementById('lobtn').setAttribute('onclick', 'showhide(\'L\',\'L\')');
+    }
+    else {
+        document.getElementById('highbtn').setAttribute('onclick', 'showhide(\'L\',\'H\')');
+    }
+    document.getElementById("divhigh").style.display = "none";
+    document.getElementById("divlow").style.display = "none";
+    document.getElementById("divplat").style.display = "block";
+
+}
 function showhide(_0x18E43, _0x18E31) {
     if (_0x18E43 == "L") {
         if (_0x18E31 == "L") {
             document.getElementById("divhigh").style.display = "none";
-            document.getElementById("divlow").style.display = "none";
+            document.getElementById("divlow").style.display = "block";
+            document.getElementById("divplat").style.display = "none";
             highlowstatus = "l";
+            document.getElementById('lobtn').setAttribute('onclick', "shownormal('L')");
+            lowlable();
             clearbets();
             //leftset(0);
             mulfunc(1);
@@ -1740,10 +1807,14 @@ function showhide(_0x18E43, _0x18E31) {
             //            document.getElementById("cblow0").checked = true;
             //            cblow0_Click(0);
             clearLow();
+
         } else {
-            document.getElementById("divhigh").style.display = "none";
+            document.getElementById("divplat").style.display = "none";
+            document.getElementById("divhigh").style.display = "block";
             document.getElementById("divlow").style.display = "none";
             highlowstatus = "h";
+            document.getElementById('highbtn').setAttribute('onclick', 'shownormal(\'H\')');
+            highlable();
             clearbets();
             //leftset(0);
             mulfunc(1);
@@ -1751,6 +1822,7 @@ function showhide(_0x18E43, _0x18E31) {
             //            document.getElementById("cbhigh0").checked = true;
             //            cbhighall_click(0);
             clearHigh();
+
         }
     } else {
         if (_0x18E43 == "R") {
@@ -1776,7 +1848,7 @@ function seriesclick(lenght = null) {
     for (i = 0; i < lenght; i++) {
         if (document.getElementById("s" + i).checked == true) {
             let data_value = document.getElementById("s" + i).value;
-            console.log("series data ",data_value);
+            console.log("series data ", data_value);
             total = total + 1;
             if (seriesa == "") {
                 seriesa = data_value.toString();
@@ -1833,7 +1905,7 @@ function setlabel(key, seriesas) {
     seriesloc = point;
     for (i = 0; i < 100; i++) {
         if (i < 10) {
-           // document.getElementById("lbl" + i).innerText = point + "" + key + "" + i;
+            // document.getElementById("lbl" + i).innerText = point + "" + key + "" + i;
         } else {
             //document.getElementById("lbl" + i).innerText = point + "" + key + "" + i;
         }
@@ -1848,7 +1920,7 @@ function setlabel(key, seriesas) {
     // document.getElementById("lblleft7").innerText = point + "700-" + point + "799";
     // document.getElementById("lblleft8").innerText = point + "800-" + point + "899";
     // document.getElementById("lblleft9").innerText = point + "900-" + point + "999";
-    
+
 
     document.getElementById("lblleft0").innerText = "Lottoland";
     document.getElementById("lblleft1").innerText = "Lotto 247";
@@ -2062,80 +2134,125 @@ function leftset(_0x189E7) {
 }
 function cballlow_click() {
     if (highlowstatus == "l") {
+
+
         if (document.getElementById("cballlow").checked) {
-            document.getElementById("cblow0").checked = true;
-            document.getElementById("cblow1").checked = true;
-            document.getElementById("cblow2").checked = true;
-            document.getElementById("cblow3").checked = true;
-            document.getElementById("cblow4").checked = true;
-            document.getElementById("cblow5").checked = true;
-            document.getElementById("cblow6").checked = true;
-            document.getElementById("cblow7").checked = true;
-            document.getElementById("cblow8").checked = true;
-            document.getElementById("cblow9").checked = true;
-        } else {
-            document.getElementById("cblow0").checked = false;
-            document.getElementById("cblow1").checked = false;
-            document.getElementById("cblow2").checked = false;
-            document.getElementById("cblow3").checked = false;
-            document.getElementById("cblow4").checked = false;
-            document.getElementById("cblow5").checked = false;
-            document.getElementById("cblow6").checked = false;
-            document.getElementById("cblow7").checked = false;
-            document.getElementById("cblow8").checked = false;
-            document.getElementById("cblow9").checked = false;
-        }
-        cblow0_Click(0);
-        cblow0_Click(1);
-        cblow0_Click(2);
-        cblow0_Click(3);
-        cblow0_Click(4);
-        cblow0_Click(5);
-        cblow0_Click(6);
-        cblow0_Click(7);
-        cblow0_Click(8);
-        cblow0_Click(9);
+        //     document.getElementById("cblow0").style.display = "block";
+        //     document.getElementById("cblow1").style.display = "block";
+        //     document.getElementById("cblow2").style.display = "block";
+        //     document.getElementById("cblow3").style.display = "block";
+        //     document.getElementById("cblow4").style.display = "block";
+        //     document.getElementById("cblow5").style.display = "block";
+        //     document.getElementById("cblow6").style.display = "block";
+        //     document.getElementById("cblow7").style.display = "block";
+        //     document.getElementById("cblow8").style.display = "block";
+        //     document.getElementById("cblow9").style.display = "block";
         document.getElementById("cblow0").checked = true;
-        cblow0_Click(0);
+        document.getElementById("cblow1").checked = true;
+        document.getElementById("cblow2").checked = true;
+        document.getElementById("cblow3").checked = true;
+        document.getElementById("cblow4").checked = true;
+        document.getElementById("cblow5").checked = true;
+        document.getElementById("cblow6").checked = true;
+        document.getElementById("cblow7").checked = true;
+        document.getElementById("cblow8").checked = true;
+        document.getElementById("cblow9").checked = true;
+        //
 
     } else {
-        if (document.getElementById("cballlow").checked) {
-            document.getElementById("cbhigh0").checked = true;
-            document.getElementById("cbhigh1").checked = true;
-            document.getElementById("cbhigh2").checked = true;
-            document.getElementById("cbhigh3").checked = true;
-            document.getElementById("cbhigh4").checked = true;
-            document.getElementById("cbhigh5").checked = true;
-            document.getElementById("cbhigh6").checked = true;
-            document.getElementById("cbhigh7").checked = true;
-            document.getElementById("cbhigh8").checked = true;
-            document.getElementById("cbhigh9").checked = true;
-        } else {
-            document.getElementById("cbhigh0").checked = false;
-            document.getElementById("cbhigh1").checked = false;
-            document.getElementById("cbhigh2").checked = false;
-            document.getElementById("cbhigh3").checked = false;
-            document.getElementById("cbhigh4").checked = false;
-            document.getElementById("cbhigh5").checked = false;
-            document.getElementById("cbhigh6").checked = false;
-            document.getElementById("cbhigh7").checked = false;
-            document.getElementById("cbhigh8").checked = false;
-            document.getElementById("cbhigh9").checked = false;
-            checkhighclick(0, false);
-        }
-        cbhighall_click(0);
-        cbhighall_click(1);
-        cbhighall_click(2);
-        cbhighall_click(3);
-        cbhighall_click(4);
-        cbhighall_click(5);
-        cbhighall_click(6);
-        cbhighall_click(7);
-        cbhighall_click(8);
-        cbhighall_click(9);
-        document.getElementById("cbhigh0").checked = true;
-        cbhighall_click(0);
+        // document.getElementById("cblow0").style.display = "none";
+        // document.getElementById("cblow1").style.display = "none";
+        // document.getElementById("cblow2").style.display = "none";
+        // document.getElementById("cblow3").style.display = "none";
+        // document.getElementById("cblow4").style.display = "none";
+        // document.getElementById("cblow5").style.display = "none";
+        // document.getElementById("cblow6").style.display = "none";
+        // document.getElementById("cblow7").style.display = "none";
+        // document.getElementById("cblow8").style.display = "none";
+        // document.getElementById("cblow9").style.display = "none";
+        document.getElementById("cblow0").checked = false;
+        document.getElementById("cblow1").checked = false;
+        document.getElementById("cblow2").checked = false;
+        document.getElementById("cblow3").checked = false;
+        document.getElementById("cblow4").checked = false;
+        document.getElementById("cblow5").checked = false;
+        document.getElementById("cblow6").checked = false;
+        document.getElementById("cblow7").checked = false;
+        document.getElementById("cblow8").checked = false;
+        document.getElementById("cblow9").checked = false;
     }
+    cblow0_Click(0);
+    cblow0_Click(1);
+    cblow0_Click(2);
+    cblow0_Click(3);
+    cblow0_Click(4);
+    cblow0_Click(5);
+    cblow0_Click(6);
+    cblow0_Click(7);
+    cblow0_Click(8);
+    cblow0_Click(9);
+    document.getElementById("cblow0").checked = true;
+    cblow0_Click(0);
+
+} else {
+
+    if (document.getElementById("cballlow").checked) {
+        // document.getElementById("cbhigh0").style.display = "block";
+        // document.getElementById("cbhigh1").style.display = "block";
+        // document.getElementById("cbhigh2").style.display = "block";
+        // document.getElementById("cbhigh3").style.display = "block";
+        // document.getElementById("cbhigh4").style.display = "block";
+        // document.getElementById("cbhigh5").style.display = "block";
+        // document.getElementById("cbhigh6").style.display = "block";
+        // document.getElementById("cbhigh7").style.display = "block";
+        // document.getElementById("cbhigh8").style.display = "block";
+        // document.getElementById("cbhigh7").style.display = "block";
+        document.getElementById("cbhigh0").checked = true;
+        document.getElementById("cbhigh1").checked = true;
+        document.getElementById("cbhigh2").checked = true;
+        document.getElementById("cbhigh3").checked = true;
+        document.getElementById("cbhigh4").checked = true;
+        document.getElementById("cbhigh5").checked = true;
+        document.getElementById("cbhigh6").checked = true;
+        document.getElementById("cbhigh7").checked = true;
+        document.getElementById("cbhigh8").checked = true;
+        document.getElementById("cbhigh9").checked = true;
+    } else {
+        // document.getElementById("cbhigh0").style.display = "none";
+        // document.getElementById("cbhigh1").style.display = "none";
+        // document.getElementById("cbhigh2").style.display = "none";
+        // document.getElementById("cbhigh3").style.display = "none";
+        // document.getElementById("cbhigh4").style.display = "none";
+        // document.getElementById("cbhigh5").style.display = "none";
+        // document.getElementById("cbhigh6").style.display = "none";
+        // document.getElementById("cbhigh7").style.display = "none";
+        // document.getElementById("cbhigh8").style.display = "none";
+        // document.getElementById("cbhigh7").style.display = "none";
+        document.getElementById("cbhigh0").checked = false;
+        document.getElementById("cbhigh1").checked = false;
+        document.getElementById("cbhigh2").checked = false;
+        document.getElementById("cbhigh3").checked = false;
+        document.getElementById("cbhigh4").checked = false;
+        document.getElementById("cbhigh5").checked = false;
+        document.getElementById("cbhigh6").checked = false;
+        document.getElementById("cbhigh7").checked = false;
+        document.getElementById("cbhigh8").checked = false;
+        document.getElementById("cbhigh9").checked = false;
+        checkhighclick(0, false);
+    }
+    cbhighall_click(0);
+    cbhighall_click(1);
+    cbhighall_click(2);
+    cbhighall_click(3);
+    cbhighall_click(4);
+    cbhighall_click(5);
+    cbhighall_click(6);
+    cbhighall_click(7);
+    cbhighall_click(8);
+    cbhighall_click(9);
+    document.getElementById("cbhigh0").checked = true;
+    cbhighall_click(0);
+}
 }
 function cball_Click() {
     document.getElementById("cbeven").checked = false;
@@ -2812,7 +2929,7 @@ function calcalllc() {
         _0x18B3D = 0,
         _0x18B4F = 0,
         _0x18B61 = 0;
-        
+
     var sr = seriesa.split(",");
     _0x18ABF = finaltotalqtya * sr.length;
     document.getElementById("tbqa").innerText = _0x18ABF.toString();
@@ -3101,7 +3218,7 @@ function alladv() {
         }
     }
 }
-function perdraw() { 
+function perdraw() {
     var _0x1897B = advstr.split("~");
     var _0x1898D;
     var _0x189C3 = 0;
@@ -3222,7 +3339,7 @@ function reprint(tsn) {
     _0x18A89.then(function (response) {
         var retur = response.response;
         if (retur === 0) {
-            
+
             console.log(tsn);
             rePrints(tsn);
         }

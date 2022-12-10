@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,42 +18,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once controller;
 header('Content-Type: application/json');
 
-class loadGameJSON extends CAaskController {
+class loadGameJSON extends CAaskController
+{
 
-//put your code here
+    //put your code here
     public $data = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
 
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
 
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         parent::execute();
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata, true);
         $data = $request;
         $data2 = array();
         //$systm = date("H:i:s");
-//        $data["uid"]="20210723";
-//        $data["u"]=3;
+        //        $data["uid"]="20210723";
+        //        $data["u"]=3;
         $gmtm = "";
         $schcd = 11954;
         $gmcd = "YG01";
-        $data2["gmcd"]=$gmcd;
+        $data2["gmcd"] = $gmcd;
         $mrp = 2;
-        $data2["mrp"]=$mrp;
+        $data2["mrp"] = $mrp;
         $lastdrtm = "";
 
         //result
@@ -71,34 +76,34 @@ class loadGameJSON extends CAaskController {
             $id = $last["id"] - 1;
         }
         $last = $this->module->getSingleGameTiemByid($id);
-        $data2["drawid"]=$last;
-        $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND").$this->ask_mysqli->orderBy("ASC", "series");
+        $data2["drawid"] = $last;
+        $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND") . $this->ask_mysqli->orderBy("ASC", "series");
         $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         $rflat = false;
         while ($qrow = $query->fetch_assoc()) {
 
             $series = explode("-", $qrow["series"]);
-        //    print_r($series);die;
+            //    print_r($series);die;
             $j = 0;
             for ($i = $series[0]; $i <= $series[1]; $i = $i + 100) {
-                $lastres .= str_pad( $qrow[$j], 2, "0", STR_PAD_LEFT) . ",";
-                $data2["results"][$series[0]][$j]=str_pad( $qrow[$j], 2, "0", STR_PAD_LEFT);
+                $lastres .= str_pad($qrow[$j], 2, "0", STR_PAD_LEFT) . ",";
+                $data2["results"][$series[0]][$j] = str_pad($qrow[$j], 2, "0", STR_PAD_LEFT);
                 $j++;
             }
             $rflat = true;
         }
         if (!$rflat) {
-            $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"]-1,"gdate" => date("Y-m-d")), "AND");
+            $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"] - 1, "gdate" => date("Y-m-d")), "AND");
             $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
             $rflat = false;
             while ($qrow = $query->fetch_assoc()) {
 
                 $series = explode("-", $qrow["series"]);
-//            print_r($series);die;
+                //            print_r($series);die;
                 $j = 0;
                 for ($i = $series[0]; $i <= $series[1]; $i = $i + 100) {
                     $lastres .= str_pad($qrow[$j], 2, "0", STR_PAD_LEFT) . ",";
-                    $data2["result"][$series][$j]=str_pad( $qrow[$j], 2, "0", STR_PAD_LEFT);
+                    $data2["result"][$series][$j] = str_pad($qrow[$j], 2, "0", STR_PAD_LEFT);
                     $j++;
                 }
             }
@@ -115,7 +120,7 @@ class loadGameJSON extends CAaskController {
         $msgResult = $this->adminDB[$_SESSION["db_1"]]->query("SELECT * FROM `message`");
         while ($msgRow = $msgResult->fetch_assoc()) {
             $newsstr .= "{$msgRow["message"]} ";
-            $data2["message"]=$msgRow["message"];
+            $data2["message"] = $msgRow["message"];
         }
         //end message
 
@@ -130,8 +135,8 @@ class loadGameJSON extends CAaskController {
                 $agentname = " {$ro["name"]} ONE {$ro["userid"]} ";
             }
             $uid = $msgRow["userid"];
-            $data2["userid"]=$uid;
-            $data2["name"]=$msgRow["name"];
+            $data2["userid"] = $uid;
+            $data2["name"] = $msgRow["name"];
             $uname = "{$msgRow["name"]} {$msgRow["userid"]} ";
             $climit = "{$msgRow["balance"]} ";
         }
@@ -151,7 +156,7 @@ class loadGameJSON extends CAaskController {
                 $l = date("h:i A", strtotime($row["etime"]));
                 $advstr .= "~{$row["id"]}- {$l}";
             }
-            $data2["advanceDraw"][$i]=$row["id"] . "-" . $row["stime"];
+            $data2["advanceDraw"][$i] = $row["id"] . "-" . $row["stime"];
             //array_push($data2, $row["id"] . "-" . $row["stime"]);
             $i++;
         }
@@ -162,9 +167,16 @@ class loadGameJSON extends CAaskController {
         if ($rw = $rew->fetch_assoc()) {
             $ltsn = $rw["utrno"];
             $lpt = $rw["amount"];
-            $data2["lastTrno"]= $ltsn;
-            $data2["lastTramt"]=$lpt;
         }
+        $gst="GST No.";
+        $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]) ;//. $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND").$this->ask_mysqli->orderBy("ASC", "series");
+        $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+        if ($qrow = $query->fetch_assoc()) {
+            $gst=$qrow["gst"];
+        }
+        $data2["gst"] = $ltsn;
+        $data2["lastTrno"] = $gst;
+        $data2["lastTramt"] = $lpt;
         // echo date("H:i:s") . "!" . $gmtm . "!" . $schcd . "!" . $gmcd . "!" . $mrp . "!" . $lastdrtm . "!" .
         // $lastres . "!" . $resstr . "!" . $uname . "!" . $climit . "!" .
         // $inflag . "!" . $newsstr . "!" . $agentname . "!" . $advstr . "!" . $ltsn . "!" . $lpt;
@@ -174,19 +186,21 @@ class loadGameJSON extends CAaskController {
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         parent::distory();
         return;
     }
-
 }

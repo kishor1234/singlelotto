@@ -155,9 +155,16 @@ class loadgame extends CAaskController {
             $ltsn = $rw["utrno"];
             $lpt = $rw["amount"];
         }
-        echo date("H:i:s") . "!" . $gmtm . "!" . $schcd . "!" . $gmcd . "!" . $mrp . "!" . $lastdrtm . "!" .
+        $gst="GST No.";
+        $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]) ;//. $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND").$this->ask_mysqli->orderBy("ASC", "series");
+        $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+        if ($qrow = $query->fetch_assoc()) {
+            $gst=$qrow["gst"];
+        }
+        $cdata=date("H:i:s");
+        echo $cdata . "!" . $gmtm . "!" . $schcd . "!" . $gmcd . "!" . $mrp . "!" . $lastdrtm . "!" .
         $lastres . "!" . $resstr . "!" . $uname . "!" . $climit . "!" .
-        $inflag . "!" . $newsstr . "!" . $agentname . "!" . $advstr . "!" . $ltsn . "!" . $lpt;
+        $inflag . "!" . $newsstr . "!" . $agentname . "!" . $advstr . "!" . $ltsn . "!" . $lpt . "!" . $gst;
         //echo json_encode(array("status" => "1", "message" => "Success", "data" => $data2));
 
 

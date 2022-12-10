@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //require_once getcwd() . '/' . APPLICATION . "/controllers/Crout.php";
 require_once controller;
 
-class document extends CAaskController {
+class mydocument extends CAaskController {
 
     //put your code here
     public function __construct() {
@@ -34,9 +34,9 @@ class document extends CAaskController {
 
     public function initialize() {
         parent::initialize();
-        $data=array("id"=>1);
+        $data=array("id"=>$_SESSION["userid"]);
         $response=$this->postJsonRespon(api_url."/?r=getUserDocument", array("data"=>$data));
-        $this->isLoadView(array("header" => null, "main" => "document", "footer" => null, "error" => "page_404"), false, array("date"=>$data,"response"=>$response));
+        $this->isLoadView(array("header" => null, "main" => "mydocument", "footer" => null, "error" => "page_404"), false, array("date"=>$data,"response"=>$response));
 
         return;
     }
