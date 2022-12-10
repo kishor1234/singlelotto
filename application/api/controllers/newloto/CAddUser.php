@@ -592,7 +592,8 @@ class CAddUser extends CAaskController {
                 array_push($error, "You Enter Only 25 id, try update limit...!");
             }
             $name=str_replace(' ', '_', strtolower($data["name"]));
-            $userid = $name."".( date("Y") . date("m") . date("d") + $last_id);
+            // $userid = $name."".( date("Y") . date("m") . date("d") + $last_id);
+            $userid = $name."".($last_id);
             $sql = $this->ask_mysqli->update(array("userid" => $userid), "enduser") . $this->ask_mysqli->whereSingle(array("id" => $last_id));
             $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB[$_SESSION["db_1"]]->error) : true;
             if (empty($error)) {
