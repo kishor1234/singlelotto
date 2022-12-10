@@ -232,7 +232,7 @@
     background-color: f6accd;
     color: #000;
     font-family: Arial;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
     border-style: solid;
@@ -398,7 +398,7 @@ tr#game_series_list {
     background: #8dd8f8;
     color: black;
     font-family: Arial;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
     border-style: solid;
@@ -618,7 +618,7 @@ tr#game_series_list {
 }
 
 .tdr0 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #a6ce39;
     color: black;
@@ -631,7 +631,7 @@ tr#game_series_list {
 }
 
 .tdr1 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #00adef;
     color: black;
@@ -644,7 +644,7 @@ tr#game_series_list {
 }
 
 .tdr2 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #a25541;
     color: black;
@@ -657,7 +657,7 @@ tr#game_series_list {
 }
 
 .tdr3 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #f6821f;
     color: black;
@@ -670,7 +670,7 @@ tr#game_series_list {
 }
 
 .tdr4 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #fef200;
     color: black;
@@ -684,7 +684,7 @@ tr#game_series_list {
 
 
 .tdr5 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #c656a0;
     color: black;
@@ -697,7 +697,7 @@ tr#game_series_list {
 }
 
 .tdr6 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #4fa393;
     color: black;
@@ -710,7 +710,7 @@ tr#game_series_list {
 }
 
 .tdr7 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #d2ab66;
     color: black;
@@ -723,7 +723,7 @@ tr#game_series_list {
 }
 
 .tdr8 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #6c8cc7;
     color: black;
@@ -736,7 +736,7 @@ tr#game_series_list {
 }
 
 .tdr9 {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #fed09e;
     color: black;
@@ -1853,7 +1853,7 @@ samp#username {
 td.tdaeob.w50 {
     width: 50px;
     background: #FFF;
-    height: 40px;
+    height: 35px;
 }
 
 td.tdaeob.w150 {
