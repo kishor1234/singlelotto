@@ -94,7 +94,15 @@
             <br>
             Qty. : <span class="qty"><?= $row["totalpoint"] ?></span>
             <br>
-            Total Rs. <span class="amount"><?= $row["amount"] ?></span>
+            Gross Rs. <span class="amount"><?= $row["amount"] ?></span>
+            <br>
+           <?php
+           $gst=(float)$row["amount"]*0.28;
+           $total=(float)$row["amount"]+$gst;
+           ?>
+            GST (28%). <span class="amount"><?= $gst ?></span>
+            <br>
+            Total Rs. <span class="amount"><?= $total ?></span>
             <br>
             Bet Date: <span class="platTime"><?= $row["isDate"] ?></span>
             <br>

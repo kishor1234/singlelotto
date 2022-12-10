@@ -26,7 +26,7 @@
 <!-nload="load_frm();-->
 
     <body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" onload="load_frm();">
-        <div style="width: 100%;border: 1px solid #000;margin: 0px auto;">
+        <div style="width: 800px; border: 1px solid #000;margin: 0px auto;">
             <table>
                 <tr>
                     <td class="brand">
@@ -79,7 +79,7 @@
                                             <td><a href="/?r=report"><button class="bottombtn" id="btnbg1" style="background-color: #fbf180;width:100px; height: 30px; font-size: 14px;">Accounts</button></a></td>
                                             <td><button class="bottombtn" id="btnbg1" style="background-color: #fbf180; width:100px; height: 30px; font-size: 14px;" onclick="changepasswordform()">Password</button></td>
                                             <td> <button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" onclick="reprintlist();">Reprint</button></td>
-                                            <td> <button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" disabled>Complaint</button></td>
+                                            <td> <button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" onclick="complianceForm()">Complaint</button></td>
                                             <td><button class="bottombtn" id="btncan" style="background-color: #fbf180;  height: 30px;font-size: 14px;" onclick="canlist();">Cancel</button></td>
                                             <td><a href="/?r=document"><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;"> Legal Info</button></a></td>
                                             <td><button class="bottombtn" id="btnbg0" style="background-color: #fbf180; height: 30px; font-size: 14px;" onclick="direactClaim();">Auto Claim</button></td>
@@ -142,10 +142,10 @@
                                                 <input type="checkbox" name="cbfp" id="cbfp" onclick="cbfp_Click();">
                                             </span>
                                         </td>
-                                        <td class="tdaeob w50">
+                                        <td class="tdaeob w50" style="cursor: pointer;" id="lpclick" onclick="btnLuckyStone_Click()">
                                             <span>
-                                                <label for="cblp">LP</label><br>
-                                                <input type="checkbox" name="txtLuckyStone" id="txtLuckyStone">
+                                                <label style="cursor: pointer;" for="lpclick">LP</label><br>
+                                                <input type="text" name="txtLuckyStone" id="txtLuckyStone" style="width: 35px; background: #000; text-align: center; color: #FFF;">
                                             </span>
                                         </td>
                                         <td class="tdaeob w50">
@@ -202,40 +202,40 @@
                                             <tr>
                                                 <td id="divplat">
                                                     <table>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw" id="lblleft0" onclick="leftset(0);"><span> Lottoland </span></td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw" id="lblleft1" onclick="leftset(1);"> <span> Lotto 247 </span></td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw " id="lblleft2" onclick="leftset(2);"> <span> Lotto Keno </span></td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw " id="lblleft3" onclick="leftset(3);"> <span> Multi Lotto </span></td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw " id="lblleft4" onclick="leftset(4);"> <span> Fast Lotto </span></td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2" class="tdgw" id="lblleft5" onclick="leftset(5);"> <span> Mega Jackpot </span></td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw " id="lblleft6" onclick="leftset(6);"> <span> Super Lotto </span></td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw " id="lblleft7" onclick="leftset(7);"> <span> Power Ball </span></td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw " id="lblleft8" onclick="leftset(8);"> <span> Magic Lotto </span></td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="tdgw ">
                                                             <td colspan="2" class="tdgw " id="lblleft9" onclick="leftset(9);"> <span> Lotto Jackpot </span></td>
 
                                                         </tr>
                                                     </table>
                                                 </td>
-                                                <td id="divhigh"  style="display: none;">
+                                                <td id="divhigh" style="display: none;">
                                                     <table border="0" width="100%">
                                                         <tr>
                                                             <td class="tdg0">
@@ -360,7 +360,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <button class="bottombtn" id="btnbg0" style="background-color: red;color: white;height: 30px; " onclick="betreg();">BUY (F6)</button>
+                                                    <button class="bottombtn" id="btnbg0" style="background-color: red;color: white;height: 30px; " onclick="betreg();">Buy</button>
                                                 </td>
 
                                             </tr>
@@ -872,12 +872,12 @@
                                                     <table>
                                                         <tr>
                                                             <td>
-                                                                <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="btnlow_Click();">RESET</button>
+                                                                <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="btnlow_Click();">Reset</button>
 
                                                             </td>
 
-                                                            <td style="background-color: white;width:100px; height: 30px;"  >
-                                                                <input type="text" placeholder="F7 Scan Barcode Here" class="bottombtn" onkeyup="getClime(event)" id="scancode" name="scancode" >
+                                                            <td style="background-color: white;width:100px; height: 30px;">
+                                                                <input type="text" placeholder="Scan Barcode" class="bottombtn" onkeyup="getClime(event)" id="scancode" name="scancode">
 
                                                             </td>
                                                             <td style="
@@ -890,14 +890,14 @@
                                                     justify-content: center;
                                                     align-items: center;
                                                 ">
-                                                                <span id="msg">HI shi</span>
+                                                                <span id="msg" style="text-align: center;">MSG</span>
                                                             </td>
                                                             <td>
                                                                 <button class="bottombtn" id="btnbets" style="background-color: #f48489;font-size: 20px; padding-left:10px; padding-right:10px; height: 30px;">Transaction</button>
 
                                                             </td>
                                                             <td>
-                                                                <button class="bottombtn" id="btnadv" style="border-colorr:#8dd8f8; background-color: #8dd8f8;font-size: 20px;padding-left:10px; padding-right:10px;height: 30px;" onclick="adv_click();">Advance Draw</button>
+                                                                <button class="bottombtn" id="btnadv" style="border-color:#8dd8f8; background-color: #8dd8f8;font-size: 20px;padding-left:10px; padding-right:10px;height: 30px;" onclick="adv_click();">AD Draw</button>
 
 
                                                             </td>
@@ -989,7 +989,7 @@
 
                     </tr>
                 </table>
-                
+
                 <table border="0" width="100%" cellpadding="2">
                     <tr>
                         <td class="tdaeoo">
@@ -1074,11 +1074,10 @@
             body {
                 background: #000;
                 display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
+                width: 100%;
                 align-content: center;
-                justify-content: center;
                 align-items: center;
+                flex-direction: column;
             }
 
             table tr td {
@@ -1226,11 +1225,11 @@
             document.onkeypress = function(e) {
                 e = e || window.event;
                 // use e.keyCode
-                if (e.keyCode == 32) {
-                    claim.style.display = "none";
-                    document.getElementById("claim-msg").innerHTML = "";
-                    document.getElementById("claim-msg2").innerHTML = "";
-                }
+                // if (e.keyCode == 32) {
+                //     claim.style.display = "none";
+                //     document.getElementById("claim-msg").innerHTML = "";
+                //     document.getElementById("claim-msg2").innerHTML = "";
+                // }
 
             };
 

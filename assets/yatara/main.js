@@ -570,7 +570,7 @@ function load_frm() {
                 //                console.log("last", response[14]);
                 document.getElementById("lasttsn").innerHTML = response[14];
                 document.getElementById("lasttamt").innerHTML = response[15];
-                document.getElementById("gmsg").innerHTML = "<marquee >"+response[16]+"</marquee>";
+                document.getElementById("gmsg").innerHTML = "<marquee >" + response[16] + "</marquee>";
                 document.getElementById("lastdraw").innerHTML = lastdrtm;
                 document.getElementById("lastdrawr").innerText = lastdrtm;
                 document.getElementById("nextdraw").innerHTML = gmtm;
@@ -608,8 +608,8 @@ function load_frm() {
                 waitTimeOut = setInterval(displaycurr, 1000);
                 if (inflag == "true") {
                     document.getElementById("creditlimit").innerHTML = climit;
-                    var name=uname.split(" ");
-                    document.getElementById("agentdet").innerHTML = name[0]+" Online";// "   WELCOME " + uname + " (" + agentname + ")";
+                    var name = uname.split(" ");
+                    document.getElementById("agentdet").innerHTML = name[0] + " Online";// "   WELCOME " + uname + " (" + agentname + ")";
                 } else {
                 }
 
@@ -1743,7 +1743,7 @@ function highlable() {
     document.getElementById("cbhigh7").style.display = "block";
     document.getElementById("cbhigh8").style.display = "block";
     document.getElementById("cbhigh9").style.display = "block";
-    
+
     document.getElementById("cblow0").style.display = "none";
     document.getElementById("cblow1").style.display = "none";
     document.getElementById("cblow2").style.display = "none";
@@ -1754,9 +1754,9 @@ function highlable() {
     document.getElementById("cblow7").style.display = "none";
     document.getElementById("cblow8").style.display = "none";
     document.getElementById("cblow9").style.display = "none";
-    
+
 }
-function lowlable(){
+function lowlable() {
     document.getElementById("cblow0").style.display = "block";
     document.getElementById("cblow1").style.display = "block";
     document.getElementById("cblow2").style.display = "block";
@@ -2137,122 +2137,122 @@ function cballlow_click() {
 
 
         if (document.getElementById("cballlow").checked) {
-        //     document.getElementById("cblow0").style.display = "block";
-        //     document.getElementById("cblow1").style.display = "block";
-        //     document.getElementById("cblow2").style.display = "block";
-        //     document.getElementById("cblow3").style.display = "block";
-        //     document.getElementById("cblow4").style.display = "block";
-        //     document.getElementById("cblow5").style.display = "block";
-        //     document.getElementById("cblow6").style.display = "block";
-        //     document.getElementById("cblow7").style.display = "block";
-        //     document.getElementById("cblow8").style.display = "block";
-        //     document.getElementById("cblow9").style.display = "block";
+            //     document.getElementById("cblow0").style.display = "block";
+            //     document.getElementById("cblow1").style.display = "block";
+            //     document.getElementById("cblow2").style.display = "block";
+            //     document.getElementById("cblow3").style.display = "block";
+            //     document.getElementById("cblow4").style.display = "block";
+            //     document.getElementById("cblow5").style.display = "block";
+            //     document.getElementById("cblow6").style.display = "block";
+            //     document.getElementById("cblow7").style.display = "block";
+            //     document.getElementById("cblow8").style.display = "block";
+            //     document.getElementById("cblow9").style.display = "block";
+            document.getElementById("cblow0").checked = true;
+            document.getElementById("cblow1").checked = true;
+            document.getElementById("cblow2").checked = true;
+            document.getElementById("cblow3").checked = true;
+            document.getElementById("cblow4").checked = true;
+            document.getElementById("cblow5").checked = true;
+            document.getElementById("cblow6").checked = true;
+            document.getElementById("cblow7").checked = true;
+            document.getElementById("cblow8").checked = true;
+            document.getElementById("cblow9").checked = true;
+            //
+
+        } else {
+            // document.getElementById("cblow0").style.display = "none";
+            // document.getElementById("cblow1").style.display = "none";
+            // document.getElementById("cblow2").style.display = "none";
+            // document.getElementById("cblow3").style.display = "none";
+            // document.getElementById("cblow4").style.display = "none";
+            // document.getElementById("cblow5").style.display = "none";
+            // document.getElementById("cblow6").style.display = "none";
+            // document.getElementById("cblow7").style.display = "none";
+            // document.getElementById("cblow8").style.display = "none";
+            // document.getElementById("cblow9").style.display = "none";
+            document.getElementById("cblow0").checked = false;
+            document.getElementById("cblow1").checked = false;
+            document.getElementById("cblow2").checked = false;
+            document.getElementById("cblow3").checked = false;
+            document.getElementById("cblow4").checked = false;
+            document.getElementById("cblow5").checked = false;
+            document.getElementById("cblow6").checked = false;
+            document.getElementById("cblow7").checked = false;
+            document.getElementById("cblow8").checked = false;
+            document.getElementById("cblow9").checked = false;
+        }
+        cblow0_Click(0);
+        cblow0_Click(1);
+        cblow0_Click(2);
+        cblow0_Click(3);
+        cblow0_Click(4);
+        cblow0_Click(5);
+        cblow0_Click(6);
+        cblow0_Click(7);
+        cblow0_Click(8);
+        cblow0_Click(9);
         document.getElementById("cblow0").checked = true;
-        document.getElementById("cblow1").checked = true;
-        document.getElementById("cblow2").checked = true;
-        document.getElementById("cblow3").checked = true;
-        document.getElementById("cblow4").checked = true;
-        document.getElementById("cblow5").checked = true;
-        document.getElementById("cblow6").checked = true;
-        document.getElementById("cblow7").checked = true;
-        document.getElementById("cblow8").checked = true;
-        document.getElementById("cblow9").checked = true;
-        //
+        cblow0_Click(0);
 
     } else {
-        // document.getElementById("cblow0").style.display = "none";
-        // document.getElementById("cblow1").style.display = "none";
-        // document.getElementById("cblow2").style.display = "none";
-        // document.getElementById("cblow3").style.display = "none";
-        // document.getElementById("cblow4").style.display = "none";
-        // document.getElementById("cblow5").style.display = "none";
-        // document.getElementById("cblow6").style.display = "none";
-        // document.getElementById("cblow7").style.display = "none";
-        // document.getElementById("cblow8").style.display = "none";
-        // document.getElementById("cblow9").style.display = "none";
-        document.getElementById("cblow0").checked = false;
-        document.getElementById("cblow1").checked = false;
-        document.getElementById("cblow2").checked = false;
-        document.getElementById("cblow3").checked = false;
-        document.getElementById("cblow4").checked = false;
-        document.getElementById("cblow5").checked = false;
-        document.getElementById("cblow6").checked = false;
-        document.getElementById("cblow7").checked = false;
-        document.getElementById("cblow8").checked = false;
-        document.getElementById("cblow9").checked = false;
-    }
-    cblow0_Click(0);
-    cblow0_Click(1);
-    cblow0_Click(2);
-    cblow0_Click(3);
-    cblow0_Click(4);
-    cblow0_Click(5);
-    cblow0_Click(6);
-    cblow0_Click(7);
-    cblow0_Click(8);
-    cblow0_Click(9);
-    document.getElementById("cblow0").checked = true;
-    cblow0_Click(0);
 
-} else {
-
-    if (document.getElementById("cballlow").checked) {
-        // document.getElementById("cbhigh0").style.display = "block";
-        // document.getElementById("cbhigh1").style.display = "block";
-        // document.getElementById("cbhigh2").style.display = "block";
-        // document.getElementById("cbhigh3").style.display = "block";
-        // document.getElementById("cbhigh4").style.display = "block";
-        // document.getElementById("cbhigh5").style.display = "block";
-        // document.getElementById("cbhigh6").style.display = "block";
-        // document.getElementById("cbhigh7").style.display = "block";
-        // document.getElementById("cbhigh8").style.display = "block";
-        // document.getElementById("cbhigh7").style.display = "block";
+        if (document.getElementById("cballlow").checked) {
+            // document.getElementById("cbhigh0").style.display = "block";
+            // document.getElementById("cbhigh1").style.display = "block";
+            // document.getElementById("cbhigh2").style.display = "block";
+            // document.getElementById("cbhigh3").style.display = "block";
+            // document.getElementById("cbhigh4").style.display = "block";
+            // document.getElementById("cbhigh5").style.display = "block";
+            // document.getElementById("cbhigh6").style.display = "block";
+            // document.getElementById("cbhigh7").style.display = "block";
+            // document.getElementById("cbhigh8").style.display = "block";
+            // document.getElementById("cbhigh7").style.display = "block";
+            document.getElementById("cbhigh0").checked = true;
+            document.getElementById("cbhigh1").checked = true;
+            document.getElementById("cbhigh2").checked = true;
+            document.getElementById("cbhigh3").checked = true;
+            document.getElementById("cbhigh4").checked = true;
+            document.getElementById("cbhigh5").checked = true;
+            document.getElementById("cbhigh6").checked = true;
+            document.getElementById("cbhigh7").checked = true;
+            document.getElementById("cbhigh8").checked = true;
+            document.getElementById("cbhigh9").checked = true;
+        } else {
+            // document.getElementById("cbhigh0").style.display = "none";
+            // document.getElementById("cbhigh1").style.display = "none";
+            // document.getElementById("cbhigh2").style.display = "none";
+            // document.getElementById("cbhigh3").style.display = "none";
+            // document.getElementById("cbhigh4").style.display = "none";
+            // document.getElementById("cbhigh5").style.display = "none";
+            // document.getElementById("cbhigh6").style.display = "none";
+            // document.getElementById("cbhigh7").style.display = "none";
+            // document.getElementById("cbhigh8").style.display = "none";
+            // document.getElementById("cbhigh7").style.display = "none";
+            document.getElementById("cbhigh0").checked = false;
+            document.getElementById("cbhigh1").checked = false;
+            document.getElementById("cbhigh2").checked = false;
+            document.getElementById("cbhigh3").checked = false;
+            document.getElementById("cbhigh4").checked = false;
+            document.getElementById("cbhigh5").checked = false;
+            document.getElementById("cbhigh6").checked = false;
+            document.getElementById("cbhigh7").checked = false;
+            document.getElementById("cbhigh8").checked = false;
+            document.getElementById("cbhigh9").checked = false;
+            checkhighclick(0, false);
+        }
+        cbhighall_click(0);
+        cbhighall_click(1);
+        cbhighall_click(2);
+        cbhighall_click(3);
+        cbhighall_click(4);
+        cbhighall_click(5);
+        cbhighall_click(6);
+        cbhighall_click(7);
+        cbhighall_click(8);
+        cbhighall_click(9);
         document.getElementById("cbhigh0").checked = true;
-        document.getElementById("cbhigh1").checked = true;
-        document.getElementById("cbhigh2").checked = true;
-        document.getElementById("cbhigh3").checked = true;
-        document.getElementById("cbhigh4").checked = true;
-        document.getElementById("cbhigh5").checked = true;
-        document.getElementById("cbhigh6").checked = true;
-        document.getElementById("cbhigh7").checked = true;
-        document.getElementById("cbhigh8").checked = true;
-        document.getElementById("cbhigh9").checked = true;
-    } else {
-        // document.getElementById("cbhigh0").style.display = "none";
-        // document.getElementById("cbhigh1").style.display = "none";
-        // document.getElementById("cbhigh2").style.display = "none";
-        // document.getElementById("cbhigh3").style.display = "none";
-        // document.getElementById("cbhigh4").style.display = "none";
-        // document.getElementById("cbhigh5").style.display = "none";
-        // document.getElementById("cbhigh6").style.display = "none";
-        // document.getElementById("cbhigh7").style.display = "none";
-        // document.getElementById("cbhigh8").style.display = "none";
-        // document.getElementById("cbhigh7").style.display = "none";
-        document.getElementById("cbhigh0").checked = false;
-        document.getElementById("cbhigh1").checked = false;
-        document.getElementById("cbhigh2").checked = false;
-        document.getElementById("cbhigh3").checked = false;
-        document.getElementById("cbhigh4").checked = false;
-        document.getElementById("cbhigh5").checked = false;
-        document.getElementById("cbhigh6").checked = false;
-        document.getElementById("cbhigh7").checked = false;
-        document.getElementById("cbhigh8").checked = false;
-        document.getElementById("cbhigh9").checked = false;
-        checkhighclick(0, false);
+        cbhighall_click(0);
     }
-    cbhighall_click(0);
-    cbhighall_click(1);
-    cbhighall_click(2);
-    cbhighall_click(3);
-    cbhighall_click(4);
-    cbhighall_click(5);
-    cbhighall_click(6);
-    cbhighall_click(7);
-    cbhighall_click(8);
-    cbhighall_click(9);
-    document.getElementById("cbhigh0").checked = true;
-    cbhighall_click(0);
-}
 }
 function cball_Click() {
     document.getElementById("cbeven").checked = false;
@@ -3363,7 +3363,48 @@ function changepasswordform() {
         }
     };
 }
+function complianceForm() {
+    document.getElementById('myClaim').style.display = "block";
+    let data = { userid: userid };
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/?r=complianceView", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(data));
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            // Response
+            var response = this.responseText;
+            //console.log(response);
+            document.getElementById('claim-msg2').innerHTML = response;
+        }
+    };
+}
 
+function complianceSbt(uri) {
+    const msg = document.getElementById('msgcmp');
+    const action = document.getElementById('action');
+    const uid = document.getElementById("userid");
+
+    if (msg.value === "" || action.value === "" || uid.value === "") {
+        document.getElementById("claim-msg").innerHTML = "Please Fill all detail correct";
+    } else {
+        let data = { msg: msg.value, action: action.value, userid: uid.value };
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", uri, true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify(data));
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // Response
+                var response = JSON.parse(this.responseText);
+                document.getElementById('claim-msg').innerHTML = response.msg;
+                msg.value = "";
+                action.value = "";
+                uid.value = "";
+            }
+        };
+    }
+}
 function changePWD() {
     const opwd = document.getElementById('opwd');
     const pwd = document.getElementById("pwd");
