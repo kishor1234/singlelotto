@@ -43,8 +43,10 @@
                                                                 <span id="error_name" class=""></span>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="form-control-label">Commission Percentage % (Ex 5% than put 0.05%) <span class="text-danger">*</span></label>
-                                                                <input type="number" step="0.01" max="0.1" min="0" name="comission" id="comission" placeholder="Enter user Commission Percenatage Ex 10% than put 0.1" title="Commission Percenatage" required autocomplete="off" class="form-control">
+                                                                <label class="form-control-label">Commission Percentage % (Ex 8% than put 0.08%) <span class="text-danger">*</span></label>
+                                                                <input type="text" step="0.01" max="0.08" min="0"  value="0.08" readonly  placeholder="Enter user Commission Percenatage Ex 10% than put 0.1" title="Commission Percenatage" required autocomplete="off" class="form-control">
+                                                                <input type="hidden" step="0.01" max="0.08" min="0"  value="0.08" name="comission" id="comission" placeholder="Enter user Commission Percenatage Ex 10% than put 0.1" title="Commission Percenatage" required autocomplete="off" class="form-control">
+                                                                
                                                                 <span id="error_name" class=""></span>
                                                             </div>
                                                             <div class="form-group">

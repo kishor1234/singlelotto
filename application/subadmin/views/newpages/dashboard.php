@@ -15,7 +15,8 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Total Users</span>
-                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=user', '#app-container', false)" class="nav-link">
+                            <!-- onclick="clickOnLink('/?r=dashboard&v=user', '#app-container', false)" -->
+                            <a href="javascript:void(0)"  class="nav-link">
                                 <span class="info-box-number" id="compaines">
 
                                 </span>
@@ -63,7 +64,8 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Point Transfer Agent</span>
-                            <a href="javascript:clickOnLink('/?r=dashboard&v=agent', '#app-container', false)" class="nav-link"> <span class="info-box-number" id="live">Click here</span></a>
+                            <!-- javascript:clickOnLink('/?r=dashboard&v=agent', '#app-container', false) -->
+                            <a href="#" class="nav-link"> <span class="info-box-number" id="live">Click here</span></a>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -75,7 +77,8 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Point Transfer User</span>
-                            <a href="javascript:clickOnLink('/?r=dashboard&v=user', '#app-container', false)" class="nav-link"> <span class="info-box-number" id="live">Click here</span></a>
+                            <!-- javascript:clickOnLink('/?r=dashboard&v=user', '#app-container', false) -->
+                            <a href="#" class="nav-link"> <span class="info-box-number" id="live">Click here</span></a>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

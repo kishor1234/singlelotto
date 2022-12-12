@@ -45,8 +45,10 @@
                                                                 <span id="error_name" class=""></span>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="form-control-label">Commission Percentage % (Ex <?= $_SESSION["commission"] * 100 ?>% than put <?= $_SESSION["commission"] ?>%) <span class="text-danger">*</span></label>
-                                                                <input type="number" step="0.01" max="<?= $_SESSION["commission"] ?>" min="0" name="comission" id="comission" placeholder="Enter user Commission Percenatage Ex 5% than put 0.05" title="Commission Percenatage" required autocomplete="off" class="form-control">
+                                                                <label class="form-control-label">Commission Percentage % (Ex 7% than put 0.07 %) <span class="text-danger">*</span></label>
+                                                                <input type="text" readonly value="0.07" placeholder="Enter user Commission Percenatage Ex 5% than put 0.05" title="Commission Percenatage" required autocomplete="off" class="form-control">
+                                                                <input type="hidden" step="0.01" value="0.07" max="0.07" min="0" name="comission" id="comission" placeholder="Enter user Commission Percenatage Ex 5% than put 0.05" title="Commission Percenatage" required autocomplete="off" class="form-control">
+                                                                
                                                                 <span id="error_name" class=""></span>
                                                             </div>
                                                             <div class="form-group">

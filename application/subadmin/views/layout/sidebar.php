@@ -24,7 +24,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview">
+                <!-- <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -89,12 +89,12 @@
                                 <p>My Retailers Cash Summery</p>
                             </a>
                         </li>
-                        <!--                        <li class="nav-item">
-                                                    <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=ticketPlayedreport', '#app-container', false)" class="nav-link">
-                                                        <i class="far fa-circle nav-icon"></i>
-                                                        <p>Ticket Played Report</p>
-                                                    </a>
-                                                </li>-->
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=ticketPlayedreport', '#app-container', false)" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ticket Played Report</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=commisionReport', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -102,11 +102,11 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <?php
                 if ($_SESSION["m"] === "main") {
                 ?>
-                    <li class="nav-item has-treeview">
+                    <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-alt-slash"></i>
                             <p>
@@ -122,15 +122,15 @@
                                 </a>
                             </li>
                         </ul>
-                        <!--                    <ul class="nav nav-treeview">
-                                                <li class="nav-item">
-                                                    <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
-                                                        <i class="far fa-circle nav-icon"></i>
-                                                        <p>Sub Main Registration</p>
-                                                    </a>
-                                                </li>
-                                            </ul>-->
-                    </li>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sub Main Registration</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> -->
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-alt-slash"></i>
@@ -159,6 +159,59 @@
                 <?php
                 } else {
                 ?>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-alt-slash"></i>
+                            <p>
+                                Agent's
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=agent', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Agent Registration</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=agentreports', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Agent Sell</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=agenttransaction', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Transaction</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=agentgrandSale', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>My Grand Sell</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=agentgetcashsummary', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>My Retailers Cash Summery</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=ticketPlayedreport', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Ticket Played Report</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=commisionReport', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Agent Commission Report</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-alt-slash"></i>
