@@ -26,7 +26,7 @@
 <!-nload="load_frm();-->
 
     <body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" onload="load_frm();">
-        <div style="width: 900px; border: 1px solid #000;margin: 0px auto;">
+        <div style="width: auto; border: 1px solid #000;margin: 0px auto;">
             <table>
                 <tr>
                     <td class="brand">
