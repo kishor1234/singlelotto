@@ -65,6 +65,12 @@
                                 <p>Compliance</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=deletecashsummary', '#app-container', false)" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Delete Cash Summery</p>
+                            </a>
+                        </li>
 <!--                        <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=logo and name', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -114,18 +120,25 @@
                                 <p>My Retailers Cash Summery</p>
                             </a>
                         </li>
-                        <!--                        <li class="nav-item">
-                                                    <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=ticketPlayedreport', '#app-container', false)" class="nav-link">
-                                                        <i class="far fa-circle nav-icon"></i>
-                                                        <p>Ticket Played Report</p>
-                                                    </a>
-                                                </li>-->
                         <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=commisionReport', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Agent Commission Report</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=deleteagentgetcashsummary', '#app-container', false)" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Delete Cash Summery</p>
+                            </a>
+                        </li>
+                        <!--                        <li class="nav-item">
+                                                    <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=ticketPlayedreport', '#app-container', false)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Ticket Played Report</p>
+                                                    </a>
+                                                </li>-->
+                        
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
