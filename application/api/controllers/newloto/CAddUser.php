@@ -17,16 +17,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 //require_once getcwd() . '/' . APPLICATION . "/controllers/Crout.php";
 require_once controller;
 
-class CAddUser extends CAaskController {
+class CAddUser extends CAaskController
+{
 
     //put your code here
     public $data = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
         if (!isset($_SESSION["id"])) {
             // redirect(HOSTURL . "?r=" . $this->encript->encdata("main"));
@@ -34,15 +37,20 @@ class CAddUser extends CAaskController {
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
 
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         parent::execute();
-
+        if (empty($_POST)) {
+            $postdata = file_get_contents("php://input");
+            $_POST = json_decode($postdata, true);
+        }
         switch ($_POST["action"]) {
             case "loadTable";
                 $this->loadTable();
@@ -122,6 +130,9 @@ class CAddUser extends CAaskController {
             case "loaduser":
                 $this->loaduser();
                 break;
+            case "loaduserAll":
+                $this->loaduserAll();
+                break;
             default:
                 $postdata = file_get_contents("php://input");
                 $request = json_decode($postdata, true);
@@ -132,22 +143,26 @@ class CAddUser extends CAaskController {
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         parent::distory();
         return;
     }
 
-    function upoadGame() {
+    function upoadGame()
+    {
         $uploadDir = "assets/upload/hostGame";
         $fileData = $this->uploadFiletoFileSystem('file', $uploadDir);
         $fileData["game"] = $_POST["game"];
@@ -161,7 +176,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function loadGame() {
+    function loadGame()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -209,7 +225,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function deleteGame() {
+    function deleteGame()
+    {
         $sql = $this->ask_mysqli->select("hostgame", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => $_POST["id"]));
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         if ($row = $result->fetch_assoc()) {
@@ -221,7 +238,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function deletedocument() {
+    function deletedocument()
+    {
         $sql = $this->ask_mysqli->select("document", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => $_POST["id"]));
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         if ($row = $result->fetch_assoc()) {
@@ -233,7 +251,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function blockno() {
+    function blockno()
+    {
         $id = $_POST["id"];
         unset($_POST["action"]);
         $blockno = json_encode($_POST);
@@ -245,13 +264,15 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function getBlockno() {
+    function getBlockno()
+    {
         $resutl = $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->select("admin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => $_POST["id"])));
         $row = $resutl->fetch_assoc();
         echo $row["blockno"];
     }
 
-    function updatewinper() {
+    function updatewinper()
+    {
         try {
             $sql = $this->ask_mysqli->update(array("winper" => $_POST["winper"]), "enduser"); // . $this->ask_mysqli->whereSingle(array("id" => $_POST["id"]));
             if ($this->adminDB[$_SESSION["db_1"]]->query($sql)) {
@@ -260,11 +281,11 @@ class CAddUser extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "Admin", "Information Update Failed... "), "status" => 0, "message" => "User Information Update Failed.. {$json_error}"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function loadTableadmin() {
+    function loadTableadmin()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -343,7 +364,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function loadTablemain() {
+    function loadTablemain()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -416,7 +438,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function loadTable() {
+    function loadTable()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -487,7 +510,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function loadMessageTable() {
+    function loadMessageTable()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -526,7 +550,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function loaddocument() {
+    function loaddocument()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -575,7 +600,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function addUser() {
+    function addUser()
+    {
         $data = $_POST;
         unset($data["id"]);
         unset($data["action"]);
@@ -591,9 +617,9 @@ class CAddUser extends CAaskController {
             if ($last_id > 250) {
                 array_push($error, "You Enter Only 25 id, try update limit...!");
             }
-            $name=str_replace(' ', '_', strtolower($data["name"]));
+            $name = str_replace(' ', '_', strtolower($data["name"]));
             // $userid = $name."".( date("Y") . date("m") . date("d") + $last_id);
-            $userid = $name."".($last_id);
+            $userid = $name . "" . ($last_id);
             $sql = $this->ask_mysqli->update(array("userid" => $userid), "enduser") . $this->ask_mysqli->whereSingle(array("id" => $last_id));
             $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB[$_SESSION["db_1"]]->error) : true;
             if (empty($error)) {
@@ -611,7 +637,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function deleteUser() {
+    function deleteUser()
+    {
         $data = $_POST;
         //print_r($data);die;
         $where = $this->ask_mysqli->whereSingle(array("id" => $data["id"]));
@@ -644,18 +671,19 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function getData($sql, $col) {
+    function getData($sql, $col)
+    {
         try {
 
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
             $row = $result->fetch_assoc();
             return $row[$col];
         } catch (Exception $ex) {
-            
         }
     }
 
-    function update() {
+    function update()
+    {
         try {
             $data = $_POST;
             if (isset($data["password"]) && !empty($data["password"])) {
@@ -680,11 +708,11 @@ class CAddUser extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "User", "Information Update Failed... {$json_error}"), "status" => 0, "message" => "User Information Update Failed.. {$json_error}"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function putPoint() {
+    function putPoint()
+    {
         try {
             $data = $_POST;
             unset($data["action"]);
@@ -716,11 +744,11 @@ class CAddUser extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "User", "Admin Insuficent account point"), "status" => 0, "message" => "Admin Insuficent account point"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function getPoint() {
+    function getPoint()
+    {
         try {
             $data = $_POST;
             unset($data["action"]);
@@ -752,11 +780,11 @@ class CAddUser extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "User", "User Insuficent account point"), "status" => 0, "message" => "User Insuficent account point"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function suspend() {
+    function suspend()
+    {
         try {
             $data = $_POST;
             unset($data["action"]);
@@ -773,11 +801,11 @@ class CAddUser extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "User", "Information Update Failed... {$json_error}"), "status" => 0, "message" => "User Information Update Failed.. {$json_error}"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function updateper() {
+    function updateper()
+    {
         try {
             $sql = $this->ask_mysqli->update(array("resultper" => $_POST["resultper"], "min" => $_POST["min"]), "admin") . $this->ask_mysqli->whereSingle(array("id" => $_POST["id"]));
             if ($this->adminDB[$_SESSION["db_1"]]->query($sql)) {
@@ -786,11 +814,11 @@ class CAddUser extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "Admin", "Information Update Failed... "), "status" => 0, "message" => "User Information Update Failed.. {$json_error}"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function updatewin() {
+    function updatewin()
+    {
         try {
             $sql = $this->ask_mysqli->update(array("wid" => $_POST["wid"], "type" => $_POST["type"]), "admin") . $this->ask_mysqli->whereSingle(array("id" => $_POST["id"]));
             if ($this->adminDB[$_SESSION["db_1"]]->query($sql)) {
@@ -799,11 +827,11 @@ class CAddUser extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "Admin", "Information Update Failed... "), "sql" => $sql, "status" => 0, "message" => "User Information Update Failed.. {$json_error}"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function adminBalance() {
+    function adminBalance()
+    {
 
         $data = array();
         $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => 1));
@@ -830,7 +858,8 @@ class CAddUser extends CAaskController {
         echo json_encode($data);
     }
 
-    function message() {
+    function message()
+    {
         unset($_POST["action"]);
         $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
         $_POST["message"] = str_replace("!", "", $_POST["message"]);
@@ -846,7 +875,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function document() {
+    function document()
+    {
         unset($_POST["action"]);
         $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
         $data["name"] = $_POST["name"];
@@ -868,7 +898,8 @@ class CAddUser extends CAaskController {
         }
     }
 
-    function allUser() {
+    function allUser()
+    {
         try {
             //$sql = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]);
             $s = " ";
@@ -897,11 +928,11 @@ class CAddUser extends CAaskController {
             }
             echo json_encode($array);
         } catch (Exception $ex) {
-            
         }
     }
 
-    function loaduser() {
+    function loaduser()
+    {
         try {
             $request = $_POST;
             $sl = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->where(array('agent_id' => $request["sectionid"], "is_active" => "1"), "AND");
@@ -913,8 +944,40 @@ class CAddUser extends CAaskController {
             }
             echo json_encode($array);
         } catch (Exception $ex) {
-            
         }
     }
+    function loaduserAll()
+    {
+        try {
+            $request = $_POST;
+            switch ($_POST["entity"]) {
+                case "Company":
+                    $sl = $this->ask_mysqli->select("admin", $_SESSION["db_1"]); // . $this->ask_mysqli->whereSingle(array("is_active" => "1"));
 
+                    break;
+                case "User":
+                    $sl = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("is_active" => "1"));
+                    break;
+                case "Agent":
+                    $sl = $this->ask_mysqli->select("agent", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("is_active" => "1"));
+
+                    break;
+                case "SubAdmin":
+                    $sl = $this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("is_active" => "1", "m" => "main"), "AND");
+                    break;
+                case "Dealer":
+                    $sl = $this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("is_active" => "1", "m" => "admin"), "AND");
+
+                    break;
+            }
+            $result = $this->adminDB[$_SESSION["db_1"]]->query($sl);
+            $array = array();
+            while ($row = $result->fetch_assoc()) {
+                unset($row["password"]);
+                array_push($array, $row);
+            }
+            echo json_encode($array);
+        } catch (Exception $ex) {
+        }
+    }
 }

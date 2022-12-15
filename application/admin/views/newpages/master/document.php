@@ -184,18 +184,32 @@
                                                         <form action="#" method="post" id="myMainForm">
                                                             <div class="form-group">
                                                                 <label class="form-control-label">Name <span class="text-danger">*</span></label>
-                                                                <input type="hidden" name="userid" id="userid" required autocomplete="off" value="<?= $_SESSION['id'] ?>" class="form-control">
+                                                                <!-- <input type="hidden" name="userid" id="userid" required autocomplete="off" value="<?= $_SESSION['id'] ?>" class="form-control"> -->
                                                                 <input type="text" name="name" id="name" placeholder="Enter Document Name" title="Document Name" required autocomplete="off" class="form-control">
                                                                 <span id="error_name" class=""></span>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="form-control-label">Document Type <span class="text-danger">*</span></label>
-                                                                <select class="form-control" name="entity" id="entity" title="Document Type">
-                                                                    <option value="Company" selected>Company</option>
+                                                                <select class="form-control" name="entity" id="entity" title="Document Type" onchange="loadUser()">
+                                                                    <option>---select--</option>
+                                                                    <option value="Company">Company</option>
                                                                     <option value="User">User</option>
-                                                                    <option value="Agent">Agent</option>
+                                                                    <!-- <option value="Agent">Agent</option>
                                                                     <option value="SubAdmin">SubAdmin</option>
-                                                                    <option value="Dealer">Dealer</option>
+                                                                    <option value="Dealer">Dealer</option> -->
+                                                                </select>
+                                                                <span id="error_name" class=""></span>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label">User ID <span class="text-danger">*</span></label>
+                                                                <select class="form-control" name="userid" id="userid" title="User Id">
+                                                                    <?php
+                                                                    // $user_json = $main->jsonRespon(api_url . "/?r=CAddUser", array("action" => "loaduserAll", "sectionid" => $_SESSION['userid']));
+                                                                    // $user = json_decode($user_json, true);
+                                                                    // foreach ($user as $key => $users) {
+                                                                    //     echo "<option value='{$users['userid']}'>{$users['userid']}|{$users['name']}</option>";
+                                                                    // }
+                                                                    ?>
                                                                 </select>
                                                                 <span id="error_name" class=""></span>
                                                             </div>
@@ -306,7 +320,7 @@
                 dataType: "json",
                 data: {
                     action: "loaddocument",
-                    create_by:"<?=$_SESSION["id"]?>"
+                    create_by: "<?= $_SESSION["id"] ?>"
                 },
                 error: function() { // error handling
                     $(".data-grid-error").html("");
@@ -330,6 +344,9 @@
                 searchPlaceholder: "Search"
             }
         });
+
+
+
         $("#myMainForm").submit(function() {
             $("#myMainSubmit").attr("disabled", true);
             var formdata = new FormData($("#myMainForm")[0]);
@@ -384,27 +401,34 @@
             return false;
         });
     });
-    function deletedocument(id)
-    {
-        swal({
-            title: "Are you sure?",
-            text: "want to delete docuemnt?",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, Delete it!",
-            closeOnConfirm: true
-        },
-                function () {
-                    $.post('<?= api_url ?>/?r=CAddUser', {id: id, action: 'deletedocument'}, function (data) {
-                        console.log(data);
-                        table.ajax.reload(null, false);
-                        var json = JSON.parse(data);
-                        $.toaster({priority: json.toast[0], title: json.toast[1], message: json.toast[2]});
-                        table.ajax.reload(null, false);
-                    });
 
+    function deletedocument(id) {
+        swal({
+                title: "Are you sure?",
+                text: "want to delete docuemnt?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, Delete it!",
+                closeOnConfirm: true
+            },
+            function() {
+                $.post('<?= api_url ?>/?r=CAddUser', {
+                    id: id,
+                    action: 'deletedocument'
+                }, function(data) {
+                    console.log(data);
+                    table.ajax.reload(null, false);
+                    var json = JSON.parse(data);
+                    $.toaster({
+                        priority: json.toast[0],
+                        title: json.toast[1],
+                        message: json.toast[2]
+                    });
+                    table.ajax.reload(null, false);
                 });
+
+            });
     }
 
     // File Upload
@@ -546,6 +570,41 @@
         } else {
             document.getElementById('file-drag').style.display = 'none';
         }
+    }
+
+    function loadUser() {
+        var entity = $("#entity").val();
+        var body = JSON.stringify({
+            "action": "loaduserAll",
+            "entity": entity
+        });
+        let option;
+        $.ajax({
+            url: '<?= api_url ?>/?r=CAddUser',
+            type: "post", // method  , by default get
+            dataType: "json",
+            data: body,
+            enctype: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                let option="";
+                $.each(data, function(index, value) {
+                    if (value.userid) {
+                        option = option + `<option value=${value.userid} >${value.name} | ${value.userid}</option>`;
+                    } else {
+                        option = option + `<option value=${value.id} >${value.user} | ${value.id}</option>`;
+                    }
+
+                });
+                $("#userid").html(option);
+            },
+            error: function(xhr, error, code) {
+                console.log(xhr);
+                console.log(code);
+            }
+        });
     }
     ekUpload();
 </script>

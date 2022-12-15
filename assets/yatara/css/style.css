@@ -1802,7 +1802,7 @@ border-collapse: collapse;
 
 img.img-board {
     width: 130px;
-    height: auto;
+    height: 90px;
     border: none;
     border-radius: 20px;
 }
@@ -2010,4 +2010,11 @@ input[type=checkbox]+label {
     font-weight: 500;
     text-align: right;
 
+}
+
+td.tdaeob.w50>span {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
 }

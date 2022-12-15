@@ -38,7 +38,7 @@
                                 <td>
                                     <table>
                                         <tr>
-                                            <td align="center" style="height: 46px;"><span class="tdr0" id="res0">S0</span></td>
+                                            <td align="center" style="height: 35px;"><span class="tdr0" id="res0">S0</span></td>
                                             <td align="center"><span class="tdr1" id="res1">S1</span></td>
                                             <td align="center"><span class="tdr2" id="res2">S2</span></td>
                                             <td align="center"><span class="tdr3" id="res3">S3</span></td>
@@ -145,16 +145,17 @@
                                         <td class="tdaeob w50" style="cursor: pointer;" id="lpclick" onclick="btnLuckyStone_Click()">
                                             <span>
                                                 <label style="cursor: pointer;" for="lpclick">LP</label><br>
-                                                <input type="text" name="txtLuckyStone" id="txtLuckyStone" style="width: 35px; background: #000; text-align: center; color: #FFF;">
+                                                <input type="checkbox" name="cblp" id="cblp" onclick="btnLuckyStone_Click();">
+                                                <input type="hidden" name="txtLuckyStone" value="1" id="txtLuckyStone" style="width: 35px; background: #000; text-align: center; color: #FFF;">
                                             </span>
                                         </td>
                                         <td class="tdaeob w50" style="display: none;">
-                                            <span>
+                                            <!-- <span>
                                                 <label>All&nbsp;</label><br>
                                                 <input type="checkbox" name="cballlow" id="cballlow" onclick="cballlow_click();">
-                                            </span>
+                                            </span> -->
                                         </td>
-                                        <td colspan="2" style=" width: 1031px;height: 30px;background: #FFF;text-align: center;"> <span id="gmsg"> GST</span> </td>
+                                        <td colspan="2" style=" width: 1031px;height: 20px;color: #FFF;text-align: center;"> <span id="gmsg"> GST</span> </td>
                                     </tr>
 
                                 </table>
@@ -192,8 +193,8 @@
 
                                                         </tr>
                                                         <tr>
-                                                            <td onclick="pageupre()" class=" color6h">Lotto UP</td>
-                                                            <td onclick="pagedownre()" class=" color5l">Lotto DOWN</td>
+                                                            <td onclick="pageupre()" class=" color6h">UP</td>
+                                                            <td onclick="pagedownre()" class=" color5l">DOWN</td>
 
                                                         </tr>
                                                     </table>
@@ -370,11 +371,26 @@
                                         <table>
                                             <tr>
 
-                                                <td class="tdaeob w50">
-                                                    <span>
+                                                <td>
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td rowspan="2" class="tdaeob w50">
+                                                                    <span>
+                                                                        <label>All&nbsp;</label><br>
+                                                                        <input type="checkbox" name="cballlow" id="cballlow" onclick="cballlow_click();">
+                                                                    </span>
+                                                                </td>
+
+
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                    <!-- <span>
                                                         <label>All&nbsp;</label><br>
                                                         <input type="checkbox" name="cballlow" id="cballlow" onclick="cballlow_click();">
-                                                    </span>
+                                                    </span> -->
                                                 </td>
                                                 <td>&nbsp;</td>
                                                 <td class="last-o"><span>tto</span></td>
@@ -412,7 +428,7 @@
                                                 <td class="last-o"><span>tto</span></td>
                                                 <td class="white">QTY.</td>
                                                 <td class="white">Point</td>
-                                                <td class="white">Wining Ball</td>
+                                                <td class="white">WBall</td>
                                             </tr>
                                             <tr>
                                                 <td class="tdgwr"> <span> S0 </span></td>
