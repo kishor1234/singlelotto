@@ -194,9 +194,9 @@
                                                                     <option>---select--</option>
                                                                     <option value="Company">Company</option>
                                                                     <option value="User">User</option>
-                                                                    <!-- <option value="Agent">Agent</option>
+                                                                    <option value="Agent">Agent</option>
                                                                     <option value="SubAdmin">SubAdmin</option>
-                                                                    <option value="Dealer">Dealer</option> -->
+                                                                    <option value="Dealer">Dealer</option>
                                                                 </select>
                                                                 <span id="error_name" class=""></span>
                                                             </div>
