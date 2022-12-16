@@ -375,7 +375,7 @@
                                                     <table>
                                                         <tbody>
                                                             <tr>
-                                                                <td rowspan="2" class="tdaeob w50">
+                                                                <td rowspan="2" class="cball">
                                                                     <span>
                                                                         <label>All&nbsp;</label><br>
                                                                         <input type="checkbox" name="cballlow" id="cballlow" onclick="cballlow_click();">
@@ -893,7 +893,7 @@
                                                     <table>
                                                         <tr>
                                                             <td>
-                                                                <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="btnlow_Click();">Reset</button>
+                                                                <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="load_frm();">Reset</button>
 
                                                             </td>
 

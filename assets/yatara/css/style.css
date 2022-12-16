@@ -1853,7 +1853,25 @@ samp#username {
 td.tdaeob.w50 {
     width: 50px;
     background: #FFF;
+    height: 25px;
+}
+
+td.cball {
+    background: #FFF;
     height: 35px;
+    border: 1px solid black;
+    border-radius: 2px;
+    text-align: center;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cball>span {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
 }
 
 td.tdaeob.w150 {
