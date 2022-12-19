@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,16 +17,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //require_once getcwd() . '/' . APPLICATION . "/controllers/Crout.php";
 require_once controller;
 
-class CAddSubAdmin extends CAaskController {
+class CAddSubAdmin extends CAaskController
+{
 
     //put your code here
     public $data = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
         if (!isset($_SESSION["subadmin_id"])) {
             // redirect(HOSTURL . "?r=" . $this->encript->encdata("main"));
@@ -34,13 +37,15 @@ class CAddSubAdmin extends CAaskController {
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
 
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         parent::execute();
         switch ($_POST["action"]) {
             case "loadTable";
@@ -57,6 +62,12 @@ class CAddSubAdmin extends CAaskController {
                 break;
             case "getPoint":
                 $this->getPoint();
+                break;
+            case "putPointByuser":
+                $this->putPointByuser();
+                break;
+            case "getPointByuser":
+                $this->getPointByuser();
                 break;
             case "suspend":
                 $this->suspend();
@@ -96,7 +107,7 @@ class CAddSubAdmin extends CAaskController {
             case "getBlockno":
                 $this->getBlockno();
                 break;
-            default :
+            default:
                 $postdata = file_get_contents("php://input");
                 $request = json_decode($postdata, true);
                 print_r($request);
@@ -106,22 +117,26 @@ class CAddSubAdmin extends CAaskController {
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         parent::distory();
         return;
     }
 
-    function upoadGame() {
+    function upoadGame()
+    {
         $uploadDir = "assets/upload/hostGame";
         $fileData = $this->uploadFiletoFileSystem('file', $uploadDir);
         $fileData["game"] = $_POST["game"];
@@ -135,7 +150,8 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function loadGame() {
+    function loadGame()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -183,7 +199,8 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function deleteGame() {
+    function deleteGame()
+    {
         $sql = $this->ask_mysqli->select("hostgame", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("subadmin_id" => $_POST["subadmin_id"]));
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         if ($row = $result->fetch_assoc()) {
@@ -195,7 +212,8 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function blockno() {
+    function blockno()
+    {
         $id = $_POST["subadmin_id"];
         unset($_POST["action"]);
         $blockno = json_encode($_POST);
@@ -207,13 +225,15 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function getBlockno() {
+    function getBlockno()
+    {
         $resutl = $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->select("admin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("subadmin_id" => $_POST["subadmin_id"])));
         $row = $resutl->fetch_assoc();
         echo $row["blockno"];
     }
 
-    function loadTable() {
+    function loadTable()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -287,7 +307,8 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function loadMessageTable() {
+    function loadMessageTable()
+    {
         try {
             $request = $_REQUEST;
             $col = array(
@@ -326,7 +347,8 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function addAgent() {
+    function addAgent()
+    {
         $data = $_POST;
         if ($data["auto"]) {
             $data["auto"] = 1;
@@ -346,7 +368,7 @@ class CAddSubAdmin extends CAaskController {
             case "admin":
                 $pre = "SA";
                 break;
-            default :
+            default:
                 echo json_encode(array("toast" => array("danger", "Agent", " Added failed Please select correct type"), "status" => 0, "message" => "Insert Failed.. Please select correct type"));
                 die;
                 break;
@@ -362,9 +384,9 @@ class CAddSubAdmin extends CAaskController {
         $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB[$_SESSION["db_1"]]->error) : true;
         if (empty($error)) {
             $last_id = $this->adminDB[$_SESSION["db_1"]]->insert_id;
-//            if ($last_id > 25) {
-//                array_push($error, "You Enter Only 25 id, try update limit...!");
-//            }
+            //            if ($last_id > 25) {
+            //                array_push($error, "You Enter Only 25 id, try update limit...!");
+            //            }
             $userid = $pre . date("Y") . date("m") . date("d") . $last_id;
             $sql = $this->ask_mysqli->update(array("userid" => $userid), "subadmin") . $this->ask_mysqli->whereSingle(array("subadmin_id" => $last_id));
             $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB[$_SESSION["db_1"]]->error) : true;
@@ -383,21 +405,22 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function deleteAgent() {
+    function deleteAgent()
+    {
         $data = $_POST;
         //print_r($data);die;
         $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
         $erroe = array();
 
-//        $where = $this->ask_mysqli->whereSingle(array("subadmin_id" => $data["subadmin_id"]));
-//        $result = $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $where);
-//        if ($row = $result->fetch_assoc()) {
-//            $sdlu = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("subadmin_id" => $row["userid"]));
-//            $ardel = $this->adminDB[$_SESSION["db_1"]]->query($sdlu);
-//            while ($adr = $ardel->fetch_assoc()) {
-//                $erroe = $this->deleteAgentUser($adr, $erroe);
-//            }
-//        }
+        //        $where = $this->ask_mysqli->whereSingle(array("subadmin_id" => $data["subadmin_id"]));
+        //        $result = $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $where);
+        //        if ($row = $result->fetch_assoc()) {
+        //            $sdlu = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("subadmin_id" => $row["userid"]));
+        //            $ardel = $this->adminDB[$_SESSION["db_1"]]->query($sdlu);
+        //            while ($adr = $ardel->fetch_assoc()) {
+        //                $erroe = $this->deleteAgentUser($adr, $erroe);
+        //            }
+        //        }
         $where = $this->ask_mysqli->whereSingle(array("subadmin_id" => $data["subadmin_id"]));
         $result = $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $where);
         if ($row = $result->fetch_assoc()) {
@@ -429,7 +452,8 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function deleteAgentUser($data, $erroe) {
+    function deleteAgentUser($data, $erroe)
+    {
 
         //print_r($data);die;
         $where = $this->ask_mysqli->whereSingle(array("id" => $data["id"]));
@@ -437,7 +461,7 @@ class CAddSubAdmin extends CAaskController {
         if ($row = $result->fetch_assoc()) {
             //print_r($row);die;
             //$erroe = array();
-//            $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
+            //            $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
             $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->_updateINC(array("balance" => "balance-" . $row["balance"]), "enduser") . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"]))) != 1 ? array_push($erroe, "Erro(001) Unable to Update Balance.. enduser") : true;
             $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->_updateINC(array("balance" => "balance+" . $row["balance"]), "subadmin") . $this->ask_mysqli->whereSingle(array("userid" => $data["subadmin_id"]))) != 1 ? array_push($erroe, "Erro(001) Unable to Update Balance.. user") : true;
             $s = $this->ask_mysqli->insert("transaction", array("userid" => $row["userid"], "debit" => $row["balance"], "remark" => "Agent Get Back Balance from user and Delete Account", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"])), "balance")));
@@ -448,33 +472,34 @@ class CAddSubAdmin extends CAaskController {
             $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($erroe, $this->adminDB[$_SESSION["db_1"]]->error) : true;
 
             if (empty($erroe)) {
-//                $this->adminDB[$_SESSION["db_1"]]->commit();
+                //                $this->adminDB[$_SESSION["db_1"]]->commit();
                 // echo json_encode(array("toast" => array("success", "User", " Delete User Success.."), "status" => 1, "message" => "Delete User Success... "));
             } else {
-//                $this->adminDB[$_SESSION["db_1"]]->rollback();
+                //                $this->adminDB[$_SESSION["db_1"]]->rollback();
                 $json_error = json_encode($erroe);
                 //echo json_encode(array("toast" => array("danger", "User", " Delete User  failed {$json_error}"), "status" => 0, "message" => "Delete User  Failed.. {$json_error}"));
             }
         } else {
-//            $this->adminDB[$_SESSION["db_1"]]->rollback();
+            //            $this->adminDB[$_SESSION["db_1"]]->rollback();
             $json_error = json_encode($erroe);
             //echo json_encode(array("toast" => array("danger", "User", " Delete User Invalid or failed {$json_error}"), "status" => 0, "message" => "Delete User Invalid or Failed.. {$json_error}"));
         }
         return $erroe;
     }
 
-    function getData($sql, $col) {
+    function getData($sql, $col)
+    {
         try {
-
+            // echo $sql;
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
             $row = $result->fetch_assoc();
             return $row[$col];
         } catch (Exception $ex) {
-            
         }
     }
 
-    function update() {
+    function update()
+    {
         try {
             $data = $_POST;
             if ($data["auto"]) {
@@ -504,11 +529,11 @@ class CAddSubAdmin extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "Agent", "Information Update Failed... {$json_error}"), "status" => 0, "message" => "Agent Information Update Failed.. {$json_error}"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function putPoint() {
+    function putPoint()
+    {
         try {
             $data = $_POST;
 
@@ -542,11 +567,11 @@ class CAddSubAdmin extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "Agent", "Admin Insuficent account point"), "status" => 0, "sql" => $sql, "message" => "Admin Insuficent account point"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function getPoint() {
+    function getPoint()
+    {
         try {
             $data = $_POST;
 
@@ -580,11 +605,88 @@ class CAddSubAdmin extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "Agent", "Agent Insuficent account point"), "status" => 0, "message" => "Agent Insuficent account point"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function suspend() {
+    function putPointByuser()
+    {
+        try {
+            $data = $_POST;
+
+            unset($data["action"]);
+            unset($data["id"]);
+            //print_r($data);die;
+            $this->adminDB[$_SESSION['db_1']]->autocommit(FALSE);
+            $sql = $this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $_POST["id"]));
+            $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+            $row = $result->fetch_assoc();
+            if ((float) $row["balance"] > (float) $data["point"]) {
+                $error = array();
+                $sql = $this->ask_mysqli->_updateINC(array("balance" => "balance+" . $data["point"]), "subadmin") . $this->ask_mysqli->whereSingle(array("userid" => $data["userid"]));
+                $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
+                $sql = $this->ask_mysqli->_updateINC(array("balance" => "balance-" . $data["point"]), "subadmin") . $this->ask_mysqli->whereSingle(array("userid" => $_POST["id"]));
+                $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
+                $sql = $this->ask_mysqli->insert("transaction", array("userid" => $data["userid"], "credit" => $data["point"], "remark" => "subadmin Send Balance to Agent", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $data["userid"])), "balance")));
+                $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
+                $sql = $this->ask_mysqli->insert("transaction", array("userid" => $_POST["id"], "debit" => $data["point"], "remark" => "Self Debit form subadmin to transfer balance", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $_POST["id"])), "balance")));
+                $this->adminDB[$_SESSION["db_1"]]->query($sql) != 1 ? array_push($error, $this->adminDB["db_1"]->error) : true;
+                if (empty($error)) {
+                    $this->adminDB[$_SESSION["db_1"]]->commit();
+                    echo json_encode(array("toast" => array("success", "Agent", "Information Update Success... "), "status" => 1, "message" => "Agent Information Update Success.. "));
+                } else {
+                    $this->adminDB[$_SESSION["db_1"]]->rollback();
+                    $json_error = json_encode($error);
+                    echo json_encode(array("toast" => array("danger", "Agent", "Information Update Failed... {$json_error}"), "status" => 0, "message" => "Agent Information Update Failed.. {$json_error}"));
+                }
+            } else {
+
+                echo json_encode(array("toast" => array("danger", "Agent", "Admin Insuficent account point"), "status" => 0, "sql" => $sql, "message" => "Admin Insuficent account point"));
+            }
+        } catch (Exception $ex) {
+        }
+    }
+
+    function getPointByuser()
+    {
+        try {
+            $data = $_POST;
+
+            unset($data["action"]);
+            unset($data["id"]);
+            //print_r($data);die;
+            $this->adminDB[$_SESSION['db_1']]->autocommit(FALSE);
+            $sql = $this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $data["userid"]));
+            $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+            $row = $result->fetch_assoc();
+            if ((float) $row["balance"] >= (float) $data["point"]) {
+                $error = array();
+                $sql = $this->ask_mysqli->_updateINC(array("balance" => "balance-" . $data["point"]), "subadmin") . $this->ask_mysqli->whereSingle(array("userid" => $data["userid"]));
+                $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
+                $sql = $this->ask_mysqli->_updateINC(array("balance" => "balance+" . $data["point"]), "subadmin") . $this->ask_mysqli->whereSingle(array("userid" => $_POST["id"]));
+                $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
+                $sql = $this->ask_mysqli->insert("transaction", array("userid" => $data["userid"], "debit" => $data["point"], "remark" => "subadmin get Back Balance From Agent", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $data["userid"])), "balance")));
+                $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
+                $sql = $this->ask_mysqli->insert("transaction", array("userid" => $_POST["id"], "credit" => $data["point"], "remark" => "Self Debit form Agent to Admin transfer balance", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $_POST["id"])), "balance")));
+                $this->adminDB[$_SESSION["db_1"]]->query($sql) != 1 ? array_push($error, $this->adminDB["db_1"]->error) : true;
+                //print_r($error);
+                if (empty($error)) {
+                    $this->adminDB[$_SESSION["db_1"]]->commit();
+                    echo json_encode(array("toast" => array("success", "Agent", "Information Update Success... "), "status" => 1, "message" => "Agent Information Update Success.. "));
+                } else {
+                    $this->adminDB[$_SESSION["db_1"]]->rollback();
+                    $json_error = json_encode($error);
+                    echo json_encode(array("toast" => array("danger", "Agent", "Information Update Failed... {$json_error}"), "status" => 0, "message" => "Agent Information Update Failed.. {$json_error}"));
+                }
+            } else {
+
+                echo json_encode(array("toast" => array("danger", "Agent", "Agent Insuficent account point"), "status" => 0, "message" => "Agent Insuficent account point"));
+            }
+        } catch (Exception $ex) {
+        }
+    }
+
+    function suspend()
+    {
         try {
             $data = $_POST;
             unset($data["action"]);
@@ -601,11 +703,11 @@ class CAddSubAdmin extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "Agent", "Information Update Failed... {$json_error}"), "status" => 0, "message" => "Agent Information Update Failed.. {$json_error}"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function updateper() {
+    function updateper()
+    {
         try {
             $sql = $this->ask_mysqli->update(array("resultper" => $_POST["resultper"], "min" => $_POST["min"]), "admin") . $this->ask_mysqli->whereSingle(array("subadmin_id" => $_POST["subadmin_id"]));
             if ($this->adminDB[$_SESSION["db_1"]]->query($sql)) {
@@ -614,11 +716,11 @@ class CAddSubAdmin extends CAaskController {
                 echo json_encode(array("toast" => array("danger", "Admin", "Information Update Failed... "), "status" => 0, "message" => "Agent Information Update Failed.. {$json_error}"));
             }
         } catch (Exception $ex) {
-            
         }
     }
 
-    function adminBalance() {
+    function adminBalance()
+    {
 
         $data = array();
         $sql = $this->ask_mysqli->select("subadmin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $_POST["userid"]));
@@ -640,7 +742,8 @@ class CAddSubAdmin extends CAaskController {
         echo json_encode($data);
     }
 
-    function message() {
+    function message()
+    {
         unset($_POST["action"]);
         $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
         $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->update($_POST, "message") . $this->ask_mysqli->whereSingle(array("subadmin_id" => 1))) != true ? array_push($error, $this->adminDB[$_SESSION["db_1"]]->error) : true;
@@ -654,7 +757,8 @@ class CAddSubAdmin extends CAaskController {
         }
     }
 
-    function allAgent() {
+    function allAgent()
+    {
         try {
             $sql = $this->ask_mysqli->select("subadmin", $_SESSION["db_1"]);
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
@@ -665,8 +769,6 @@ class CAddSubAdmin extends CAaskController {
             }
             echo json_encode($array);
         } catch (Exception $ex) {
-            
         }
     }
-
 }

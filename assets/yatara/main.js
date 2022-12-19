@@ -2555,7 +2555,7 @@ function mulfunc(key) {
             }
         }
     }
-    document.getElementById("lbllow0").innerText = mrps;
+    // document.getElementById("lbllow0").innerText = mrps;
     document.getElementById("lbllow1").innerText = mrps;
     document.getElementById("lbllow2").innerText = mrps;
     document.getElementById("lbllow3").innerText = mrps;
@@ -2997,7 +2997,10 @@ function btnlow_Click() {
     mulfunc(1);
     showhide("L", "L");
     showhide("L", "L");
-
+    shownormal('H');
+    shownormal('L');
+    clearLow();
+    clearHigh();
 
 }
 function clearLow() {

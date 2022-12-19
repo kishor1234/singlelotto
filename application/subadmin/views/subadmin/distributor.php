@@ -424,7 +424,7 @@
 
     function putPoint(id, name, point) {
         swal({
-            title: "Put Point for Sub-Admin",
+            title: "Put Point",
             text: "Enter point to send user.",
             type: "input",
             showCancelButton: true,
@@ -439,10 +439,10 @@
             }
             if ($.isNumeric(inputValue)) {
                 $.post('<?= api_url ?>/?r=CAddSubAdmin', {
-                    id: "<?= $_SESSION["id"] ?>",
+                    id: "<?= $_SESSION["userid"] ?>",
                     userid: id,
                     point: inputValue,
-                    action: 'putPoint'
+                    action: 'putPointByuser'
                 }, function(data) {
                     console.log(data);
                     var json = JSON.parse(data);
@@ -470,7 +470,7 @@
 
     function getPoint(id, name, point) {
         swal({
-            title: "Get Point Form  Sub-Admin",
+            title: "Get Point",
             text: "Enter point to send user.",
             type: "input",
             showCancelButton: true,
@@ -485,10 +485,10 @@
             }
             if ($.isNumeric(inputValue)) {
                 $.post('<?= api_url ?>/?r=CAddSubAdmin', {
-                    id: "<?= $_SESSION["id"] ?>",
+                    id: "<?= $_SESSION["userid"] ?>",
                     userid: id,
                     point: inputValue,
-                    action: 'getPoint'
+                    action: 'getPointByuser'
                 }, function(data) {
                     console.log(data);
                     var json = JSON.parse(data);

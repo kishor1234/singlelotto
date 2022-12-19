@@ -41,12 +41,12 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=document', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Dcoument Desk</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 

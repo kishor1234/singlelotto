@@ -893,7 +893,7 @@
                                                     <table>
                                                         <tr>
                                                             <td>
-                                                                <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="load_frm();">Reset</button>
+                                                                <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="btnlow_Click();">Reset</button>
 
                                                             </td>
 
@@ -1166,7 +1166,56 @@
             </div>
 
         </div>
+        <div style="display: none !important;">
+            <table>
+                <tr>
+                    <td class="tdg1">
+                        <input type="checkbox" name="cblow1" id="cblow1" value="0" onclick="cblow0_Click(1)"><label for="cblow1" id="lbllow1">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg2">
+                        <input type="checkbox" name="cblow2" id="cblow2" value="0" onclick="cblow0_Click(2)"><label for="cblow2" id="lbllow2">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg3">
+                        <input type="checkbox" name="cblow3" id="cblow3" value="0" onclick="cblow0_Click(3)"><label for="cblow3" id="lbllow3">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg4">
+                        <input type="checkbox" name="cblow4" id="cblow4" value="0" onclick="cblow0_Click(4)"><label for="cblow4" id="lbllow4">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg5">
+                        <input type="checkbox" name="cblow5" id="cblow5" value="0" onclick="cblow0_Click(5)"><label for="cblow5" id="lbllow5">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg6">
+                        <input type="checkbox" name="cblow6" id="cblow6" value="0" onclick="cblow0_Click(6)"><label for="cblow6" id="lbllow6">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg7">
+                        <input type="checkbox" name="cblow7" id="cblow7" value="0" onclick="cblow0_Click(7)"><label for="cblow7" id="lbllow7">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg8">
+                        <input type="checkbox" name="cblow8" id="cblow8" value="0" onclick="cblow0_Click(8)"><label for="cblow8" id="lbllow8">(Rs. 2)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdg9">
+                        <input type="checkbox" name="cblow9" id="cblow9" value="0" onclick="cblow0_Click(9)"><label for="cblow9" id="lbllow9">(Rs. 2)</label>
+                    </td>
+                </tr>
+            </table>
 
+        </div>
         <!-- <div id="divhigh" style="display: none;">
 
         </div>
