@@ -99,9 +99,9 @@ class userreports extends CAaskController
                     $array["g"] = "0";
                     $h = $array["c"] - $array["d"] - $array["f"];
                     $h == null ? $array["h"] = 0 : $array["h"] = $h;
-                    $array["agent"] = $f * 0.8;
-                    $array["subdist"] = $f * 0.9;
-                    $array["dist"] = $f * 1;
+                    $array["agent"] = $f * 0.08;
+                    $array["subdist"] = $f * 0.09;
+                    $array["dist"] = $f * 0.1;
                     array_push($farray, $array);
                 }
             }
