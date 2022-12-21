@@ -17,8 +17,7 @@
                             -->
                             <div id="myModal" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
-                                    <link rel="stylesheet"
-                                          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+                                    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
                                     <style>
                                         #tickets-data {
@@ -133,7 +132,7 @@
                                 <div class="card-text">
                                     <div class="row">
                                         <div class="col-12">
-                                            <form  method="post" action="/?r=link&v=userreports">
+                                            <form method="post" action="/?r=link&v=userreports">
 
                                                 <div class="row">
                                                     <div class="col-3">
@@ -177,40 +176,49 @@
                                             <table class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
-                                                            #        
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
+                                                            #
                                                         </th>
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
-                                                            User ID      
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
+                                                            User ID
                                                         </th>
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
-                                                            Purchase<br> 
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
+                                                            Purchase<br>
                                                             (a)
                                                         </th>
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
                                                             Cancel<br>
                                                             (b)
                                                         </th>
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
                                                             Net Purchase PT<br>
                                                             (c=a-b)
                                                         </th>
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
                                                             Win Pts<br>
                                                             (d)
                                                         </th>
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
                                                             End PT<br>
                                                             (e=c-d)
                                                         </th>
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
                                                             Commission<br>(f)
                                                         </th>
-    <!--                                                    <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;"  class="col-xs-2" >
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
+                                                            Agent<br>
+                                                        </th>
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
+                                                            Distributor<br>
+                                                        </th>
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
+                                                            Super Distributor<br>
+                                                        </th>
+                                                        <!--                                                    <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;"  class="col-xs-2" >
                                                             Incentive
                                                             (g)
                                                         </th>-->
-                                                        <th  style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2" >
+                                                        <th style="text-align: center;background-color: #3C8DBC; color: #FFF;" class="col-xs-2">
                                                             Net Payable<br>
                                                             (H=c-d-f)
                                                         </th>
@@ -227,10 +235,14 @@
                                                     $sumoff = 0;
                                                     $sumofg = 0;
                                                     $sumofh = 0;
+                                                    $sumoffAgent = 0;
+                                                    $sumofgSubDist = 0;
+                                                    $sumofhDist = 0;
                                                     $responseData = $main->jsonRespon(api_url . "/?r=userreports", array("dateform" => $dateform, "dateto" => $dateto));
                                                     $json = json_decode($responseData, true);
+                                                    //print_r($json);
                                                     foreach ($json as $key => $val) {
-                                                        $i=$key+1;
+                                                        $i = $key + 1;
                                                         echo "<tr>";
                                                         echo "<td>{$i}</td>";
                                                         echo "<td>{$val["uid"]}</td>";
@@ -245,9 +257,15 @@
                                                         echo "<td>₹ {$val["e"]}</td>";
                                                         $sumofe += $val["e"];
                                                         echo "<td>₹ {$val["f"]}</td>";
+                                                        echo "<td>₹ {$val["agent"]}</td>";
+                                                        echo "<td>₹ {$val["subdist"]}</td>";
+                                                        echo "<td>₹ {$val["dist"]}</td>";
                                                         $sumoff += $val["f"];
-//    echo "<td>{$val["g"]}</td>";
-//    $sumofg += $val["g"];
+                                                        $sumoffAgent+=$val["agent"];
+                                                        $sumoffSubDist+=$val["subdist"];
+                                                        $sumoffDist+=$val["dist"];
+                                                        //    echo "<td>{$val["g"]}</td>";
+                                                        //    $sumofg += $val["g"];
                                                         echo "<td>₹ {$val["h"]}</td>";
                                                         $sumofh += $val["h"];
                                                         echo "<tr>";
@@ -265,7 +283,10 @@
                                                         <th>₹ <?= $sumofd ?></th>
                                                         <th>₹ <?= $sumofe ?></th>
                                                         <th>₹ <?= $sumoff ?></th>
-    <!--                                                    <th><= $sumofg ?></th>-->
+                                                        <!--                                                    <th><= $sumofg ?></th>-->
+                                                        <th>₹ <?= $sumoffAgent ?></th>
+                                                        <th>₹ <?= $sumoffSubDist ?></th>
+                                                        <th>₹ <?= $sumoffDist ?></th>
                                                         <th>₹ <?= $sumofh ?></th>
 
                                                     </tr>
@@ -288,12 +309,11 @@
 <!-- /.content-wrapper -->
 <script type="text/javascript">
     var table;
-    $(document).ready(function () {
-        $.fn.serializeObject = function ()
-        {
+    $(document).ready(function() {
+        $.fn.serializeObject = function() {
             var o = {};
             var a = this.serializeArray();
-            $.each(a, function () {
+            $.each(a, function() {
                 if (o[this.name] !== undefined) {
                     if (!o[this.name].push) {
                         o[this.name] = [o[this.name]];
@@ -305,11 +325,11 @@
             });
             return o;
         };
-        $("#myMainForm").submit(function () {
+        $("#myMainForm").submit(function() {
             $("#myMainSubmit").attr("disabled", true);
             var formdata = new FormData($("#myMainForm")[0]);
             var object = {};
-            formdata.forEach(function (value, key) {
+            formdata.forEach(function(value, key) {
                 object[key] = value;
             });
             var json = JSON.stringify(object);
@@ -318,14 +338,14 @@
                 url: '<?= api_url ?>/?r=grandSel',
                 dataType: "json",
                 data: json,
-                success: function (obj) {
+                success: function(obj) {
 
                     $("#gs").html(obj.gs);
                     $("#wa").html(obj.wa);
                     $("#np").html(obj.np);
                     $("#d").html("Grand Sale " + obj.cdate);
                 },
-                error: function (request, status, error) {
+                error: function(request, status, error) {
                     printMessage("Error on " + error, "danger", ".msg");
                 }
             });
@@ -333,37 +353,44 @@
         });
     });
 
-    function deleteSeries(id, st)
-    {
+    function deleteSeries(id, st) {
         swal({
-            title: "Are you sure?",
-            text: "want to delete Series?",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, Delete it!",
-            closeOnConfirm: true
-        },
-                function () {
-                    $.post('<?= api_url ?>/?r=CSeries', {id: id, action: 'delete'}, function (data) {
-                        console.log(data);
-                        table.ajax.reload(null, false);
-                        var json = JSON.parse(data);
-                        $.toaster({priority: json.toast[0], title: json.toast[1], message: json.toast[2]});
-
+                title: "Are you sure?",
+                text: "want to delete Series?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, Delete it!",
+                closeOnConfirm: true
+            },
+            function() {
+                $.post('<?= api_url ?>/?r=CSeries', {
+                    id: id,
+                    action: 'delete'
+                }, function(data) {
+                    console.log(data);
+                    table.ajax.reload(null, false);
+                    var json = JSON.parse(data);
+                    $.toaster({
+                        priority: json.toast[0],
+                        title: json.toast[1],
+                        message: json.toast[2]
                     });
 
                 });
 
+            });
+
     }
-    function loadTicket(id)
-    {
+
+    function loadTicket(id) {
         console.log(id);
         $("#ticket").html("Loading.....");
-        $.post("<?= api_url ?>/?r=reprintTicket", {game: id}, function (d) {
+        $.post("<?= api_url ?>/?r=reprintTicket", {
+            game: id
+        }, function(d) {
             var json = JSON.parse(d);
             $("#ticket").html(json.ticket);
         });
     }
-
 </script>

@@ -1,7 +1,7 @@
 
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,22 +18,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //require_once getcwd() . '/' . APPLICATION . "/controllers/Crout.php";
 require_once controller;
 
-class userreports extends CAaskController {
+class userreports extends CAaskController
+{
 
     //put your code here
     public $data = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
 
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
         try {
             $postdata = file_get_contents("php://input");
@@ -95,37 +99,42 @@ class userreports extends CAaskController {
                     $array["g"] = "0";
                     $h = $array["c"] - $array["d"] - $array["f"];
                     $h == null ? $array["h"] = 0 : $array["h"] = $h;
+                    $array["agent"] = $f * 0.8;
+                    $array["subdist"] = $f * 0.9;
+                    $array["dist"] = $f * 1;
                     array_push($farray, $array);
                 }
             }
             echo json_encode($farray);
         } catch (Exception $ex) {
-            
         }
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         parent::execute();
 
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         parent::distory();
         return;
     }
-
 }
 
 /*
