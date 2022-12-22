@@ -457,7 +457,11 @@ tr#game_series_list {
     font-size: 12px;
     font-weight: bold;
 }
-
+img.picon {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
 .tdgw {
     padding: 0px 5px;
     border-radius: 2px 2px 2px 2px;

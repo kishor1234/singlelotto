@@ -99,7 +99,14 @@
                             <td><span class="tdblack">Time To Draw</span></td>
                             <td><span class="tdblack">Draw Time</span></td>
                             <td><span class="tdblack">Draw Date</span></td>
-                            <td><span class="tdblack">Credit Limit </span></td>
+                            <td>
+                                <span class="tdblack" style="background-color:#f6accd; display: flex; flex-direction: row; align-items: center; justify-content: center; align-content: center;">
+                                    <span>Credit Limit </span>
+                                    <a href="/?r=gpaypayment"><img src="gpay.jpeg" class="picon" alt="gpay" /></a>
+                                    <a href="/?r=phonepepayment"><img src="phonepe.png" class="picon" alt="phonepe" /></a>
+
+                                </span>
+                            </td>
                             <td><span class="tdblack">last Tr. No.</span></td>
                             <td><span class="tdblack">last Tr. PT.</span></td>
                             <td style="display: none;"></td>
@@ -892,32 +899,23 @@
                                                 <td colspan="15">
                                                     <table>
                                                         <tr>
-                                                            <td>
+                                                            <td style="width:100px;">
                                                                 <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="btnlow_Click();">Reset</button>
 
                                                             </td>
 
-                                                            <td style="background-color: white;width:100px; height: 30px;">
+                                                            <td style="width:100px; height: 30px;">
                                                                 <input type="text" placeholder="Scan Barcode" class="bottombtn" onkeyup="getClime(event)" id="scancode" name="scancode">
 
                                                             </td>
-                                                            <td style="
-                                                    background: #FFF;
-                                                    border-radius: 4px;
-                                                    height: 30px;
-                                                    display: flex;
-                                                    flex-direction: column;
-                                                    align-content: center;
-                                                    justify-content: center;
-                                                    align-items: center;
-                                                ">
+                                                            <td style="background-color: white;border-radius: 4px;height: 30px;display: flex;flex-direction: column;align-content: center;justify-content: center;align-items: center;">
                                                                 <span id="msg" style="text-align: center;">MSG</span>
                                                             </td>
-                                                            <td>
+                                                            <td style="width:150px;">
                                                                 <button class="bottombtn" id="btnbets" style="background-color: #f48489;font-size: 20px; padding-left:10px; padding-right:10px; height: 30px;">Transaction</button>
 
                                                             </td>
-                                                            <td>
+                                                            <td style="width:150px;">
                                                                 <button class="bottombtn" id="btnadv" style="border-color:#8dd8f8; background-color: #8dd8f8;font-size: 20px;padding-left:10px; padding-right:10px;height: 30px;" onclick="adv_click();">AD Draw</button>
 
 
@@ -928,7 +926,7 @@
 
                                                 <td class="tdqty color12" id="tblcqty">&nbsp;</td>
                                                 <td class="tdamt color11" id="tblcamt">&nbsp;</td>
-                                                <td align="center">&nbsp;</td>
+                                                <td align="center"><a href="/?r=logout"><input type="button" class="buttonlogout" value="Logout"></a></td>
                                                 <td class="tdtime" style="display: none;" id="lastdrawr"></td>
                                                 <td class="tdtitleright" style="display: none;"><a href="/?r=logout"><input type="button" class="buttonlogout" value="Logout"></a></td>
                                             </tr>
