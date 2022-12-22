@@ -2988,6 +2988,7 @@ function addbetsintxtbxlc(_0x18957) {
         for (i = 0; i < _0x18969.length; i++) {
             _0x18945 = _0x18969[i].split("~");
             document.getElementById("num" + _0x18945[0]).value = _0x18945[1];
+            calculateamtqty(document.getElementById("num" + _0x18945[0]), _0x18945[0]);
         }
     }
     calcalllc();
