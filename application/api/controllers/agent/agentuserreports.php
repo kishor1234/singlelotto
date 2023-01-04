@@ -64,6 +64,9 @@ class agentuserreports extends CAaskController {
                 $array["g"] = "0";
                 $h = $array["c"] - $array["d"] - $array["f"];
                 $h == null ? $array["h"] = 0 : $array["h"] = $h;
+                $array["agent"] = $a * 0.01;
+                $array["subdist"] = $a * 0.01;
+                $array["dist"] = $a * 0.01;
                 array_push($farray, $array);
             }
             echo json_encode($farray);

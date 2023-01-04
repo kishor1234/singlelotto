@@ -33,8 +33,18 @@
                                                     <div class="col-lg-12">
                                                         <form action="#" method="post" id="myMainForm">
                                                             <div class="form-group">
-                                                                <label class="form-control-label">Name <span class="text-danger">*</span></label>
+                                                                <label class="form-control-label">Message <span class="text-danger">*</span></label>
                                                                 <input type="text" name="message" id="message" placeholder="Enter Message" title="Message" required autocomplete="off" class="form-control">
+                                                                <span id="error_name" class=""></span>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label">GST Message <span class="text-danger">*</span></label>
+                                                                <input type="text" name="gstmsg" id="gstmsg" placeholder="Enter GST Message" title="Message" required autocomplete="off" class="form-control">
+                                                                <span id="error_name" class=""></span>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label">Popup Image <span class="text-danger"></span></label>
+                                                                <input accept="image/*" type="file" name="popup" id="popup" placeholder="Enter Message" title="Upload image"  autocomplete="off" >
                                                                 <span id="error_name" class=""></span>
                                                             </div>
                                                             <div class="form-group">
@@ -70,14 +80,16 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Message</th>                                            
-                                           
+                                            <th>GST Msg</th>
+                                            <th>Popup</th>  
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>ID</th>
                                             <th>Message</th>                                            
-                                            
+                                            <th>GST Msg</th>
+                                            <th>Popup</th>
                                         </tr>
                                     </tfoot>
                                 </table>

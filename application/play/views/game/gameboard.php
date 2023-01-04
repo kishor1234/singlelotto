@@ -1087,7 +1087,7 @@
                 font-size: 25px;
                 text-align: center;
                 font-weight: bolder;
-                color: red;
+                color: black;
             }
 
             body {
@@ -1405,12 +1405,29 @@
             }
 
             function showOfferBanner() {
-                var banner = '<div><center><img style="width:100%; height:auto;" src="/assets/yatara/dada.webp" alt="offer"/></center></div>';
-                myOffer.style.display = "block";
-                myOffer.style.background = "transparent";
-                document.getElementById("claim-msgffer").innerHTML = banner;
-                //                               
-            }
+            (async () => {
+                const rawResponse = await fetch('<?= api_url ?>/?r=CAddUser', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({id: 1, action: 'loadMessage'})
+                });
+                const content = await rawResponse.json();
+                console.log(content["data"]["popup"]);
+                if (content["data"]["popup"] === "") {
+                    document.getElementById("spannews").innerHTML=content["data"]["message"];
+                } else {
+                    var banner = '<div><center><img style="width:100%; height:auto;" src="' + content["data"]["popup"] + '" alt="offer"/></center></div>';
+                    myOffer.style.display = "block";
+                    myOffer.style.background = "transparent";
+                    document.getElementById("claim-msg-offer").innerHTML = banner;
+                    document.getElementById("spannews").innerHTML=content["data"]["message"];
+                }
+            })();
+//                               
+        }
 
             function showAnimation() {
 

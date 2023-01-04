@@ -75,7 +75,7 @@ class loadGameJSON extends CAaskController
         } else {
             $id = $last["id"] - 1;
         }
-        $last2 = $this->module->getSingleGameTiemByid($id+1);
+        $last2 = $this->module->getSingleGameTiemByid($id + 1);
         $data2["drawid"] = $last2;
         $last = $this->module->getSingleGameTiemByid($id);
         // $data2["drawid"] = $last;
@@ -116,12 +116,14 @@ class loadGameJSON extends CAaskController
         $climit = 0;
         $inflag = "true";
         $newsstr = "";
+        $gstmsg = "";
         $agentname;
         $advstr;
         //messge
         $msgResult = $this->adminDB[$_SESSION["db_1"]]->query("SELECT * FROM `message`");
         while ($msgRow = $msgResult->fetch_assoc()) {
             $newsstr .= "{$msgRow["message"]} ";
+            $gstmsg .= "{$msgRow["gstmsg"]} ";
             $data2["message"] = $msgRow["message"];
         }
         //end message
@@ -170,16 +172,16 @@ class loadGameJSON extends CAaskController
             $ltsn = $rw["utrno"];
             $lpt = $rw["amount"];
         }
-        $gst="GST No.";
-        $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]) ;//. $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND").$this->ask_mysqli->orderBy("ASC", "series");
-        $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
-        if ($qrow = $query->fetch_assoc()) {
-            $gst=$qrow["gst"];
-        }
+        $gst = $gstmsg;
+        // $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]); //. $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND").$this->ask_mysqli->orderBy("ASC", "series");
+        // $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+        // if ($qrow = $query->fetch_assoc()) {
+        //     $gst = $qrow["gst"];
+        // }
         $data2["lastTrno"] = $ltsn;
         $data2["gst"] = $gst;
         $data2["lastTramt"] = $lpt;
-        $data2["ctime"]=date("H:i:s");
+        $data2["ctime"] = date("H:i:s");
         // echo date("H:i:s") . "!" . $gmtm . "!" . $schcd . "!" . $gmcd . "!" . $mrp . "!" . $lastdrtm . "!" .
         // $lastres . "!" . $resstr . "!" . $uname . "!" . $climit . "!" .
         // $inflag . "!" . $newsstr . "!" . $agentname . "!" . $advstr . "!" . $ltsn . "!" . $lpt;

@@ -536,6 +536,13 @@ class CAddUser extends CAaskController
                 $subdata = array();
                 $subdata[] = $row['id'];
                 $subdata[] = $row['message'];
+                $subdata[] = $row['gstmsg'];
+                if (!empty($row['popup'])) {
+                    $subdata[] = "<img src='" . $row['popup'] . "' style='width:10%; height:auto;'/>";
+                } else {
+                    $subdata[] = "";
+                }
+                
                 $data[] = $subdata;
             }
             $json_data = array(
@@ -858,12 +865,12 @@ class CAddUser extends CAaskController
         echo json_encode($data);
     }
 
-    function message()
-    {
+    function message() {
         unset($_POST["action"]);
         $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
-        $_POST["message"] = str_replace("!", "", $_POST["message"]);
-        $_POST["message"] = str_replace("'", "", $_POST["message"]);
+        $uploadDir = "assets/upload/hostGame";
+        $fileData = $this->uploadFiletoFileSystem('popup', $uploadDir);
+        $_POST["popup"] = $fileData["url"];
         $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->update($_POST, "message") . $this->ask_mysqli->whereSingle(array("id" => 1))) != true ? array_push($error, $this->adminDB[$_SESSION["db_1"]]->error) : true;
         if (empty($error)) {
             $this->adminDB[$_SESSION["db_1"]]->commit();

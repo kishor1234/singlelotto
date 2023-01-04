@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,36 +18,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once controller;
 header('Content-Type: application/json');
 
-class loadgame extends CAaskController {
+class loadgame extends CAaskController
+{
 
-//put your code here
+    //put your code here
     public $data = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
 
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
 
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         parent::execute();
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata, true);
         $data = $request;
         $data2 = array();
         //$systm = date("H:i:s");
-//        $data["uid"]="20210723";
-//        $data["u"]=3;
+        //        $data["uid"]="20210723";
+        //        $data["u"]=3;
         $gmtm = "";
         $schcd = 11954;
         $gmcd = "YG01";
@@ -70,28 +75,28 @@ class loadgame extends CAaskController {
         }
         $last = $this->module->getSingleGameTiemByid($id);
 
-        $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND").$this->ask_mysqli->orderBy("ASC", "series");
+        $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND") . $this->ask_mysqli->orderBy("ASC", "series");
         $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         $rflat = false;
         while ($qrow = $query->fetch_assoc()) {
 
             $series = explode("-", $qrow["series"]);
-//            print_r($series);die;
+            //            print_r($series);die;
             $j = 0;
             for ($i = $series[0]; $i <= $series[1]; $i = $i + 100) {
-                $lastres .= str_pad( $qrow[$j], 2, "0", STR_PAD_LEFT) . ",";
+                $lastres .= str_pad($qrow[$j], 2, "0", STR_PAD_LEFT) . ",";
                 $j++;
             }
             $rflat = true;
         }
         if (!$rflat) {
-            $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"]-1,"gdate" => date("Y-m-d")), "AND");
+            $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $last["id"] - 1, "gdate" => date("Y-m-d")), "AND");
             $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
             $rflat = false;
             while ($qrow = $query->fetch_assoc()) {
 
                 $series = explode("-", $qrow["series"]);
-//            print_r($series);die;
+                //            print_r($series);die;
                 $j = 0;
                 for ($i = $series[0]; $i <= $series[1]; $i = $i + 100) {
                     $lastres .= str_pad($qrow[$j], 2, "0", STR_PAD_LEFT) . ",";
@@ -105,12 +110,14 @@ class loadgame extends CAaskController {
         $climit = 0;
         $inflag = "true";
         $newsstr = "";
+        $gstmsg = "";
         $agentname;
         $advstr;
         //messge
         $msgResult = $this->adminDB[$_SESSION["db_1"]]->query("SELECT * FROM `message`");
         while ($msgRow = $msgResult->fetch_assoc()) {
             $newsstr .= "{$msgRow["message"]} ";
+            $gstmsg .= "{$msgRow["gstmsg"]} ";
         }
         //end message
 
@@ -155,35 +162,37 @@ class loadgame extends CAaskController {
             $ltsn = $rw["utrno"];
             $lpt = $rw["amount"];
         }
-        $gst="GST No.";
-        $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]) ;//. $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND").$this->ask_mysqli->orderBy("ASC", "series");
-        $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
-        if ($qrow = $query->fetch_assoc()) {
-            $gst=$qrow["gst"];
-        }
-        $cdata=date("H:i:s");
+        $gst = $gstmsg;
+        // $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]); //. $this->ask_mysqli->where(array("gameid" => $last["id"], "gamestime" => $last["stime"], "gameetime" => $last["etime"], "gdate" => date("Y-m-d")), "AND").$this->ask_mysqli->orderBy("ASC", "series");
+        // $query = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+        // if ($qrow = $query->fetch_assoc()) {
+        //     $gst = $qrow["gst"];
+        // }
+        $cdata = date("H:i:s");
         echo $cdata . "!" . $gmtm . "!" . $schcd . "!" . $gmcd . "!" . $mrp . "!" . $lastdrtm . "!" .
-        $lastres . "!" . $resstr . "!" . $uname . "!" . $climit . "!" .
-        $inflag . "!" . $newsstr . "!" . $agentname . "!" . $advstr . "!" . $ltsn . "!" . $lpt . "!" . $gst;
+            $lastres . "!" . $resstr . "!" . $uname . "!" . $climit . "!" .
+            $inflag . "!" . $newsstr . "!" . $agentname . "!" . $advstr . "!" . $ltsn . "!" . $lpt . "!" . $gst;
         //echo json_encode(array("status" => "1", "message" => "Success", "data" => $data2));
 
 
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         parent::distory();
         return;
     }
-
 }

@@ -974,11 +974,11 @@ function funclastbet3(tsn) {
                         if (false) {//_0x18BA9[5] == "Y"
                             table = table + "<tr><td><a  onclick=reclaim('" +
                                 tr['game'] +
-                                "')>" + tr['tsn'] + "</a></td><td>" + tr['schme'] + "</td><td bgcolor='green'><font color='white'>" + tr['num'] + "</font></td><td>" + tr['qty'] + "</td><td>" + tr['amt'] + "</td></tr>";
+                                "')>Claim</a></td><td>" + tr['schme'] + "</td><td bgcolor='green'><font color='white'>" + tr['num'] + "</font></td><td>" + tr['qty'] + "</td><td>" + tr['amt'] + "</td></tr>";
                         } else {
                             table = table + "<tr><td><a  onclick=reclaim('" +
                                 tr['game'] +
-                                "')>" + tr['tsn'] + "</a></td><td>" + tr['schme'] + "</td><td>" + tr['num'] + "</td><td>" + tr['qty'] + "</td><td>" + tr['amt'] + "</td></tr>";
+                                "')>Claim</a></td><td>" + tr['schme'] + "</td><td>" + tr['num'] + "</td><td>" + tr['qty'] + "</td><td>" + tr['amt'] + "</td></tr>";
                         }
                     }
                 } else {
@@ -1031,7 +1031,7 @@ function direactClaim() {
                         } else if (dt["cstatus"] == 0 && dt["wamt"] <= 0) {
                             cstatus = "Looser";
                         }
-                        table = table + "<tr><td><a onclick=reclaim('" + dt['barcode'] + "')>" + dt['tsn'] + "</a></td><td>" + dt['dtime'] + "</td><td>" + dt['point'] + "</td><td>" + dt['wamt'] + "</td><td>" + cstatus + "</td></tr>";
+                        table = table + "<tr><td><a onclick=reclaim('" + dt['barcode'] + "')>Claim</a></td><td>" + dt['dtime'] + "</td><td>" + dt['point'] + "</td><td>" + dt['wamt'] + "</td><td>" + cstatus + "</td></tr>";
                     }
                 } else {
                     table = table + "<tr><td colspan='7'>Data Not Found....</td></tr>";
@@ -1060,7 +1060,7 @@ function reprintlist() {
                     var data = jsonData.data;
                     for (j = 0; j < data.length; j++) {
                         var dt = data[j];
-                        table = table + "<tr><td><a onclick=reprint('" + dt['tsn'] + "')>" + dt['tsn'] + "</a></td><td>" + dt['btime'] + "</td><td>" + dt['dtime'] + "</td><td>" + dt['point'] + "</td></tr>";
+                        table = table + "<tr><td><a onclick=reprint('" + dt['tsn'] + "')> Reprint </a></td><td>" + dt['btime'] + "</td><td>" + dt['dtime'] + "</td><td>" + dt['point'] + "</td></tr>";
                     }
                 } else {
                     table = table + "<tr><td colspan='7'>Data Not Found....</td></tr>";
@@ -1090,7 +1090,7 @@ function canlist() {
                     var data = jsonData.data;
                     for (j = 0; j < data.length; j++) {
                         var dt = data[j];
-                        table = table + "<tr><td><a onclick=funccancel('" + dt['tsn'] + "')>" + dt['tsn'] + "</a></td><td>" + dt['btime'] + "</td><td>" + dt['dtime'] + "</td><td>" + dt['point'] + "</td></tr>";
+                        table = table + "<tr><td><a onclick=funccancel('" + dt['tsn'] + "')>Cancel</a></td><td>" + dt['btime'] + "</td><td>" + dt['dtime'] + "</td><td>" + dt['point'] + "</td></tr>";
                     }
                 } else {
                     table = table + "<tr><td colspan='7'>Data Not Found....</td></tr>";
@@ -3466,6 +3466,16 @@ function loadOldSeries() {
 }
 function reclaim(barcode) {
 
-    claminBet(barcode);
+    var _0x18A89 = Confirm("Are You Sure Want to Claim ..!");
+    _0x18A89.then(function (response) {
+        var retur = response.response;
+        if (retur === 0) {
+
+           
+            claminBet(barcode);
+        }
+    });
+
+    //claminBet(barcode);
     //Alert("Sorry We are facing iuuse with this, we come enable this soon");
 }

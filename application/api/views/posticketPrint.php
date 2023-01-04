@@ -64,8 +64,8 @@
                     <td style=' margin:0px; padding:0px;color:#000;'> Q&nbsp; </td>
                     <td style=' margin:0px; padding:0px;color:#000;'> NUM&nbsp; </td>
                     <td style=' margin:0px; padding:0px;color:#000;'> Q&nbsp; </td>
-                    <td style=' margin:0px; padding:0px;color:#000;'> NUM&nbsp; </td>
-                    <td style=' margin:0px; padding:0px;color:#000;'> Q&nbsp; </td>
+                    <!-- <td style=' margin:0px; padding:0px;color:#000;'> NUM&nbsp; </td>
+                    <td style=' margin:0px; padding:0px;color:#000;'> Q&nbsp; </td> -->
                 </tr>
             </thead>
             <tbody class="numbers-played-data">
@@ -82,7 +82,7 @@
                         if ($limit == 1) {
                             echo "<tr style='border:none;'>";
                         }
-                        if ($limit == 3) {
+                        if ($limit == 2) {
 
                             echo "<td><p id='pkr' style='display:flex;'><span class='qt' style=' margin:2px; padding:2px;color:#000;border: 1px solid;display: flex; border: 1px solid;'> {$knums} </span> <span class='aqt' style=' margin:2px; padding:2px; border: 1px solid; border-radius: 10px;'>{$knumb} </span> </p> </td> <td > <span class='aqt' style=' margin:2px; padding:2px; border: 0px solid; border-radius: 10px;'>{$val} </span> </td></tr>";
                             $limit = 0;

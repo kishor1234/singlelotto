@@ -457,11 +457,17 @@ tr#game_series_list {
     font-size: 12px;
     font-weight: bold;
 }
+
 img.picon {
     width: 15px;
     height: 15px;
     border-radius: 100%;
 }
+
+span#gmsg {
+    font-weight: 600;
+}
+
 .tdgw {
     padding: 0px 5px;
     border-radius: 2px 2px 2px 2px;
@@ -1824,6 +1830,7 @@ table {
 
 td>* {
     width: 100%;
+    cursor: pointer;
 }
 
 td>span {
@@ -2040,3 +2047,13 @@ td.tdaeob.w50>span {
     flex-wrap: nowrap;
     justify-content: space-evenly;
 }
+
+#cblow0, #cblow1, #cblow2, #cblow3, #cblow4, #cblow5, #cblow6, #cblow7, #cblow8, #cblow9, #cbhigh0, #cbhigh1, #cbhigh2, #cbhigh3, #cbhigh4, #cbhigh5, #cbhigh6, #cbhigh7, #cbhigh8, #cbhigh9 {
+    width: 15px;
+    height: auto;
+}
+
+/* .tdg0, .tdg1, .tdg2, .tdg3, .tdg4, .tdg5, .tdg6, .tdg7, .tdg8, .tdg9 {
+    
+
+} */
