@@ -1,7 +1,7 @@
 
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,28 +18,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //require_once getcwd() . '/' . APPLICATION . "/controllers/Crout.php";
 require_once controller;
 
-class agentuserreports extends CAaskController {
+class agentuserreports extends CAaskController
+{
 
     //put your code here
     public $data = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
 
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
         try {
             $postdata = file_get_contents("php://input");
             $request = $_POST; //json_decode($postdata, true);
 
-            $sl = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]).$this->ask_mysqli->whereSingle(array("agent_id"=>$request["agent_id"])); // . $this->ask_mysqli->whereBetweenDates('on_create', $request["dateform"], $request["dateto"]) . " AND active='1'";
+            $sl = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("agent_id" => $request["agent_id"])); // . $this->ask_mysqli->whereBetweenDates('on_create', $request["dateform"], $request["dateto"]) . " AND active='1'";
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sl);
 
             $farray = array();
@@ -57,44 +61,46 @@ class agentuserreports extends CAaskController {
                 $b == null ? $array["b"] = 0 : $array["b"] = $_a;
                 $c = $array["a"] - $array["_a"];
                 $c == null ? $array["c"] = 0 : $array["c"] = $c;
-                $d = $this->getData($this->ask_mysqli->selectSum("entry", "winamt") . $this->ask_mysqli->whereBetweenDates('ClaimTime', $request["dateform"]." 00:00:00", $request["dateto"]." 23:59:59") . " AND own='{$row["userid"]}'", "sum(winamt)");
+                $d = $this->getData($this->ask_mysqli->selectSum("entry", "winamt") . $this->ask_mysqli->whereBetweenDates('ClaimTime', $request["dateform"] . " 00:00:00", $request["dateto"] . " 23:59:59") . " AND own='{$row["userid"]}'", "sum(winamt)");
                 $d == null ? $array["d"] = 0 : $array["d"] = $d;
                 $e = $array["c"] - $array["d"];
                 $e == null ? $array["e"] = 0 : $array["e"] = $e;
                 $array["g"] = "0";
                 $h = $array["c"] - $array["d"] - $array["f"];
                 $h == null ? $array["h"] = 0 : $array["h"] = $h;
-                $array["agent"] = $a * 0.01;
-                $array["subdist"] = $a * 0.01;
-                $array["dist"] = $a * 0.01;
+                $array["agent"] = $c * 0.08;
+                $array["subdist"] = $c * 0.09;
+                $array["dist"] = $c * 0.1;
                 array_push($farray, $array);
             }
             echo json_encode($farray);
         } catch (Exception $ex) {
-            
         }
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         parent::execute();
 
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         parent::distory();
         return;
     }
-
 }
