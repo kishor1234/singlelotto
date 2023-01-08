@@ -102,6 +102,9 @@ class userreports extends CAaskController
                     $array["agent"] = $c * 0.01;
                     $array["subdist"] = $c * 0.01;
                     $array["dist"] = $c * 0.01;
+                    $array["ah"]=$h-$array["agent"];
+                    $array["sdh"]=$h-$array["agent"]-$array["subdist"]-$array["dist"];
+                    $array["dh"]=$h-$array["agent"]-$array["dist"];
                     array_push($farray, $array);
                 }
             }

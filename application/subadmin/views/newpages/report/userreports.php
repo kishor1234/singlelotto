@@ -271,8 +271,15 @@
                                                         $sumoffDist += $val["dist"];
                                                         //    echo "<td>{$val["g"]}</td>";
                                                         //    $sumofg += $val["g"];
-                                                        echo "<td>₹ {$val["h"]}</td>";
-                                                        $sumofh += $val["h"];
+                                                        if ($_SESSION["m"] == "main") {
+                                                            echo "<td>₹ {$val["sdh"]}</td>";
+                                                            $sumofh += $val["sdh"];
+                                                        } else {
+                                                            echo "<td>₹ {$val["dh"]}</td>";
+                                                            $sumofh += $val["dh"];
+                                                        }
+                                                        // echo "<td>₹ {$val["h"]}</td>";
+                                                        // $sumofh += $val["h"];
                                                         echo "<tr>";
                                                     }
                                                     ?>

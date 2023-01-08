@@ -266,8 +266,8 @@
                                                         $sumoffDist+=$val["dist"];
                                                         //    echo "<td>{$val["g"]}</td>";
                                                         //    $sumofg += $val["g"];
-                                                        echo "<td>₹ {$val["h"]}</td>";
-                                                        $sumofh += $val["h"];
+                                                        echo "<td>₹ {$val["sdh"]}</td>";
+                                                        $sumofh += $val["sdh"];
                                                         echo "<tr>";
                                                     }
                                                     ?>
