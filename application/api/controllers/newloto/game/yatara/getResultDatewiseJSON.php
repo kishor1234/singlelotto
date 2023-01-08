@@ -62,7 +62,7 @@ class getResultDatewiseJSON extends CAaskController {
         foreach ($game as $k => $games) {
             $sql = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $games["id"], "gamestime" => $games["stime"], "gameetime" => $games["etime"], "gdate" => $date), "AND") . $this->ask_mysqli->orderBy("ASC", "gameid");
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
-            $data[$games["id"]] = array("stime" => $games["stime"], "etime" => $games["etime"], "data" => array());
+            $data[$games["id"]] = array("stime" => $games["stime"], "etime" => $games["etime"], "dataArray" => array());
             $temp = array();
             while ($row = $result->fetch_assoc()) {
 
@@ -78,7 +78,7 @@ class getResultDatewiseJSON extends CAaskController {
             }
            
             if (!empty($temp)) {
-                $data[$games["id"]]["data"] = $temp;
+                $data[$games["id"]]["response"] = $temp;
                 array_push($Data, $data[$games["id"]]);
             } else {
                 unset($data[$games["id"]]);
