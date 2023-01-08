@@ -168,7 +168,7 @@ class trDetails extends CAaskController {
                     if (empty($error)) {
                         $sl = $this->ask_mysqli->updateDNC(array("climit" => 1), "enduser") . $this->ask_mysqli->whereSingle(array("userid" => $ruserid));
                         $this->adminDB[$_SESSION["db_1"]]->query($sl);
-                        echo json_encode(array("status" => "1", "message" => "Ticket Successfully {$sl}", "Err" => $error));
+                        echo json_encode(array("status" => "1", "message" => "Ticket Successfully Canceled", "Err" => $error));
                         $this->adminDB[$_SESSION["db_1"]]->commit();
                     } else {
                         //echo $this->printMessage("Invalid Entry ", "danger");

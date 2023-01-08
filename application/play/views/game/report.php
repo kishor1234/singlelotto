@@ -131,7 +131,7 @@
                                             </tr>
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Lotto Game GST (28%) :</td>
-                                                <?php $gst = (float)$rdata["totalNetPoint"] * 0.28;
+                                                <?php $gst = ($tsele=$rdata["totalNetPoint"] - $rdata["cancelPoint"]) * 0.28;
                                                 $total = (float)$rdata["totalNetPoint"] - $gst; ?>
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($gst, 2) ?></td>
                                             </tr>

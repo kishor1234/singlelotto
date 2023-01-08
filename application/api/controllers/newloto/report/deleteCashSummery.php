@@ -51,7 +51,9 @@ class deleteCashSummery extends CAaskController
             //     default:
             //         break;
             // }
-            $sl = $this->ask_mysqli->update(array("active" => 3), "usertranscation") . $this->ask_mysqli->whereBetweenDatesID('on_create', $request["dateform"], $request["dateto"], "userid", $request["own"]) . " AND active='1'";
+            $sl = $this->ask_mysqli->update(array("active" => 3), "usertranscation") . $this->ask_mysqli->whereBetweenDatesID('on_create', $request["dateform"], $request["dateto"], "userid", $request["own"]) . " ";//AND active='1'
+            $result = $this->adminDB[$_SESSION["db_1"]]->query($sl);
+            $sl = $this->ask_mysqli->update(array("isStatus" => 3), "entry") . $this->ask_mysqli->whereBetweenDatesID('enterydate', $request["dateform"], $request["dateto"], "own", $request["own"]) . " ";//AND active='1'
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sl);
             // $data["query"]=$sl;
             if ($result) {

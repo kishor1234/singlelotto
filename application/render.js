@@ -94,7 +94,7 @@ function PrintData(ticketData) {
         },
     ];
 }
-function rePrints(lasttsn) {
+function rePrint(lasttsn) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {

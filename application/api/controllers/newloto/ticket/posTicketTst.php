@@ -48,7 +48,7 @@ class posTicketTst extends CAaskController
         parent::execute();
         $postdata = file_get_contents("php://input");
         $_POST = json_decode($postdata, true);
-        $_POST["utrno"]="9536292";
+        $_POST["utrno"]="9536301";
         $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("utrno" => $_POST["utrno"]));
         $results = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         if ($rows = $results->fetch_assoc()) {

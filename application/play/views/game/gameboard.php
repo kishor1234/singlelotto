@@ -1246,6 +1246,13 @@
                 animation.style.display = "none";
                 document.getElementById("claim-msg").innerHTML = "";
             }
+            document.addEventListener('keydown', function(event) {
+                
+                if (event.key === "Escape") {
+                    //do something
+                    closebtn();
+                }
+            });
 
             // When the user clicks anywhere outside of the claim, close it
         </script>
@@ -1273,7 +1280,7 @@
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
-                //alert(event.target);
+                console.log(event.target);
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
@@ -1405,29 +1412,32 @@
             }
 
             function showOfferBanner() {
-            (async () => {
-                const rawResponse = await fetch('<?= api_url ?>/?r=CAddUser', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({id: 1, action: 'loadMessage'})
-                });
-                const content = await rawResponse.json();
-                console.log(content["data"]["popup"]);
-                if (content["data"]["popup"] === "") {
-                    document.getElementById("spannews").innerHTML=content["data"]["message"];
-                } else {
-                    var banner = '<div><center><img style="width:100%; height:auto;" src="' + content["data"]["popup"] + '" alt="offer"/></center></div>';
-                    myOffer.style.display = "block";
-                    myOffer.style.background = "transparent";
-                    document.getElementById("claim-msg-offer").innerHTML = banner;
-                    document.getElementById("spannews").innerHTML=content["data"]["message"];
-                }
-            })();
-//                               
-        }
+                (async () => {
+                    const rawResponse = await fetch('<?= api_url ?>/?r=CAddUser', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: 1,
+                            action: 'loadMessage'
+                        })
+                    });
+                    const content = await rawResponse.json();
+                    console.log(content["data"]["popup"]);
+                    if (content["data"]["popup"] === "") {
+                        document.getElementById("spannews").innerHTML = content["data"]["message"];
+                    } else {
+                        var banner = '<div><center><img style="width:100%; height:auto;" src="' + content["data"]["popup"] + '" alt="offer"/></center></div>';
+                        myOffer.style.display = "block";
+                        myOffer.style.background = "transparent";
+                        document.getElementById("claim-msg-offer").innerHTML = banner;
+                        document.getElementById("spannews").innerHTML = content["data"]["message"];
+                    }
+                })();
+                //                               
+            }
 
             function showAnimation() {
 

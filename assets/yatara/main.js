@@ -2982,13 +2982,13 @@ function calcalllc() {
     //    }
 }
 function addbetsintxtbxlc(_0x18957) {
-    var _0x18969 = _0x18957.split(",");
-    var _0x18945 = null;
+    var _0x18969A = _0x18957.split(",");
+    var _0x18945A = null;
     if (_0x18957 != "") {
-        for (i = 0; i < _0x18969.length; i++) {
-            _0x18945 = _0x18969[i].split("~");
-            document.getElementById("num" + _0x18945[0]).value = _0x18945[1];
-            calculateamtqty(document.getElementById("num" + _0x18945[0]), _0x18945[0]);
+        for (var iA = 0; iA < _0x18969A.length; iA++) {
+            _0x18945A = _0x18969A[iA].split("~");
+            document.getElementById("num" + _0x18945A[0]).value = _0x18945A[1];
+            calculateamtqty(document.getElementById("num" + _0x18945A[0]), _0x18945A[0]);
         }
     }
     calcalllc();
@@ -3345,7 +3345,7 @@ function reprint(tsn) {
         if (retur === 0) {
 
             console.log(tsn);
-            rePrints(tsn);
+            rePrint(tsn);
         }
     });
 

@@ -93,7 +93,7 @@ class cancelTicket extends CAaskController {
             //$this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->delete("usertranscation") . $this->ask_mysqli->whereSingle(array("invoiceno" => $_POST["game"]))) != 1 ? array_push($error, "Unable to delte") : true;
         }
         if (empty($error)) {
-            echo json_encode(array("status" => "1", "message" => "Ticket Successfully", "Err" => $error));
+            echo json_encode(array("status" => "1", "message" => "Ticket Successfully canceled", "Err" => $error));
             $this->adminDB[$_SESSION["db_1"]]->commit();
         } else {
             //echo $this->printMessage("Invalid Entry ", "danger");
