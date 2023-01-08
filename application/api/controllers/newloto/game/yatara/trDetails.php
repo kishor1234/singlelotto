@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,43 +18,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once controller;
 header('Content-Type: application/json');
 
-class trDetails extends CAaskController {
+class trDetails extends CAaskController
+{
 
-//put your code here
+    //put your code here
     public $data = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
 
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
 
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         parent::execute();
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata, true);
 
         switch ($request["action"]) {
-            case "drawWiseTrDeails" :
+            case "drawWiseTrDeails":
                 $this->drawWiseTrDeails($request["userid"]);
                 break;
-            case "singledrawWiseTrDeails" :
+            case "singledrawWiseTrDeails":
                 $this->singledrawWiseTrDeails($request["drawid"], $request["userid"]);
                 break;
-            case "TrDeailsbytsn" :
+            case "TrDeailsbytsn":
                 $this->TrDeailsbytsn($request["tsn"], $request["userid"]);
                 break;
-            case "cancellist" :
+            case "cancellist":
                 $this->cancellist($request["userid"]);
                 break;
             case "cancelbet":
@@ -66,7 +71,7 @@ class trDetails extends CAaskController {
             case "claimlist":
                 $this->claimlist($request["userid"]);
                 break;
-            default :
+            default:
                 //$this->TrDeailsbytsn(9536465, 20210718);
                 //$this->cancellist(20210718);
                 break;
@@ -75,22 +80,26 @@ class trDetails extends CAaskController {
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         parent::distory();
         return;
     }
 
-    function getPointAgentCommission($data, $error) {
+    function getPointAgentCommission($data, $error)
+    {
         try {
 
             $sql = $this->ask_mysqli->select("agent", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $data["userid"]));
@@ -105,88 +114,100 @@ class trDetails extends CAaskController {
             $sql = $this->ask_mysqli->insert("transaction", array("userid" => 1, "credit" => $data["point"], "remark" => "Self Debit form Agent to Admin transfer balance", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("admin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => 1)), "balance")));
             $this->adminDB[$_SESSION["db_1"]]->query($sql) != 1 ? array_push($error, $this->adminDB["db_1"]->error) : true;
         } catch (Exception $ex) {
-            
         }
         return $error;
     }
 
-    function cancelbet($tsn, $userid) {
+    function cancelbet($tsn, $userid)
+    {
         $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
+
         $sql = $this->ask_mysqli->select("usertranscation", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("trno" => $tsn, "enterydate" => date("Y-m-d"), "active" => 1), "AND");
+        $error = array();
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         if ($row = $result->fetch_assoc()) {
-            $balance = $row["total"];
-            //check user limit
-            $ruserid=$row["userid"];
-            $limitQuery = $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"])));
-            if ($limitRow = $limitQuery->fetch_assoc()) {
-                if ($limitRow["climit"] > 0) {
-                    $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->updateINC(array("balance" => $balance), "enduser") . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"]))) != 1 ? array_push($error, "Update Balance Error " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
-//after balance update
-                    $sql = $this->ask_mysqli->insert("transaction", array("userid" => $row["userid"], "credit" => $balance, "remark" => "Cancel Tickt by user, ticket at PT {$balance}", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"])), "balance")));
-                    $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
+            $sql = $this->ask_mysqli->select("gametime", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => $row["drawid"]));
+            $resultTime = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+            if ($rowtime = $result->fetch_assoc()) {
+                if ($rowtime["status"] != 1) {
 
-                    //1=active 0=deactive
-                    $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->update(array("active" => 0), "usertranscation") . $this->ask_mysqli->whereSingle(array("trno" => $tsn))) != 1 ? array_push($error, "Transaction Error " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
-                    //transaction deactive complete
-//        $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->updateDNC(array("climit" => 1), "enduser") . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"]))) != 1 ? array_push($error, "Limit decress Error " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
-                    //agent get back commission
-                    if ($row["discountamtagent"] > 0) {
-                        $error = $this->getPointAgentCommission(array("point" => $row["discountamtagent"], "userid" => $row["agent_id"]), $error);
-                    }
-//end
+                    $balance = $row["total"];
+                    //check user limit
+                    $ruserid = $row["userid"];
+                    $limitQuery = $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"])));
+                    if ($limitRow = $limitQuery->fetch_assoc()) {
+                        if ($limitRow["climit"] > 0) {
+                            $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->updateINC(array("balance" => $balance), "enduser") . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"]))) != 1 ? array_push($error, "Update Balance Error " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
+                            //after balance update
+                            $sql = $this->ask_mysqli->insert("transaction", array("userid" => $row["userid"], "credit" => $balance, "remark" => "Cancel Tickt by user, ticket at PT {$balance}", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"])), "balance")));
+                            $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
 
-                    $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("utrno" => $tsn, "own" => $userid), "AND");
-                    $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
-                    $i = 1;
-                    $error = array();
-
-                    $resultArray = array();
-                    while ($row = $result->fetch_assoc()) {
-
-                        $loadQuery = $this->ask_mysqli->select("subentry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("trno" => $row["trno"]), "AND");
-                        $result2 = $this->adminDB[$_SESSION["db_1"]]->query($loadQuery);
-                        while ($row2 = $result2->fetch_assoc()) {
-                            $point = json_decode($row2["point"], true);
-                            foreach ($point as $key => $val) {
-                                foreach ($val as $index => $value) {
-                                    $inValue = ($index % 100);
-                                    $inTable = $index - $inValue;
-
-                                    $qq = $this->ask_mysqli->updateDNC(array("`" . $row2["gametimeid"] . "`" => $value), "`{$inTable}`") . $this->ask_mysqli->whereSingle(array("number" => sprintf("%02d", $inValue)));
-
-                                    $this->adminDB[$_SESSION["db_1"]]->query($qq) != 1 ? array_push($error, "Unable to Reove load " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
-                                }
+                            //1=active 0=deactive
+                            $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->update(array("active" => 0), "usertranscation") . $this->ask_mysqli->whereSingle(array("trno" => $tsn))) != 1 ? array_push($error, "Transaction Error " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
+                            //transaction deactive complete
+                            //        $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->updateDNC(array("climit" => 1), "enduser") . $this->ask_mysqli->whereSingle(array("userid" => $row["userid"]))) != 1 ? array_push($error, "Limit decress Error " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
+                            //agent get back commission
+                            if ($row["discountamtagent"] > 0) {
+                                $error = $this->getPointAgentCommission(array("point" => $row["discountamtagent"], "userid" => $row["agent_id"]), $error);
                             }
-//                $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->delete("subentry") . $this->ask_mysqli->whereSingle(array("id" => $row2["id"]))) != 1 ? array_push($error, "Unable to delte") : true;
+                            //end
+
+                            $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("utrno" => $tsn, "own" => $userid), "AND");
+                            $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+                            $i = 1;
+                            $error = array();
+
+                            $resultArray = array();
+                            while ($row = $result->fetch_assoc()) {
+
+                                $loadQuery = $this->ask_mysqli->select("subentry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("trno" => $row["trno"]), "AND");
+                                $result2 = $this->adminDB[$_SESSION["db_1"]]->query($loadQuery);
+                                while ($row2 = $result2->fetch_assoc()) {
+                                    $point = json_decode($row2["point"], true);
+                                    foreach ($point as $key => $val) {
+                                        foreach ($val as $index => $value) {
+                                            $inValue = ($index % 100);
+                                            $inTable = $index - $inValue;
+
+                                            $qq = $this->ask_mysqli->updateDNC(array("`" . $row2["gametimeid"] . "`" => $value), "`{$inTable}`") . $this->ask_mysqli->whereSingle(array("number" => sprintf("%02d", $inValue)));
+
+                                            $this->adminDB[$_SESSION["db_1"]]->query($qq) != 1 ? array_push($error, "Unable to Reove load " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
+                                        }
+                                    }
+                                    //                $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->delete("subentry") . $this->ask_mysqli->whereSingle(array("id" => $row2["id"]))) != 1 ? array_push($error, "Unable to delte") : true;
+                                }
+                                //end
+                                //            $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->delete("entry") . $this->ask_mysqli->whereSingle(array("id" => $row["id"]))) != 1 ? array_push($error, "Unable to delte") : true;
+                                $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->update(array("botStatus" => 1, "winstatus" => 0, "claimstatus" => 1, "isStatus" => 0), "entry") . $this->ask_mysqli->whereSingle(array("id" => $row["id"]))) != 1 ? array_push($error, "Unable to delte") : true;
+                                //$this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->delete("usertranscation") . $this->ask_mysqli->whereSingle(array("invoiceno" => $_POST["game"]))) != 1 ? array_push($error, "Unable to delte") : true;
+                            }
+                            if (empty($error)) {
+                                $sl = $this->ask_mysqli->updateDNC(array("climit" => 1), "enduser") . $this->ask_mysqli->whereSingle(array("userid" => $ruserid));
+                                $this->adminDB[$_SESSION["db_1"]]->query($sl);
+                                echo json_encode(array("status" => "1", "message" => "Ticket Successfully Canceled", "Err" => $error));
+                                $this->adminDB[$_SESSION["db_1"]]->commit();
+                            } else {
+                                //echo $this->printMessage("Invalid Entry ", "danger");
+                                $this->adminDB[$_SESSION["db_1"]]->rollback();
+                                echo json_encode(array("status" => "0", "message" => "Ticket cannot be canceled, Please contact to Admin", "error" => $error));
+                            }
+                        } else {
+                            echo json_encode(array("status" => "0", "message" => "Cancel limit is over now ", "error" => $error));
                         }
-//end
-//            $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->delete("entry") . $this->ask_mysqli->whereSingle(array("id" => $row["id"]))) != 1 ? array_push($error, "Unable to delte") : true;
-                        $this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->update(array("botStatus" => 1, "winstatus" => 0, "claimstatus" => 1, "isStatus" => 0), "entry") . $this->ask_mysqli->whereSingle(array("id" => $row["id"]))) != 1 ? array_push($error, "Unable to delte") : true;
-                        //$this->adminDB[$_SESSION["db_1"]]->query($this->ask_mysqli->delete("usertranscation") . $this->ask_mysqli->whereSingle(array("invoiceno" => $_POST["game"]))) != 1 ? array_push($error, "Unable to delte") : true;
-                    }
-                    if (empty($error)) {
-                        $sl = $this->ask_mysqli->updateDNC(array("climit" => 1), "enduser") . $this->ask_mysqli->whereSingle(array("userid" => $ruserid));
-                        $this->adminDB[$_SESSION["db_1"]]->query($sl);
-                        echo json_encode(array("status" => "1", "message" => "Ticket Successfully Canceled", "Err" => $error));
-                        $this->adminDB[$_SESSION["db_1"]]->commit();
                     } else {
-                        //echo $this->printMessage("Invalid Entry ", "danger");
-                        $this->adminDB[$_SESSION["db_1"]]->rollback();
-                        echo json_encode(array("status" => "0", "message" => "Ticket cannot be canceled, Please contact to Admin", "error" => $error));
+                        echo json_encode(array("status" => "0", "message" => "[ET] Ticket cannot be canceled, Please contact to Admin", "error" => $error));
                     }
-                } else {
-                    echo json_encode(array("status" => "0", "message" => "Cancel limit is over now ", "error" => $error));
                 }
             } else {
-                echo json_encode(array("status" => "0", "message" => "[ET] Ticket cannot be canceled, Please contact to Admin", "error" => $error));
+                echo json_encode(array("status" => "0", "message" => "[ET] Ticket cannot be canceled, Draw is over", "error" => $error));
             }
         } else {
             echo json_encode(array("status" => "0", "message" => "Invalid Ticket", "error" => $error));
         }
     }
 
-    function claimlist($userid) {
+    function claimlist($userid)
+    {
         $final = array();
         $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("isStatus" => 1, "own" => $userid, "enterydate" => date("Y-m-d")), "AND") . $this->ask_mysqli->orderBy("DESC", "utrno");
         $results = $this->adminDB[$_SESSION["db_1"]]->query($sql);
@@ -200,7 +221,8 @@ class trDetails extends CAaskController {
         }
     }
 
-    function printlist($userid) {
+    function printlist($userid)
+    {
         $final = array();
         $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("isStatus" => 1, "own" => $userid, "enterydate" => date("Y-m-d")), "AND") . $this->ask_mysqli->orderBy("DESC", "utrno");
         $results = $this->adminDB[$_SESSION["db_1"]]->query($sql);
@@ -214,7 +236,8 @@ class trDetails extends CAaskController {
         }
     }
 
-    function cancellist($userid) {
+    function cancellist($userid)
+    {
         $sql = $this->ask_mysqli->select("gametime", $_SESSION["db_1"]) . $this->ask_mysqli->whereSinglegreaterthanequal(array("etime" => date("H:i:s"))) . $this->ask_mysqli->limitWithOutOffset(1);
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         $final = array();
@@ -233,7 +256,8 @@ class trDetails extends CAaskController {
     }
 
     //tsn//schme name//num//qty//amt
-    function TrDeailsbytsn($tsn, $userid) {
+    function TrDeailsbytsn($tsn, $userid)
+    {
         $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("own" => $userid, "utrno" => $tsn), "AND") . $this->ask_mysqli->orderBy("DESC", "id");
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         $final = array();
@@ -262,7 +286,8 @@ class trDetails extends CAaskController {
     }
 
     //TSN//BetTime//Draw Time// Point //Canel // Winnin//winpt
-    function singledrawWiseTrDeails($drawid, $userid) {
+    function singledrawWiseTrDeails($drawid, $userid)
+    {
         $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("own" => $userid, "gametimeid" => $drawid, "enterydate" => date("Y-m-d")), "AND") . $this->ask_mysqli->orderBy("DESC", "id");
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         $status = array("Y", "N");
@@ -278,7 +303,8 @@ class trDetails extends CAaskController {
         }
     }
 
-    function drawWiseTrDeails($userid) {
+    function drawWiseTrDeails($userid)
+    {
         $currentDraw = $this->module->getPreviousDrawDetails();
         $final = array();
         foreach ($currentDraw as $key => $value) {
@@ -299,5 +325,4 @@ class trDetails extends CAaskController {
             echo json_encode(array("status" => "0", "message" => "Draw Over"));
         }
     }
-
 }
