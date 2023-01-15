@@ -32,7 +32,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Lotto Series</span>
-                            <a href="javascript:void(0)" class="nav-link"  data-toggle="modal" data-target="#myMain">
+                            <a href="javascript:void(0)" class="nav-link">
                                 <span class="info-box-number" id="colleges"></span>
                             </a>
                         </div>
@@ -72,8 +72,8 @@
                 </div>
                 <!-- /.col -->
             </div>
-<!--            <div class="row">
-                 /.col 
+            <div class="row">
+                <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-money"></i></span>
@@ -82,12 +82,12 @@
                             <span class="info-box-text">Set Winner ID</span>
                             <a href="javascript:void(0)"  data-toggle="modal" data-target="#winner" class="nav-link" data-toggle="modal" onclick="$('#myMainWinnerId')[0].reset();" data-target="#myMain"><span class="info-box-number" id="widid"></span></a>
                         </div>
-                         /.info-box-content 
+                        <!-- /.info-box-content -->
                     </div>
-                     /.info-box 
+                    <!-- /.info-box -->
                 </div>
-                 /.col 
-            </div>-->
+                <!-- /.col -->
+            </div>
 
             <div class="row">
                 <style>
@@ -125,9 +125,9 @@
                                 <td class="panel panle-primary">
                                     <input type="radio" name="resultTech" id="rb0" value="0" onclick="changeRT('0', '<?= $_SESSION["id"] ?>')">&nbsp;<label>As define Percentage wise</label>
                                 </td>
-<!--                                <td class="panel panel-warning">
+                                <td class="panel panel-warning">
                                     <input type="radio" name="resultTech" id="rb1"  value="1" onclick="changeRT('1', '<?= $_SESSION["id"] ?>')">&nbsp;<label>Set Winner ID</label>
-                                </td>-->
+                                </td>
                                 <td class="panel panel-danger">
                                     <input type="radio"  name="resultTech" id="rb2" value="2" onclick="changeRT('2', '<?= $_SESSION["id"] ?>')">&nbsp;<label>Random Percentage between 50% to 100%</label>
                                 </td>
@@ -194,6 +194,11 @@
                                     <option value="0">Minimum</option>
                                     <option value="1">Maximum</option>
                                 </select>
+                                <span id="error_name" class=""></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Wining Jackpot set(min 180) <span class="text-danger">*</span></label>
+                                <input type="number" min="180" name="winrate" id="winrate" placeholder="Enter Message" title="Message" required autocomplete="off" class="form-control">
                                 <span id="error_name" class=""></span>
                             </div>
                             <div class="form-group">

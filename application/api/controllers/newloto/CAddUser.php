@@ -814,7 +814,7 @@ class CAddUser extends CAaskController
     function updateper()
     {
         try {
-            $sql = $this->ask_mysqli->update(array("resultper" => $_POST["resultper"], "min" => $_POST["min"]), "admin") . $this->ask_mysqli->whereSingle(array("id" => $_POST["id"]));
+            $sql = $this->ask_mysqli->update(array("resultper" => $_POST["resultper"], "winrate" => $_POST["winrate"], "min" => $_POST["min"]), "admin") . $this->ask_mysqli->whereSingle(array("id" => $_POST["id"]));
             if ($this->adminDB[$_SESSION["db_1"]]->query($sql)) {
                 echo json_encode(array("toast" => array("success", "Admin", "Information Update Success... "), "status" => 1, "message" => "User Information Update Success.. "));
             } else {
