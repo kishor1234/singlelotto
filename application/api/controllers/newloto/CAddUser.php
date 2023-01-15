@@ -542,7 +542,7 @@ class CAddUser extends CAaskController
                 } else {
                     $subdata[] = "";
                 }
-                
+
                 $data[] = $subdata;
             }
             $json_data = array(
@@ -839,7 +839,6 @@ class CAddUser extends CAaskController
 
     function adminBalance()
     {
-
         $data = array();
         $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => 1));
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
@@ -847,12 +846,13 @@ class CAddUser extends CAaskController
         $data["3"] = $row["balance"];
         $data["4"] = $row["resultper"];
         $data["5"] = $row["min"];
+
         if ($row["type"]) {
             $data["6"] = $row["wid"] . "/Winner";
         } else {
             $data["6"] = $row["wid"] . "/Looser";
         }
-
+        $data["7"] = $row["winrate"];
         $sql = $this->ask_mysqli->selectCount("enduser", "id");
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         $row = $result->fetch_assoc();
@@ -865,7 +865,8 @@ class CAddUser extends CAaskController
         echo json_encode($data);
     }
 
-    function message() {
+    function message()
+    {
         unset($_POST["action"]);
         $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
         $uploadDir = "assets/upload/hostGame";

@@ -457,6 +457,27 @@ class calculateResultCustome extends CAaskController {
                 $query = $this->ask_mysqli->select("winnumber", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("gameid" => $_POST["gameid"], "gamestime" => $_POST["stime"], "gameetime" => $_POST["etime"], "gdate" => date("Y-m-d"), "series" => $series), "AND");
                 $rp = $this->adminDB[$_SESSION["db_1"]]->query($query);
                 if ($r = $rp->fetch_assoc()) {
+                    for ($i = 0; $i < 10; $i++) {
+
+                        if ($r[$i] != "") {
+                            if (!in_array($r[$i], $lottery)) {
+                                $lottery[$i] = $r[$i];
+                            } else {
+                                $temp = $lottery[$i];
+                                for ($k = 0; $k < 10; $k++) {
+                                    if ($r[$i] == $lottery[$k]) {
+                                        $lottery[$k] = $temp;
+                                    }
+                                }
+                                $lottery[$i] = $r[$i];
+                            }
+                        }
+                    }
+                    
+                    $d = array_merge($data, $lottery);
+                    echo $quey = $this->ask_mysqli->update($d, "winnumber") . $this->ask_mysqli->where(array("gameid" => $_POST["gameid"], "gamestime" => $_POST["stime"], "gameetime" => $_POST["etime"], "gdate" => date("Y-m-d"), "series" => $series), "AND");
+                    $rpc = $this->adminDB[$_SESSION["db_1"]]->query($quey);
+                    
 //                    echo json_encode(array("status" => "0", "msg" => "already Result Disply.."));
 //                    echo "already Result Disply"; //$this->ResetDrawLoad();
 //                    //$this->ResetD[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99]rawLoad($subSereis);

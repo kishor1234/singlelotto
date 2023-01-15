@@ -47,9 +47,9 @@
             $("#students").html(js[2]);
             $("#exams").html(js[3]);
             if (js[5] === "1") {
-                $("#per").html(js[4] + "%(Max)");
+                $("#per").html(js[4] + "%(Max)/ ₹" + js[7] + "/-");
             } else {
-                $("#per").html(js[4] + "%(Min)");
+                $("#per").html(js[4] + "%(Min)/ ₹" + js[7] + "/-");
             }
             $("#widid").html(js[6]);
         });
