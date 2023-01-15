@@ -71,7 +71,7 @@
                                 <p>Delete Cash Summery</p>
                             </a>
                         </li>
-<!--                        <li class="nav-item">
+                        <!--                        <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=logo and name', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Game Logo</p>
@@ -138,7 +138,7 @@
                                                         <p>Ticket Played Report</p>
                                                     </a>
                                                 </li>-->
-                        
+
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
@@ -157,7 +157,7 @@
                             </a>
                         </li>
                     </ul> -->
-                   <ul class="nav nav-treeview">
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=distributor&m=main', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -182,7 +182,7 @@
                             </a>
                         </li>
                     </ul>
-<!--                    <ul class="nav nav-treeview">
+                    <!--                    <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -244,20 +244,20 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Deploy Game
-<!--                            <span class="right badge badge-danger">New</span>-->
+                            <!--                            <span class="right badge badge-danger">New</span>-->
                         </p>
                     </a>
                 </li>
 
-<!--                <li class="nav-item">
+                <li class="nav-item">
                     <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=manualresult', '#app-container', false)" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Manual Result
                         </p>
                     </a>
-                </li>-->
-<!--                <li class="nav-item">
+                </li>
+                <!--                <li class="nav-item">
                     <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=blocknumber', '#app-container', false)" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -270,7 +270,7 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Change Password
-<!--                            <span class="right badge badge-danger">New</span>-->
+                            <!--                            <span class="right badge badge-danger">New</span>-->
                         </p>
                     </a>
                 </li>
@@ -288,4 +288,4 @@
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-</aside> 
+</aside>

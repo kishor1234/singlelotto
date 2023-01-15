@@ -95,7 +95,7 @@ class C_SetLotoResult extends CAaskController
                     //echo "already Result Disply"; //$this->ResetDrawLoad();
                     $this->ResetDrawLoad();
                 } else {
-                    echo $sql = $this->ask_mysqli->insert("winnumber", $d);
+                    $sql = $this->ask_mysqli->insert("winnumber", $d);
                     $this->adminDB[$_SESSION["db_1"]]->query($sql);
                     $this->ResetDrawLoad();
                     //$error[$row['series']] = "series result is published ";
