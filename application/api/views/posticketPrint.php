@@ -81,7 +81,7 @@
                         if ($limit == 1) {
                             echo "<tr style='border:none;'>";
                         }
-                        if ($limit == 3) {
+                        if ($limit == 2) {
 
                 ?>
                             <td>

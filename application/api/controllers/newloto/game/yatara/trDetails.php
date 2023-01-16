@@ -128,7 +128,7 @@ class trDetails extends CAaskController
         if ($row = $result->fetch_assoc()) {
             $sql = $this->ask_mysqli->select("gametime", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => $row["drawid"]));
             $resultTime = $this->adminDB[$_SESSION["db_1"]]->query($sql);
-            if ($rowtime = $result->fetch_assoc()) {
+            if ($rowtime = $resultTime->fetch_assoc()) {
                 if ($rowtime["status"] != 1) {
 
                     $balance = $row["total"];

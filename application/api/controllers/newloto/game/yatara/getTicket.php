@@ -60,6 +60,10 @@ class getTicket extends CAaskController {
             echo json_encode(array("status" => "0", "msg" => "Time out"));
             die;
         }
+        $sql = $this->ask_mysqli->select("admin", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("id" => 1));
+        $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
+        $row = $result->fetch_assoc();
+        $winrate=$row["winrate"];
         $sql = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $request["uid"]));
         $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
         if ($row = $result->fetch_assoc()) {
@@ -104,10 +108,11 @@ class getTicket extends CAaskController {
                     "winstatus" => (string) 0,
                     "winamt" => (string) 0,
                     "claimstatus" => (string) 0,
-                    "ip" => "",
+                    "ip" =>trim($request["adv"]),
                     "gametime" => $s["stime"],
                     "gameendtime" => $s["etime"],
-                    "gametimeid" => $s["id"]
+                    "gametimeid" => $s["id"],
+                    "winpt"=>$winrate
                 );
                 //calculat princiapl amount removing discount
                 $principal_amount = (float) ($request["saleamt"] - $discountAmount);
@@ -121,7 +126,7 @@ class getTicket extends CAaskController {
                 $sql = $this->ask_mysqli->insert("transaction", array("userid" => $request["uid"], "debit" => $principal_amount, "remark" => "Buy Ticket at PT {$principal_amount}", "ip" => $_SERVER["REMOTE_ADDR"], "balance" => $this->getData($this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("userid" => $request["uid"])), "balance")));
                 $this->adminDB[$_SESSION["db_1"]]->query($sql) != true ? array_push($error, $this->adminDB["db_1"]->error) : true;
                 //end transaction
-                $sql = $this->ask_mysqli->insert("usertranscation", array("drawid" => $request["draw"], "enterydate" => date("Y-m-d"), "gid" => $request["gmcd"], "drawid" => $insertSingleInvoice["gametimeid"], "userid" => $insertSingleInvoice["own"], "invoiceno" => $insertSingleInvoice["game"], "netamt" => $insertSingleInvoice["amount"], "discount" => $insertSingleInvoice["comission"], "discountamt" => $insertSingleInvoice["comissionAMT"], "discountamtagent" => $insertSingleInvoice["comissionAMTAgent"], "agent_id" => $insertSingleInvoice["agent_id"], "total" => $principal_amount, "ip" => $_SERVER["REMOTE_ADDR"]));
+                $sql = $this->ask_mysqli->insert("usertranscation", array("drawid" => $request["draw"], "enterydate" => date("Y-m-d"), "gid" => $request["gmcd"], "drawid" => $insertSingleInvoice["gametimeid"], "userid" => $insertSingleInvoice["own"], "invoiceno" => $insertSingleInvoice["game"], "netamt" => $insertSingleInvoice["amount"], "discount" => $insertSingleInvoice["comission"], "discountamt" => $insertSingleInvoice["comissionAMT"], "discountamtagent" => $insertSingleInvoice["comissionAMTAgent"], "agent_id" => $insertSingleInvoice["agent_id"], "total" => $principal_amount, "ip" => trim($request["adv"])));
                 $this->adminDB[$_SESSION["db_1"]]->query($sql) != 1 ? array_push($error, $this->adminDB[$_SESSION["db_1"]]->error) : true;
                 $transaction_id = $this->adminDB[$_SESSION["db_1"]]->insert_id;
                 $last = 9536254 + $transaction_id;
@@ -451,7 +456,7 @@ class getTicket extends CAaskController {
                 //print_r($row);
                 if (empty($error)) {
                     $this->adminDB[$_SESSION["db_1"]]->commit();
-                    $block = $this->module->block($utrno);
+                    //$block = $this->module->block($utrno);
                     echo json_encode(array("block" => $block, "trno" => (string) $utrno, "trpt" => (String) $amts, "status" => "1", "msg" => "Success", "advance" => "false", "print" => $finalArray, "POS" => $this->posTicket($utrno)));
                     $this->adminDB[$_SESSION["db_1"]]->commit();
                 } else {

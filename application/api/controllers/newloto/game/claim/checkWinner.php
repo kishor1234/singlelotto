@@ -45,14 +45,14 @@ class checkWinner extends CAaskController {
 
             $postdata = file_get_contents("php://input");
             $_POST = json_decode($postdata, true);
-            
+
             $final = array();
             //$_POST['id'] = 'ask5ed87e5c59b6d';
             //$_POST['userid'] = '20200431';
             // $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("game" => $_POST["id"], "trno" => $_POST["id"]), "OR") . " AND own='{$_POST["userid"]}'";
             $sql = $this->ask_mysqli->select("entry", $_SESSION["db_1"]) . $this->ask_mysqli->where(array("game" => $_POST["id"], "own" => $_POST["userid"], "isStatus" => 1), "AND"); // . " AND own='{$_POST["userid"]}'";
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
-            $ra = 180;
+            $winpt = $this->getData("select * from admin where id='1'", "winrate");
             if ($row = $result->fetch_assoc()) {
 
                 if (strtotime(date("H:i:s")) < strtotime($row["gameendtime"]) && strtotime(date("Y-m-d")) == strtotime($row["enterydate"])) {
@@ -65,6 +65,7 @@ class checkWinner extends CAaskController {
                 }
                 $claimStatis = $row["claimstatus"];
                 $ClaimTime = $row["ClaimTime"];
+                $winpt = $row["winpt"];
                 $drid = $row["gametimeid"];
                 $game = $row["game"];
                 $utrno = $row["utrno"];
@@ -111,11 +112,11 @@ class checkWinner extends CAaskController {
                 }
                 //echo $sum;die;
                 if ($claimStatis === "1") {
-                    $pri = $sum * $ra;
+                    $pri = $sum * $winpt;
                     $final = array(
                         "status" => "0",
                         "message" => "Ticket already claimed \nPoint win:{$pri} \nClaim date : {$ClaimTime}",
-                        "amount" => (string) ($sum * $ra),
+                        "amount" => (string) ($sum * $winpt),
                         "own" => $_POST["userid"],
                         "drawid" => $game_id,
                         "game" => $game,
@@ -128,7 +129,7 @@ class checkWinner extends CAaskController {
                     $final = array(
                         "status" => "0",
                         "message" => "No winning ticket",
-                        "amount" => (string) ($sum * $ra),
+                        "amount" => (string) ($sum * $winpt),
                         "own" => $_POST["userid"],
                         "drawid" => $game_id,
                         "game" => $game,
@@ -139,7 +140,7 @@ class checkWinner extends CAaskController {
                     // $er == false ? array_push($error, "Update win and claim status  table error " . $this->adminDB[$_SESSION["db_1"]]->error) : true;
                 } else {
                     $this->adminDB[$_SESSION["db_1"]]->autocommit(false);
-                    $this->amount = $sum * $ra;
+                    $this->amount = $sum * $winpt;
                     $error = array();
                     $sql = $this->ask_mysqli->insert("claim", array("enteryid" => $_POST["userid"], 'utrno' => $row["utrno"], "winnumber" => json_encode($winArray), "gameid" => $row["gametimeid"], "gametime" => $row["gametime"], "gameetime" => $row["gameendtime"], "cdate" => $row["enterydate"]));
                     $er = $this->adminDB[$_SESSION["db_1"]]->query($sql);
@@ -166,7 +167,7 @@ class checkWinner extends CAaskController {
                         $final = array(
                             "status" => "0",
                             "message" => "error on Update! " . json_encode($error),
-                            "amount" => (string) ($sum * $ra),
+                            "amount" => (string) ($sum * $winpt),
                             "own" => $_POST["userid"],
                             "drawid" => $game_id,
                             "game" => $game,
@@ -175,10 +176,13 @@ class checkWinner extends CAaskController {
                         );
                     } else {
                         $this->adminDB[$_SESSION["db_1"]]->commit();
+                        if ($winpt > 180) {
+                            $jackpot = "JACKPOT POINT ";
+                        }
                         $final = array(
                             "status" => "1",
-                            "message" => "You won! " . ($sum * $ra) . "\nDr ID. : {$drid} \nClaim date : {$ClaimTime}",
-                            "amount" => (string) ($sum * $ra),
+                            "message" => $jackpot . " You won! " . ($sum * $winpt) . "\nDr ID. : {$drid} \nClaim date : {$ClaimTime}",
+                            "amount" => (string) ($sum * $winpt),
                             "own" => $_POST["userid"],
                             "drawid" => $game_id,
                             "id" => $_POST["id"],
