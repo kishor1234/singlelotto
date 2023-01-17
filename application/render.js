@@ -45,19 +45,13 @@ function PrintData(ticketData) {
             css: {"font-size": "12px"},
         },
         {
-            type: 'image',
-            path: 'src/icon.ico', // file path
-            position: 'center', // position of image: 'left' | 'center' | 'right'
-            width: '50px', // width of image in px; default: auto
-            height: '50px', // width of image in px; default: 50 or '50px'
-        },
-        {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
             value: ticketData.ticket,
             css: {
                 "font-size": "8px",
                 "font-family": "sans-serif",
                 "text-align": "left",
+                "border":"none",
             },
         },
         {

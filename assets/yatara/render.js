@@ -45,13 +45,6 @@ function PrintData(ticketData) {
             css: {"font-size": "12px"},
         },
         {
-            type: 'image',
-            path: 'src/icon.ico', // file path
-            position: 'center', // position of image: 'left' | 'center' | 'right'
-            width: '50px', // width of image in px; default: auto
-            height: '50px', // width of image in px; default: 50 or '50px'
-        },
-        {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
             value: ticketData.ticket,
             css: {
@@ -64,15 +57,15 @@ function PrintData(ticketData) {
             type: "barCode", // Do you think the result is ugly? Me too. Try use an image instead...
             value: ticketData.barcode,
             height: 25,
-            width: 1,
-            displayValue: false, // Display value below barcode
+            width: 2,
+            displayValue: true, // Display value below barcode
             fontsize: 25,
-            position: 'left',
-            style: 'margin: 0px 20px',
+            position: 'center',
+            style: 'margin: 0px 0px',
             css: {
                 "font-size": "15px",
                 "font-family": "sans-serif",
-                "text-align": "left",
+                "text-align": "center",
             },
 
         },

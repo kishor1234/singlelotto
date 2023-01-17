@@ -50,7 +50,7 @@
                                         <table align='center' width='40%' border=2 bgcolor='#003366' bordercolor=white cellpadding=5>
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Terminal Sale: </td>
-                                                <td align='right' width='40%' class='tdseries'><?= number_format($rdata["totalNetPoint"], 2) ?></td>
+                                                <td align='right' width='40%' class='tdseries'><?= number_format($rdata["totalNetPoint"]- $rdata["cancelPoint"], 2) ?></td>
                                             </tr>
                                             <!--<tr style="background-color: red !important;"><td align='right' width='60%' class='tdseries2'>Cancelled Point: </td><td align='right' width='40%' class='tdseries2' ><?= $rdata["cancelPoint"] ?></td></tr>-->
                                             
