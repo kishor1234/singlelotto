@@ -916,7 +916,7 @@ function funclastbet2(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var table = "<table id='myTable'><tr><th>TSN</th><th>Bet Time</th><th>Draw Time</th><th>Points</th><th>Cancel</th><th>Winning</th><th>Win Points</th></tr>";
+            var table = "<table id='myTable'><tr><th>TSN1</th><th>Bet Time</th><th>Draw Time</th><th>Points</th><th>Cancel</th><th>Winning</th><th>Win Points</th></tr>";
             if (this.responseText != "false") {
                 var jsonData = JSON.parse(this.responseText);
                 if (jsonData.status === "1") {
@@ -963,7 +963,7 @@ function funclastbet3(tsn) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var table = "<table id='myTable'><tr><th>TSN</th><th>Schme Name</th><th>Num.</th><th>Qty.</th><th>Amt.</th></tr>";
+            var table = "<table id='myTable'><tr><th>TSN3</th><th>Schme Name</th><th>Num.</th><th>Qty.</th><th>Amt.</th></tr>";
             if (this.responseText != "false") {
                 var jsonData = JSON.parse(this.responseText);
                 //console.log(jsonData);
@@ -1016,7 +1016,7 @@ function direactClaim() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var table = "<table id='myTable'><tr><th>TSN</th><th>Bet Time</th><th>Draw Time</th><th>Points</th><th>Status</th></tr>";
+            var table = "<table id='myTable'><tr><th>Claim</th><th>Bet Time</th><th>Draw Time</th><th>Points</th><th>Status</th></tr>";
             if (this.responseText != "false") {
 
                 var jsonData = JSON.parse(this.responseText);
@@ -1052,7 +1052,7 @@ function reprintlist() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var table = "<table id='myTable'><tr><th>TSN</th><th>Bet Time</th><th>Draw Time</th><th>Points</th></tr>";
+            var table = "<table id='myTable'><tr><th>Print</th><th>Bet Time</th><th>Draw Time</th><th>Points</th></tr>";
             if (this.responseText != "false") {
 
                 var jsonData = JSON.parse(this.responseText);
@@ -1082,7 +1082,7 @@ function canlist() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var table = "<table id='myTable'><tr><th>TSN</th><th>Bet Time</th><th>Draw Time</th><th>Points</th></tr>";
+            var table = "<table id='myTable'><tr><th>Cancel</th><th>Bet Time</th><th>Draw Time</th><th>Points</th></tr>";
             if (this.responseText != "false") {
 
                 var jsonData = JSON.parse(this.responseText);

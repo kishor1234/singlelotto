@@ -55,7 +55,7 @@
 
                                     <?php
                                     $k = 0;
-                                    for ($i = 0; $i < 100; $i++) {
+                                    for ($i = 0; $i < 10; $i++) {
                                         if ($k == 0) {
                                     ?>
                                             <div class="col-lg-1">

@@ -61,12 +61,12 @@ function PrintData(ticketData) {
             width: 1,
             displayValue: false, // Display value below barcode
             fontsize: 25,
-            position: 'left',
+            position: 'center',
             style: 'margin: 0px 20px',
             css: {
                 "font-size": "15px",
                 "font-family": "sans-serif",
-                "text-align": "left",
+                "text-align": "center",
             },
 
         },
