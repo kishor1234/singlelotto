@@ -1247,7 +1247,7 @@
                 document.getElementById("claim-msg").innerHTML = "";
             }
             document.addEventListener('keydown', function(event) {
-                if (event.key === "Escape" || event.key === "Tab") {
+                if (event.code === "Escape" || event.code === "Tab" || event.code === "Space") {
                     //do something
                     closebtn();
                 }
