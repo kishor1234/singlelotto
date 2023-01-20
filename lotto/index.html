@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Lotto Game Of Chance</title>
-  </head>
-  <body style="text-align: center">
-    <canvas id="unity-canvas" width=1200 height=600 style="width: 1200px; height: 600px; background: #231F20"></canvas>
-    <script src="Build/lotto.loader.js"></script>
-    <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/lotto.data",
-        frameworkUrl: "Build/lotto.framework.js",
-        codeUrl: "Build/lotto.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Lotto Game Of Chance",
-        productVersion: "1.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
-    </script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Unity WebGL Player | Lotto Game Of Chance</title>
+</head>
+
+<body style="text-align: center">
+  <canvas id="unity-canvas" style="width: 100%;height:auto;background: #231F20"></canvas>
+  <script src="Build/lotto.loader.js"></script>
+  <script>
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      dataUrl: "Build/lotto.data",
+      frameworkUrl: "Build/lotto.framework.js",
+      codeUrl: "Build/lotto.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "DefaultCompany",
+      productName: "Lotto Game Of Chance",
+      productVersion: "1.0",
+      // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+      // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+    });
+  </script>
+</body>
+
 </html>
