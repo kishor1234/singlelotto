@@ -29,6 +29,7 @@
         tbody {
             border: none !important;
             text-align: left !important;
+            font-size: 13px !important;
         }
 
         .ticketContainer {
@@ -46,6 +47,7 @@
         .w170,
         p {
             width: 170px !important;
+            font-size: 14px !important;
         }
 
         body {

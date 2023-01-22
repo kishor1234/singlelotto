@@ -1446,7 +1446,7 @@
                 animation.style.display = "block";
                 setTimeout(function() {
                     animation.style.display = "none";
-                }, 25000)
+                }, 35000)
                 console.log("animation", animation);
 
             }
@@ -1505,7 +1505,7 @@
 
         <!--<script src="assets/yatara/gb.js" type="text/javascript"></script>-->
         <script src="assets/yatara/main.js" type="text/javascript"></script>
-        <script src="assets/yatara/render.js" type="text/javascript"></script>
+        <script src="assets/yatara/render2.js" type="text/javascript"></script>
     </body>
 
 </html>

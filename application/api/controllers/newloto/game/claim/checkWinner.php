@@ -177,7 +177,7 @@ class checkWinner extends CAaskController {
                     } else {
                         $this->adminDB[$_SESSION["db_1"]]->commit();
                         if ($winpt > 180) {
-                            $jackpot = "JACKPOT POINT ";
+                            $jackpot = "JACKPOT LOTTO ";
                         }
                         $final = array(
                             "status" => "1",
