@@ -10,14 +10,15 @@
     <style>
         * {
             font-weight: 600;
-            padding: 0px 0px 0px 0px !important;
+            padding: 2px 0px 2px 0px !important;
             margin: 0.2px !important;
+            
         }
 
         table {
             border: none !important;
             /* border-spacing: unset; */
-            border-spacing: 1px 2px !important;
+            border-spacing: 0px 2px !important;
             text-align: left !important;
 
         }
@@ -29,11 +30,12 @@
         tbody {
             border: none !important;
             text-align: left !important;
-            font-size: 13px !important;
+            font-size: 10px !important;
+            margin-top: 2px !important;
         }
 
         .ticketContainer {
-            padding: 0px 0px 0px 5px !important;
+            padding: 0px 0px 0px 0px !important;
         }
 
         .mb1 {
@@ -47,12 +49,12 @@
         .w170,
         p {
             width: 170px !important;
-            font-size: 14px !important;
+            font-size: 10px !important;
         }
 
         body {
-            width: 200px !important;
-            margin-left: 4px !important;
+            width: 170px !important;
+            margin-left: 0px !important;
         }
 
         .auth {
@@ -63,6 +65,10 @@
             align-content: center;
             flex-wrap: nowrap;
 
+        }
+        .p2{
+            margin-bottom: 2px !important;
+            
         }
     </style>
 </head>
@@ -107,7 +113,7 @@
                         $knums = $sx[0] . $sx[1];
                         $knumb = $sx[2] . $sx[3];
                         if ($limit == 1) {
-                            echo "<tr>";
+                            echo "<tr class='p2'>";
                         }
                         if ($limit == 3) {
 
@@ -116,11 +122,11 @@
                                 <table>
                                     <tr>
                                         <td class='qt'>
-                                            <span style=" border: 1px solid;  "> <?= $knums ?>
+                                            <span style=" border: 1px dotted;padding: 1px !important;  "> <?= $knums ?>
                                             </span>
                                         </td>
                                         <td class='aqt'>
-                                            <span style=" border: 1px solid; border-radius: 50%; "><?= $knumb ?> </span>
+                                            <span style=" border: 1px dotted; border-radius: 50%;padding: 1px !important; "><?= $knumb ?> </span>
                                         </td>
                                     </tr>
                                 </table>
@@ -137,11 +143,11 @@
                                 <table>
                                     <tr>
                                         <td class='qt'>
-                                            <span style=" border: 1px solid; "> <?= $knums ?>
+                                            <span style=" border: 1px dotted; padding: 1px !important; "> <?= $knums ?>
                                             </span>
                                         </td>
                                         <td class='aqt'>
-                                            <span style=" border: 1px solid; border-radius: 50%; "><?= $knumb ?> </span>
+                                            <span style=" border: 1px dotted; border-radius: 50%; padding: 1px !important; "><?= $knumb ?> </span>
                                         </td>
                                     </tr>
                                 </table>

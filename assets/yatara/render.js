@@ -1,7 +1,7 @@
-let {remote, ipcRenderer} = require("electron");
+let { remote, ipcRenderer } = require("electron");
 // console.log(process.versions.electron);
 
-const {PosPrinter} = remote.require("electron-pos-printer");
+const { PosPrinter } = remote.require("electron-pos-printer");
 // const {PosPrinter} = require("electron-pos-printer"); //dont work in production (??)
 const dialog = remote.dialog;
 const path = require("path");
@@ -34,15 +34,14 @@ function printPos(jsonData) {
     //console.log(children);
     ipcRenderer.send('todo:add', JSON.stringify(children));
 
-//    
+    //    
 }
 function PrintData(ticketData) {
-    return  [
+    return [
         {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
             value: "||---",
-            // style: `text-align:left;`,
-            style: {"font-size": "12px"},
+            style: { "text-align": "left", "font-size": "12px" },
         },
         {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
@@ -59,11 +58,11 @@ function PrintData(ticketData) {
             height: 25,
             width: 1,
             displayValue: false, // Display value below barcode
-            fontsize: 25,
+            fontsize: 12,
             position: 'center',
-            // style: 'margin: 0px 0px',
             style: {
-                "font-size": "15px",
+                "margin": "0px 0px",
+                "font-size": "12px",
                 "font-family": "sans-serif",
                 "text-align": "center",
             },
@@ -82,8 +81,7 @@ function PrintData(ticketData) {
         {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
             value: "---||",
-            // style: `text-align:right;`,
-            style: {"font-size": "12px"},
+            style: { "text-align": "right", "font-size": "12px" },
         },
     ];
 }
@@ -114,7 +112,7 @@ function rePrint(lasttsn) {
     };
     xhttp.open("POST", api_url + "/?r=posTicket", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(JSON.stringify({"utrno": lasttsn}));
+    xhttp.send(JSON.stringify({ "utrno": lasttsn }));
 
 }
 
@@ -123,26 +121,17 @@ function printWinRecipt(data) {
     //console.log(data);
     var jsonData = JSON.parse(data);
     var children = [];
-    if (jsonData.status === "1")
-    {
+    if (jsonData.status === "1") {
         const data = [
             {
                 type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                 value: "||---",
-                style: `text-align:left;`,
-                css: {"font-size": "12px"},
-            },
-            {
-                type: 'image',
-                path: 'src/icon.ico', // file path
-                position: 'center', // position of image: 'left' | 'center' | 'right'
-                width: '50px', // width of image in px; default: auto
-                height: '50px', // width of image in px; default: 50 or '50px'
+                style: { "text-align": "left", "font-size": "12px" },
             },
             {
                 type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
                 value: jsonData["0"]["recip"],
-                css: {
+                style: {
                     "font-size": "10px",
                     "font-family": "sans-serif",
                     "text-align": "left",
@@ -151,23 +140,22 @@ function printWinRecipt(data) {
             {
                 type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                 value: "---||",
-                style: `text-align:right;`,
-                css: {"font-size": "12px"},
+                style: { "text-align": "right", "font-size": "12px" },
             },
         ];
-//        const options = {
-//            preview: false, // Preview in window or print
-//            width: width, //  width of content body
-//            margin: "0 0 0 0", // margin of content body
-//            copies: 1, // Number of copies to print
-//            printerName: PrinterName, // printerName: string, check it at webContent.getPrinters()
-//            timeOutPerLine: 400,
-//            silent: true,
-//        };
+        //        const options = {
+        //            preview: false, // Preview in window or print
+        //            width: width, //  width of content body
+        //            margin: "0 0 0 0", // margin of content body
+        //            copies: 1, // Number of copies to print
+        //            printerName: PrinterName, // printerName: string, check it at webContent.getPrinters()
+        //            timeOutPerLine: 400,
+        //            silent: true,
+        //        };
 
 
         const d = children.concat(data);
-//        children = children.concat(data);
+        //        children = children.concat(data);
 
         ipcRenderer.send('todo:add', JSON.stringify(d));
     }
@@ -176,8 +164,7 @@ function printPlayedRecipt(jsonData) {
     //console.log(data);
 
     var children = [];
-    if (jsonData.status === "1")
-    {
+    if (jsonData.status === "1") {
         const ticketArray = jsonData.data;
         var d = [];
         var children = [];
@@ -186,20 +173,12 @@ function printPlayedRecipt(jsonData) {
                 {
                     type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                     value: "||---",
-                    style: `text-align:left;`,
-                    css: {"font-size": "12px"},
-                },
-                {
-                    type: 'image',
-                    path: 'src/icon.ico', // file path
-                    position: 'center', // position of image: 'left' | 'center' | 'right'
-                    width: '50px', // width of image in px; default: auto
-                    height: '50px', // width of image in px; default: 50 or '50px'
+                    style: { "text-align": "left", "font-size": "12px" },
                 },
                 {
                     type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
                     value: ticketArray[index],
-                    css: {
+                    style: {
                         "font-size": "10px",
                         "font-family": "sans-serif",
                         "text-align": "left",
@@ -208,8 +187,7 @@ function printPlayedRecipt(jsonData) {
                 {
                     type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                     value: "---||",
-                    style: `text-align:right;`,
-                    css: {"font-size": "12px"},
+                    style: { "text-align":"right","font-size": "12px" },
                 },
             ];
             children = children.concat(data);
@@ -244,8 +222,7 @@ ipcRenderer.on('register:bet', (event, bet) => {
 
 });
 
-function quit()
-{
+function quit() {
     ipcRenderer.send('todo:add', "quit");
 }
 
@@ -262,8 +239,8 @@ function Alert(msg) {
     options.buttons = ["Ok"];
     options.message = msg;
     dialog.showMessageBox(WIN, options, (res, checked) => {
-//        console.log(res);
-//        console.log(checked);
+        //        console.log(res);
+        //        console.log(checked);
         if (res === 0)
             WIN.destroy();
     });
