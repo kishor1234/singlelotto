@@ -1352,10 +1352,11 @@
                 event.preventDefault();
                 document.getElementById("claim-msg").innerHTML = "";
                 document.getElementById("claim-msg2").innerHTML = "";
-                if (event.keyCode == 13) {
-                    var barcode = document.getElementById("scancode").value;
-
-                    claminBet(barcode);
+                console.log("ss", event.keyCode);
+                if (event.keyCode == 13 || event.keyCode == 109) {
+                    var barcodes = document.getElementById("scancode").value;
+                    var barcode=barcodes.split('-');
+                    claminBet(barcode[0]);
                     //                console.log(JSON.stringify({"id": barcode.trim(), "userid": userid,"key":event.keyCode}));
                 }
             }

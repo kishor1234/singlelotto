@@ -41,15 +41,15 @@ function PrintData(ticketData) {
         {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
             value: "||---",
-            style: { "text-align": "left", "font-size": "12px" },
+            style: { "textAlign": "left", "fontSize": "12px" },
         },
         {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
             value: ticketData.ticket,
             style: {
-                "font-size": "10px",
-                "font-family": "sans-serif",
-                "text-align": "left",
+                "fontSize": "10px",
+                "fontFamily": "sans-serif",
+                "textAlign": "left",
             },
         },
         {
@@ -62,9 +62,9 @@ function PrintData(ticketData) {
             position: 'center',
             style: {
                 "margin": "0px 0px",
-                "font-size": "12px",
-                "font-family": "sans-serif",
-                "text-align": "center",
+                "fontSize": "12px",
+                "fontFamily": "sans-serif",
+                "textAlign": "center",
             },
 
         },
@@ -72,16 +72,16 @@ function PrintData(ticketData) {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
             value: ticketData.barcode,
             style: {
-                "font-size": "12px",
-                "font-family": "sans-serif",
-                "text-align": "center",
+                "fontSize": "12px",
+                "fontFamily": "sans-serif",
+                "textAlign": "center",
             },
         },
 
         {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
             value: "---||",
-            style: { "text-align": "right", "font-size": "12px" },
+            style: { "textAlign": "right", "fontSize": "12px" },
         },
     ];
 }
@@ -126,21 +126,21 @@ function printWinRecipt(data) {
             {
                 type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                 value: "||---",
-                style: { "text-align": "left", "font-size": "12px" },
+                style: { "textAlign": "left", "fontSize": "12px" },
             },
             {
                 type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
                 value: jsonData["0"]["recip"],
                 style: {
-                    "font-size": "10px",
-                    "font-family": "sans-serif",
-                    "text-align": "left",
+                    "fontSize": "10px",
+                    "fontFamily": "sans-serif",
+                    "textAlign": "left",
                 },
             },
             {
                 type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                 value: "---||",
-                style: { "text-align": "right", "font-size": "12px" },
+                style: { "textAlign": "right", "fontSize": "12px" },
             },
         ];
         //        const options = {
@@ -173,21 +173,21 @@ function printPlayedRecipt(jsonData) {
                 {
                     type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                     value: "||---",
-                    style: { "text-align": "left", "font-size": "12px" },
+                    style: { "textAlign": "left", "fontSize": "12px" },
                 },
                 {
                     type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
                     value: ticketArray[index],
                     style: {
-                        "font-size": "10px",
-                        "font-family": "sans-serif",
-                        "text-align": "left",
+                        "fontSize": "10px",
+                        "fontFamily": "sans-serif",
+                        "textAlign": "left",
                     },
                 },
                 {
                     type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                     value: "---||",
-                    style: { "text-align":"right","font-size": "12px" },
+                    style: { "textAlign":"right","fontSize": "12px" },
                 },
             ];
             children = children.concat(data);

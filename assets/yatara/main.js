@@ -787,7 +787,7 @@ function loadDoc(doc) {
         console.log(JSON.stringify(dt));
         //
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
+        xhttp.onreadystatechange = async function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.responseText != "false") {
                     //console.log(this.responseText);
@@ -797,7 +797,7 @@ function loadDoc(doc) {
                     if (jsonData.status === "1") {
                         lasttsn = jsonData.trno;
                         //                        lasttamt = jsonData.trpt;
-                        printPos(jsonData.POS);
+                        await printPos(jsonData.POS);
 
                     }
                     document.getElementById("msg").innerHTML = jsonData.msg;
