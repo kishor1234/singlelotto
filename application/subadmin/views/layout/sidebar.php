@@ -147,6 +147,14 @@
                                 </a>
                             </li>
                         </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=selldistributor&m=admin', '#app-container', false)" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sell Report</p>
+                                </a>
+                            </li>
+                        </ul>
                         <!--                    <ul class="nav nav-treeview">
                                                 <li class="nav-item">
                                                     <a href="javascript:void(0)" onclick="clickOnLink('/?r=dashboard&v=subadmin&m=main', '#app-container', false)" class="nav-link">
