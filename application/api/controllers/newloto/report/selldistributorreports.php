@@ -62,7 +62,7 @@ class selldistributorreports extends CAaskController
             $ab = array("aid" => "", "uid" => "", "a" => 0, "_a" => 0, "f" => 0, "b" => 0, "c" => 0, "d" => 0, "e" => 0, "g" => 0, "h" => 0);
 
             while ($rowAgent = $resultAgent->fetch_assoc()) {
-                $sl = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]). $this->ask_mysqli->whereSingle(array("dist_id" => $rowAgent["userid"])); //. $this->ask_mysqli->whereBetweenDates('on_create', $request["dateform"], $request["dateto"]) . " AND active='1'";
+                $sl = $this->ask_mysqli->select("enduser", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("dist_id" => $rowAgent["userid"])); //. $this->ask_mysqli->whereBetweenDates('on_create', $request["dateform"], $request["dateto"]) . " AND active='1'";
                 $result = $this->adminDB[$_SESSION["db_1"]]->query($sl);
 
                 $farray = array();
@@ -88,7 +88,12 @@ class selldistributorreports extends CAaskController
                     $array["g"] = "0";
                     $h = $array["c"] - $array["d"] - $array["f"];
                     $h == null ? $array["h"] = 0 : $array["h"] = $h;
-
+                    $array["agent"] = $c * 0.01;
+                    $array["subdist"] = $c * 0.01;
+                    $array["dist"] = $c * 0.09;
+                    $array["ah"]=$h-$array["agent"];
+                    $array["sdh"]=$h-$array["agent"]-$array["subdist"]-$array["dist"];
+                    $array["dh"]=$h-$array["agent"]-$array["dist"];
                     array_push($farray, $array);
                 }
                 $sumofa = 0;
@@ -99,6 +104,7 @@ class selldistributorreports extends CAaskController
                 $sumoff = 0;
                 $sumofg = 0;
                 $sumofh = 0;
+                $sumofdh = 0;
                 $aid = "";
                 if (!empty($farray)) {
                     foreach ($farray as $in => $val) {
@@ -113,6 +119,7 @@ class selldistributorreports extends CAaskController
                         $sumofe += (float) $val["e"];
                         $sumoff += (float) $val["f"];
                         $sumofh += (float) $val["h"];
+                        $sumofdh += (float) $val["dist"];
                     }
 
                     $temp = array(
@@ -123,7 +130,8 @@ class selldistributorreports extends CAaskController
                         "d" => $sumofd,
                         "e" => $sumofe,
                         "f" => $sumoff,
-                        "h" => $sumofh
+                        "h" => $sumofh,
+                        "dh" => $sumofdh
                     );
 
                     array_push($farrays, $temp);

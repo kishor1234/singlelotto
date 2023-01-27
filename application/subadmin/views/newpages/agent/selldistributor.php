@@ -246,8 +246,8 @@
                                                         $sumofd += $val["d"];
                                                         echo "<td>₹ {$val["e"]}</td>";
                                                         $sumofe += $val["e"];
-                                                        echo "<td>₹ {$val["f"]}</td>";
-                                                        $sumoff += $val["f"];
+                                                        echo "<td>₹ {$val["dh"]}</td>";
+                                                        $sumoff += $val["dh"];
 //    echo "<td>{$val["g"]}</td>";
 //    $sumofg += $val["g"];
                                                         echo "<td>₹ {$val["h"]}</td>";

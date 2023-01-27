@@ -237,6 +237,7 @@
                                                     $json = json_decode($responseData, true);
 
                                                     foreach ($json as $key => $val) {
+
                                                         $i = $key + 1;
                                                         echo "<tr>";
                                                         echo "<td>{$i}</td>";
@@ -251,8 +252,8 @@
                                                         $sumofd += $val["d"];
                                                         echo "<td>₹ {$val["e"]}</td>";
                                                         $sumofe += $val["e"];
-                                                        echo "<td>₹ {$val["f"]}</td>";
-                                                        $sumoff += $val["f"];
+                                                        echo "<td>₹ {$val["dh"]}</td>";
+                                                        $sumoff += $val["dh"];
                                                         //    echo "<td>{$val["g"]}</td>";
                                                         //    $sumofg += $val["g"];
                                                         echo "<td>₹ {$val["h"]}</td>";

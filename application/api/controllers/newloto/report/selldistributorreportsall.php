@@ -89,7 +89,12 @@ class selldistributorreportsall extends CAaskController
                     $array["g"] = "0";
                     $h = $array["c"] - $array["d"] - $array["f"];
                     $h == null ? $array["h"] = 0 : $array["h"] = $h;
-
+                    $array["agent"] = $c * 0.01;
+                    $array["subdist"] = $c * 0.01;
+                    $array["dist"] = $c * 0.09;
+                    $array["ah"]=$h-$array["agent"];
+                    $array["sdh"]=$h-$array["agent"]-$array["subdist"]-$array["dist"];
+                    $array["dh"]=$h-$array["agent"]-$array["dist"];
                     array_push($farray, $array);
                 }
                 $sumofa = 0;
@@ -100,6 +105,7 @@ class selldistributorreportsall extends CAaskController
                 $sumoff = 0;
                 $sumofg = 0;
                 $sumofh = 0;
+                $sumofdh=0;
                 $aid = "";
                 if (!empty($farray)) {
                     foreach ($farray as $in => $val) {
@@ -114,6 +120,7 @@ class selldistributorreportsall extends CAaskController
                         $sumofe += (float) $val["e"];
                         $sumoff += (float) $val["f"];
                         $sumofh += (float) $val["h"];
+                        $sumofdh += (float) $val["dist"];
                     }
 
                     $temp = array(
@@ -124,7 +131,8 @@ class selldistributorreportsall extends CAaskController
                         "d" => $sumofd,
                         "e" => $sumofe,
                         "f" => $sumoff,
-                        "h" => $sumofh
+                        "h" => $sumofh,
+                        "dh" => $sumofdh
                     );
 
                     array_push($farrays, $temp);
