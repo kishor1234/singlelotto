@@ -136,7 +136,7 @@ class CAddUser extends CAaskController
             default:
                 $postdata = file_get_contents("php://input");
                 $request = json_decode($postdata, true);
-                print_r($request);
+                //print_r($request);
                 //echo json_encode(array("toast" => array("danger", "Series", "Invalid Sereis selected "), "status" => 0, "message" => "Invalid Series selected"));
                 break;
         }

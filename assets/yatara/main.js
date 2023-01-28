@@ -735,7 +735,7 @@ function betmul(_0x18A53) {
     document.getElementById("mul" + _0x18A53).width = "60";
     document.getElementById("mul" + _0x18A53).height = "60";
 }
-function loadDoc(doc) {
+async function loadDoc(doc) {
     var temp = "";
     inflag = "true";
     if (inflag == "true") {
@@ -785,40 +785,42 @@ function loadDoc(doc) {
         };
 
         console.log(JSON.stringify(dt));
-        //
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = async function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText != "false") {
-                    //console.log(this.responseText);
-                    var jsonData = JSON.parse(this.responseText);
+        new Promise((resolve, reject) => {
 
-                    //console.log(jsonData);
-                    if (jsonData.status === "1") {
-                        lasttsn = jsonData.trno;
-                        //                        lasttamt = jsonData.trpt;
-                        await printPos(jsonData.POS);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = async function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (this.responseText != "false") {
+                        //console.log(this.responseText);
+                        var jsonData = JSON.parse(this.responseText);
+
+                        //console.log(jsonData);
+                        if (jsonData.status === "1") {
+                            lasttsn = jsonData.trno;
+                            //                        lasttamt = jsonData.trpt;
+                            await printPos(jsonData.POS);
+                            resolve("success");
+
+                        }
+                        document.getElementById("msg").innerHTML = jsonData.msg;
+                        msgctr = 15;
+                        if (lasttsn != "") {
+                            document.getElementById("lasttsn").innerHTML = lasttsn;
+                            document.getElementById("lasttamt").innerHTML = jsonData.trpt;
+                        }
+                        if (advflag != true) {
+                            clearbets();
+                        }
+                        updateBalance();
+
 
                     }
-                    document.getElementById("msg").innerHTML = jsonData.msg;
-                    msgctr = 15;
-                    if (lasttsn != "") {
-                        document.getElementById("lasttsn").innerHTML = lasttsn;
-                        document.getElementById("lasttamt").innerHTML = jsonData.trpt;
-                    }
-                    if (advflag != true) {
-                        clearbets();
-                    }
-                    updateBalance();
-
-
                 }
-            }
-        };
-        xhttp.open("POST", api_url + "/?r=getTicket", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(JSON.stringify(dt));
-
+            };
+            xhttp.open("POST", api_url + "/?r=getTicket", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify(dt));
+        });
     } else {
         document.getElementById("msg").innerHTML = "Please Login To Play..";
         msgctr = 15;
@@ -3240,13 +3242,15 @@ function perdraw() {
     document.getElementById("tblcqty").innerText = _0x189C3.toString();
     document.getElementById("tblcamt").innerText = _0x189B1.toString();
 }
-function betreg() {
+async function betreg() {
     if (document.getElementById("tblcamt").innerText != "" && parseFloat(document.getElementById("tblcamt").innerText) <= parseFloat(document.getElementById("creditlimit").innerText)) {
         if (parseFloat(document.getElementById("tblcamt").innerText) >= 10) {
             if (advflag == true) {
-                advanceDraw();
+                console.log("Advance");
+                await advanceDraw();
             } else {
-                loadDoc(schcd);
+                console.log("normal");
+                await loadDoc(schcd);
             }
         } else {
             document.getElementById("msg").innerText = "OOPS!..MINIMUM BET POINTS 10 ....";
@@ -3266,13 +3270,17 @@ function betreg() {
     btnlow_Click();
     //load_frm();
 }
-function advanceDraw() {
+async function advanceDraw() {
     var _0x1897B = advstr.split("~");
     for (i = 0; i < _0x1897B.length; i++) {
         advss = _0x1897B[i].split("-");
-        if (document.getElementById("sd" + advss[0]).checked == true) {
-            loadDoc(advss[0]);
-        }
+        await new Promise(async (resolve, reject) => {
+            if (document.getElementById("sd" + advss[0]).checked == true) {
+                await loadDoc(advss[0]);
+                resolve("sccess");
+            }
+        });
+
     }
     clearbets();
     advflag = true;
@@ -3471,7 +3479,7 @@ function reclaim(barcode) {
         var retur = response.response;
         if (retur === 0) {
 
-           
+
             claminBet(barcode);
         }
     });
