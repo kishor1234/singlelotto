@@ -1505,7 +1505,7 @@
         </script>
 
         <!--<script src="assets/yatara/gb.js" type="text/javascript"></script>-->
-        <script src="assets/yatara/main.js" type="text/javascript"></script>
+        <script src="assets/yatara/mainasyc.js" type="text/javascript"></script>
         <script src="assets/yatara/render.js" type="text/javascript"></script>
     </body>
 
