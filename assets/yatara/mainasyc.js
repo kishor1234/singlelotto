@@ -820,7 +820,7 @@ async function loadDoc(doc) {
             xhttp.open("POST", api_url + "/?r=getTicket", true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(JSON.stringify(dt));
-        });
+        }).then((data) => { return data; }).catch((error) => { return error });
     } else {
         document.getElementById("msg").innerHTML = "Please Login To Play..";
         msgctr = 15;
@@ -3279,7 +3279,7 @@ async function advanceDraw() {
                 await loadDoc(advss[0]);
                 resolve("sccess");
             }
-        });
+        }).then((data) => { return data; }).catch((error) => { return error });
 
     }
     clearbets();
