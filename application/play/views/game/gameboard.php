@@ -1353,7 +1353,7 @@
                 document.getElementById("claim-msg").innerHTML = "";
                 document.getElementById("claim-msg2").innerHTML = "";
                 console.log("ss", event.keyCode);
-                if (event.keyCode == 13 || event.keyCode == 109) {
+                if (event.keyCode == 13 || event.keyCode == 109 || event.keyCode == 189) {
                     var barcodes = document.getElementById("scancode").value;
                     var barcode=barcodes.split('-');
                     claminBet(barcode[0]);
