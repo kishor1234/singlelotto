@@ -785,39 +785,42 @@ async function loadDoc(doc) {
         };
 
         console.log(JSON.stringify(dt));
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = async function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText != "false") {
-                    //console.log(this.responseText);
-                    var jsonData = JSON.parse(this.responseText);
+        new Promise((resolve, reject) => {
 
-                    //console.log(jsonData);
-                    if (jsonData.status === "1") {
-                        lasttsn = jsonData.trno;
-                        //                        lasttamt = jsonData.trpt;
-                        await printPos(jsonData.POS);
-                        resolve("success");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = async function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (this.responseText != "false") {
+                        //console.log(this.responseText);
+                        var jsonData = JSON.parse(this.responseText);
+
+                        //console.log(jsonData);
+                        if (jsonData.status === "1") {
+                            lasttsn = jsonData.trno;
+                            //                        lasttamt = jsonData.trpt;
+                            await printPos(jsonData.POS);
+                            resolve("success");
+
+                        }
+                        document.getElementById("msg").innerHTML = jsonData.msg;
+                        msgctr = 15;
+                        if (lasttsn != "") {
+                            document.getElementById("lasttsn").innerHTML = lasttsn;
+                            document.getElementById("lasttamt").innerHTML = jsonData.trpt;
+                        }
+                        if (advflag != true) {
+                            clearbets();
+                        }
+                        updateBalance();
+
 
                     }
-                    document.getElementById("msg").innerHTML = jsonData.msg;
-                    msgctr = 15;
-                    if (lasttsn != "") {
-                        document.getElementById("lasttsn").innerHTML = lasttsn;
-                        document.getElementById("lasttamt").innerHTML = jsonData.trpt;
-                    }
-                    if (advflag != true) {
-                        clearbets();
-                    }
-                    updateBalance();
-
-
                 }
-            }
-        };
-        xhttp.open("POST", api_url + "/?r=getTicket", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(JSON.stringify(dt));
+            };
+            xhttp.open("POST", api_url + "/?r=getTicket", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify(dt));
+        });
     } else {
         document.getElementById("msg").innerHTML = "Please Login To Play..";
         msgctr = 15;
@@ -3272,18 +3275,11 @@ async function advanceDraw() {
     for (i = 0; i < _0x1897B.length; i++) {
         advss = _0x1897B[i].split("-");
         await new Promise(async (resolve, reject) => {
-            console.log("select", advss);
             if (document.getElementById("sd" + advss[0]).checked == true) {
                 await loadDoc(advss[0]);
-                setTimeout(function () {
-                    resolve("sccess");
-                }, 5000);
-
+                resolve("sccess");
             }
-        }).then((data) => { return data; }).catch((error) => { return error });
-        setTimeout(function () {
-            resolve("sccess");
-        }, 5000);
+        });
 
     }
     clearbets();
