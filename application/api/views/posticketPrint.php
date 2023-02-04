@@ -10,15 +10,16 @@
     <style>
         * {
             font-weight: 600;
-            padding: 2px 0px 2px 0px !important;
-            margin: 0.2px !important;
-            
+            padding: 1px 0px 2px 0px !important;
+            margin: 0px !important;
+            max-width: 170px;
+
         }
 
         table {
             border: none !important;
             /* border-spacing: unset; */
-            border-spacing: 0px 2px !important;
+            border-spacing: 0px 1px !important;
             text-align: left !important;
 
         }
@@ -35,7 +36,8 @@
         }
 
         .ticketContainer {
-            padding: 0px 0px 0px 0px !important;
+            padding: 0px 0px 0px 20px !important;
+            max-width: 219px !important;
         }
 
         .mb1 {
@@ -66,9 +68,10 @@
             flex-wrap: nowrap;
 
         }
-        .p2{
+
+        .p2 {
             margin-bottom: 2px !important;
-            
+
         }
     </style>
 </head>
