@@ -10,7 +10,7 @@
     <style>
         * {
             font-weight: 600;
-            padding: 1px 0px 2px 0px !important;
+            padding: 1px 1px 2px 0px !important;
             margin: 0px !important;
             max-width: 170px;
 

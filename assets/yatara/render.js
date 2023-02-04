@@ -54,7 +54,7 @@ function PrintData(ticketData) {
             value: ticketData.barcode,
             height: 25,
             width: 1,
-            displayValue: false, // Display value below barcode
+            displayValue: true, // Display value below barcode
             fontsize: 12,
             position: 'center',
             style: {
