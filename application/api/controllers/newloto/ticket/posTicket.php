@@ -60,7 +60,7 @@ class posTicket extends CAaskController
             $sql = $this->ask_mysqli->select("subentry", $_SESSION["db_1"]) . $this->ask_mysqli->whereSingle(array("game" => $rows["game"]));
             $result = $this->adminDB[$_SESSION["db_1"]]->query($sql);
             $content = "";
-            $barcode = $rows["game"]."-";
+            $barcode = $rows["game"];
             $ticket = array();
             while ($row = $result->fetch_assoc()) {
                 ob_start();
