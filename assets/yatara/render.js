@@ -50,31 +50,36 @@ function PrintData(ticketData) {
             },
         },
         {
-            type: "barCode", // Do you think the result is ugly? Me too. Try use an image instead...
-            value: ticketData.barcode,
-            height: 25,
-            width: 1,
-            displayValue: true, // Display value below barcode
-            fontsize: 12,
-            position: 'center',
-            style: {
-                "margin": "0px 0px",
-                "fontSize": "12px",
-                "fontFamily": "sans-serif",
-                "textAlign": "center",
-            },
+            type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
+            value: [
+                {
+                    type: "barCode", // Do you think the result is ugly? Me too. Try use an image instead...
+                    value: ticketData.barcode,
+                    height: 25,
+                    width: 1,
+                    displayValue: true, // Display value below barcode
+                    fontsize: 12,
+                    position: 'center',
+                    style: {
+                        "margin": "0px 0px",
+                        "fontSize": "12px",
+                        "fontFamily": "sans-serif",
+                        "textAlign": "center",
+                    },
 
+                },
+                {
+                    type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
+                    value: ticketData.barcode,
+                    style: {
+                        "fontSize": "12px",
+                        "fontFamily": "sans-serif",
+                        "textAlign": "center",
+                    },
+                }
+            ],
+            style: { "textAlign": "center", "fontSize": "12px" },
         },
-        {
-            type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table'
-            value: ticketData.barcode,
-            style: {
-                "fontSize": "12px",
-                "fontFamily": "sans-serif",
-                "textAlign": "center",
-            },
-        },
-
         {
             type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
             value: "---||",
@@ -82,6 +87,7 @@ function PrintData(ticketData) {
         },
     ];
 }
+
 function rePrint(lasttsn) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -184,7 +190,7 @@ function printPlayedRecipt(jsonData) {
                 {
                     type: "text", // 'text' | 'barCode' | 'qrCode' | 'image' | 'table
                     value: "---||",
-                    style: { "textAlign":"right","fontSize": "12px" },
+                    style: { "textAlign": "right", "fontSize": "12px" },
                 },
             ];
             children = children.concat(data);
