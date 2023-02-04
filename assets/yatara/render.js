@@ -52,8 +52,8 @@ function PrintData(ticketData) {
         {
             type: "barCode", // Do you think the result is ugly? Me too. Try use an image instead...
             value: ticketData.barcode,
-            height: 25,
-            width: 1,
+            height: 40,
+            width: 2,
             displayValue: true, // Display value below barcode
             fontsize: 12,
             position: 'center',
