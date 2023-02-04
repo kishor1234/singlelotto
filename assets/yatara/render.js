@@ -27,9 +27,6 @@ function printPos(jsonData) {
     for (let index in ticketArray) {
         var ticketData = ticketArray[index];
         children = children.concat(PrintData(ticketData));
-
-
-
     }
     //console.log(children);
     ipcRenderer.send('todo:add', JSON.stringify(children));

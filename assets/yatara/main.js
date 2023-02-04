@@ -735,7 +735,7 @@ function betmul(_0x18A53) {
     document.getElementById("mul" + _0x18A53).width = "60";
     document.getElementById("mul" + _0x18A53).height = "60";
 }
-async function loadDoc(doc) {
+function loadDoc(doc) {
     var temp = "";
     inflag = "true";
     if (inflag == "true") {
@@ -786,18 +786,18 @@ async function loadDoc(doc) {
 
         console.log(JSON.stringify(dt));
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = async function () {
+        xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.responseText != "false") {
                     //console.log(this.responseText);
                     var jsonData = JSON.parse(this.responseText);
 
-                    //console.log(jsonData);
+                    console.log(jsonData);
                     if (jsonData.status === "1") {
                         lasttsn = jsonData.trno;
                         //                        lasttamt = jsonData.trpt;
-                        await printPos(jsonData.POS);
-                        resolve("success");
+                        printPos(jsonData.POS);
+                        //resolve("success");
 
                     }
                     document.getElementById("msg").innerHTML = jsonData.msg;
@@ -3237,15 +3237,15 @@ function perdraw() {
     document.getElementById("tblcqty").innerText = _0x189C3.toString();
     document.getElementById("tblcamt").innerText = _0x189B1.toString();
 }
-async function betreg() {
+function betreg() {
     if (document.getElementById("tblcamt").innerText != "" && parseFloat(document.getElementById("tblcamt").innerText) <= parseFloat(document.getElementById("creditlimit").innerText)) {
         if (parseFloat(document.getElementById("tblcamt").innerText) >= 10) {
             if (advflag == true) {
                 console.log("Advance");
-                await advanceDraw();
+                advanceDraw();
             } else {
                 console.log("normal");
-                await loadDoc(schcd);
+                loadDoc(schcd);
             }
         } else {
             document.getElementById("msg").innerText = "OOPS!..MINIMUM BET POINTS 10 ....";
@@ -3265,17 +3265,14 @@ async function betreg() {
     btnlow_Click();
     //load_frm();
 }
-async function advanceDraw() {
+function advanceDraw() {
     var _0x1897B = advstr.split("~");
     for (i = 0; i < _0x1897B.length; i++) {
         advss = _0x1897B[i].split("-");
-        await new Promise(async (resolve, reject) => {
-            console.log("select", advss);
-            if (document.getElementById("sd" + advss[0]).checked == true) {
-                await loadDoc(advss[0]);
-                resolve("success")
-            }
-        }).then((data) => { return data; }).catch((error) => { return error });
+        console.log("select", advss);
+        if (document.getElementById("sd" + advss[0]).checked == true) {
+            loadDoc(advss[0]);
+        }
     }
     clearbets();
     advflag = true;

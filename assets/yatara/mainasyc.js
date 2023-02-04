@@ -3274,7 +3274,7 @@ async function advanceDraw() {
     var _0x1897B = advstr.split("~");
     for (i = 0; i < _0x1897B.length; i++) {
         advss = _0x1897B[i].split("-");
-        await new Promise(async (resolve, reject) => {
+        new Promise(async (resolve, reject) => {
             if (document.getElementById("sd" + advss[0]).checked == true) {
                 await loadDoc(advss[0]);
                 resolve("sccess");
