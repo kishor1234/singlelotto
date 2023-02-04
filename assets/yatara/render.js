@@ -58,6 +58,7 @@ function PrintData(ticketData) {
             fontsize: 12,
             position: 'center',
             style: {
+                "width": "100%",
                 "margin": "0px 0px",
                 "fontSize": "12px",
                 "fontFamily": "sans-serif",
