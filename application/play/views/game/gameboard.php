@@ -901,7 +901,7 @@
                                                         <tr>
                                                             <td style="width:100px;">
                                                                 <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="btnlow_Click();">Reset</button>
-
+                                                                
                                                             </td>
 
                                                             <td style="width:100px; height: 30px;">
@@ -1247,10 +1247,11 @@
                 document.getElementById("claim-msg").innerHTML = "";
             }
             document.addEventListener('keydown', function(event) {
-                if (event.code === "Escape" || event.code === "Tab" || event.code === "Space") {
-                    //do something
-                    closebtn();
-                }
+                closebtn();
+                // if (event.code === "Escape" || event.code === "Tab" || event.code === "Space") {
+                //     //do something
+                //     closebtn();
+                // }
             });
 
             // When the user clicks anywhere outside of the claim, close it
@@ -1355,7 +1356,7 @@
                 console.log("ss", event.keyCode);
                 if (event.keyCode == 13) {
                     var barcodes = document.getElementById("scancode").value;
-                    var barcode=barcodes.split('-');
+                    var barcode = barcodes.split('-');
                     claminBet(barcode[0]);
                     //                console.log(JSON.stringify({"id": barcode.trim(), "userid": userid,"key":event.keyCode}));
                 }
