@@ -1247,11 +1247,11 @@
                 document.getElementById("claim-msg").innerHTML = "";
             }
             document.addEventListener('keydown', function(event) {
-                closebtn();
-                // if (event.code === "Escape" || event.code === "Tab" || event.code === "Space") {
-                //     //do something
-                //     closebtn();
-                // }
+                
+                if (event.code === "Escape" || event.code === "Tab" || event.code === "Space") {
+                    //do something
+                    closebtn();
+                }
             });
 
             // When the user clicks anywhere outside of the claim, close it
@@ -1351,10 +1351,11 @@
 
             function getClime(event) {
                 event.preventDefault();
-                document.getElementById("claim-msg").innerHTML = "";
-                document.getElementById("claim-msg2").innerHTML = "";
+                // document.getElementById("claim-msg").innerHTML = "";
+                // document.getElementById("claim-msg2").innerHTML = "";
                 console.log("ss", event.keyCode);
-                if (event.keyCode == 13) {
+                if (event.which == 13) {
+                    event.preventDefault();
                     var barcodes = document.getElementById("scancode").value;
                     var barcode = barcodes.split('-');
                     claminBet(barcode[0]);
