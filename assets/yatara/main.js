@@ -735,7 +735,7 @@ function betmul(_0x18A53) {
     document.getElementById("mul" + _0x18A53).width = "60";
     document.getElementById("mul" + _0x18A53).height = "60";
 }
-function loadDoc(doc) {
+async function loadDoc(doc) {
     var temp = "";
     inflag = "true";
     if (inflag == "true") {
@@ -3265,13 +3265,13 @@ function betreg() {
     btnlow_Click();
     //load_frm();
 }
-function advanceDraw() {
+async function advanceDraw() {
     var _0x1897B = advstr.split("~");
     for (i = 0; i < _0x1897B.length; i++) {
         advss = _0x1897B[i].split("-");
         console.log("select", advss);
         if (document.getElementById("sd" + advss[0]).checked == true) {
-            loadDoc(advss[0]);
+            await loadDoc(advss[0]);
         }
     }
     clearbets();
