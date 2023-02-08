@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-const { resolve } = require("dns");
-
 
 /***************************************************************************/
 /*                                                                         */
@@ -817,7 +815,7 @@ async function loadDoc(doc) {
                 }
             }
         };
-        xhttp.open("POST", api_url + "/?r=getTicket", true);
+        xhttp.open("POST", api_url + "/?r=getTicket", false);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(dt));
     } else {
@@ -3271,11 +3269,7 @@ async function betreg() {
     if (typeof printData !== 'undefined' && printData.length != 0) {
         console.log("printData", printData);
         printData.forEach(async (value, index) => {
-            const print=new Promise(async(resolve,reject)=>{
-                await printPos(value);
-                setTimeout(()=>{resolve("success")},5000);
-            });
-            
+            await printPos(value);
         });
 
         printData = [];
