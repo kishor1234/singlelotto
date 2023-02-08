@@ -19,16 +19,16 @@ let WIN = remote.getCurrentWindow();
 //    }
 //});
 
-function printPos(jsonData) {
+function printPos(children) {
 
-    var ticketArray = jsonData.ticket;
-    var d = [];
-    var children = [];
-    for (let index in ticketArray) {
-        var ticketData = ticketArray[index];
-        children = children.concat(PrintData(ticketData));
-    }
-    //console.log(children);
+    // var ticketArray = jsonData.ticket;
+    // var d = [];
+    // var children = [];
+    // for (let index in ticketArray) {
+    //     var ticketData = ticketArray[index];
+    //     children = children.concat(PrintData(ticketData));
+    // }
+    console.log(children);
     ipcRenderer.send('todo:add', JSON.stringify(children));
 
     //    

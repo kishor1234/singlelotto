@@ -801,8 +801,8 @@ async function loadDoc(doc) {
                             lasttsn = jsonData.trno;
                             //                        lasttamt = jsonData.trpt;
                             //printPos(jsonData.POS);
-                            printData.push(jsonData.POS);
-                            resolve("success");
+
+                            resolve(jsonData.POS);
 
                         }
                         document.getElementById("msg").innerHTML = jsonData.msg;
@@ -821,7 +821,7 @@ async function loadDoc(doc) {
             xhttp.open("POST", api_url + "/?r=getTicket", true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(JSON.stringify(dt));
-        });
+        }).then(data => { printData.push(data); });
     } else {
         document.getElementById("msg").innerHTML = "Please Login To Play..";
         msgctr = 15;
@@ -3270,12 +3270,20 @@ async function betreg() {
     }
     btnlow_Click();
     //load_frm();
+    console.log("printData", printData);
     if (typeof printData !== 'undefined' && printData.length != 0) {
-        console.log("printData", printData);
-        printData.forEach(async (value, index) => {
-            await printPos(value);
-        });
 
+        var children = [];
+        printData.forEach(async (value, index) => {
+            var ticketArray = value.ticket;
+            var d = [];
+            for (let index in ticketArray) {
+                var ticketData = ticketArray[index];
+                children = children.concat(PrintData(ticketData));
+            }
+        });
+        console.log("printData", children);
+        await printPos(children);
         printData = [];
     }
 }
