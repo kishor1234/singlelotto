@@ -817,7 +817,7 @@ async function loadDoc(doc) {
                 }
             }
         };
-        xhttp.open("POST", api_url + "/?r=getTicket", false);
+        xhttp.open("POST", api_url + "/?r=getTicket", true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(dt));
     } else {
