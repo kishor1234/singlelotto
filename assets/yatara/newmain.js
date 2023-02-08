@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+const { resolve } = require("dns");
+
 
 /***************************************************************************/
 /*                                                                         */
@@ -392,6 +394,7 @@ var _$_33bf = [
     "OOPS!..MINIMUM BET POINTS 10 ....",
     "OOPS!...BETS ARE BLANK ....",
 ];
+let printData = [];
 var mrp;
 var waitTimeOut = 0;
 var seconds = 0;
@@ -735,7 +738,7 @@ function betmul(_0x18A53) {
     document.getElementById("mul" + _0x18A53).width = "60";
     document.getElementById("mul" + _0x18A53).height = "60";
 }
-function loadDoc(doc) {
+async function loadDoc(doc) {
     var temp = "";
     inflag = "true";
     if (inflag == "true") {
@@ -796,7 +799,8 @@ function loadDoc(doc) {
                     if (jsonData.status === "1") {
                         lasttsn = jsonData.trno;
                         //                        lasttamt = jsonData.trpt;
-                        printPos(jsonData.POS);
+                        //printPos(jsonData.POS);
+                        printData.push(jsonData.POS);
                         //resolve("success");
 
                     }
@@ -3237,15 +3241,15 @@ function perdraw() {
     document.getElementById("tblcqty").innerText = _0x189C3.toString();
     document.getElementById("tblcamt").innerText = _0x189B1.toString();
 }
-function betreg() {
+async function betreg() {
     if (document.getElementById("tblcamt").innerText != "" && parseFloat(document.getElementById("tblcamt").innerText) <= parseFloat(document.getElementById("creditlimit").innerText)) {
         if (parseFloat(document.getElementById("tblcamt").innerText) >= 10) {
             if (advflag == true) {
                 console.log("Advance");
-                advanceDraw();
+                await advanceDraw();
             } else {
                 console.log("normal");
-                loadDoc(schcd);
+                await loadDoc(schcd);
             }
         } else {
             document.getElementById("msg").innerText = "OOPS!..MINIMUM BET POINTS 10 ....";
@@ -3264,14 +3268,26 @@ function betreg() {
     }
     btnlow_Click();
     //load_frm();
+    if (typeof printData !== 'undefined' && printData.length != 0) {
+        console.log("printData", printData);
+        printData.forEach(async (value, index) => {
+            const print=new Promise(async(resolve,reject)=>{
+                await printPos(value);
+                setTimeout(()=>{resolve("success")},5000);
+            });
+            
+        });
+
+        printData = [];
+    }
 }
-function advanceDraw() {
+async function advanceDraw() {
     var _0x1897B = advstr.split("~");
     for (i = 0; i < _0x1897B.length; i++) {
         advss = _0x1897B[i].split("-");
         console.log("select", advss);
         if (document.getElementById("sd" + advss[0]).checked == true) {
-            loadDoc(advss[0]);
+            await loadDoc(advss[0]);
         }
     }
     clearbets();
