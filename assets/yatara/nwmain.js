@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+const { resolve } = require("dns");
+
 
 /***************************************************************************/
 /*                                                                         */
@@ -786,38 +788,40 @@ async function loadDoc(doc) {
         };
 
         console.log(JSON.stringify(dt));
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText != "false") {
-                    //console.log(this.responseText);
-                    var jsonData = JSON.parse(this.responseText);
+        await new Promise(async (resolve) => {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (this.responseText != "false") {
+                        //console.log(this.responseText);
+                        var jsonData = JSON.parse(this.responseText);
 
-                    console.log(jsonData);
-                    if (jsonData.status === "1") {
-                        lasttsn = jsonData.trno;
-                        //                        lasttamt = jsonData.trpt;
-                        //printPos(jsonData.POS);
-                        printData.push(jsonData.POS);
-                        //resolve("success");
+                        console.log(jsonData);
+                        if (jsonData.status === "1") {
+                            lasttsn = jsonData.trno;
+                            //                        lasttamt = jsonData.trpt;
+                            //printPos(jsonData.POS);
+                            printData.push(jsonData.POS);
+                            resolve("success");
 
+                        }
+                        document.getElementById("msg").innerHTML = jsonData.msg;
+                        msgctr = 15;
+                        if (lasttsn != "") {
+                            document.getElementById("lasttsn").innerHTML = lasttsn;
+                            document.getElementById("lasttamt").innerHTML = jsonData.trpt;
+                        }
+                        if (advflag != true) {
+                            clearbets();
+                        }
+                        updateBalance();
                     }
-                    document.getElementById("msg").innerHTML = jsonData.msg;
-                    msgctr = 15;
-                    if (lasttsn != "") {
-                        document.getElementById("lasttsn").innerHTML = lasttsn;
-                        document.getElementById("lasttamt").innerHTML = jsonData.trpt;
-                    }
-                    if (advflag != true) {
-                        clearbets();
-                    }
-                    updateBalance();
                 }
-            }
-        };
-        xhttp.open("POST", api_url + "/?r=getTicket", false);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(JSON.stringify(dt));
+            };
+            xhttp.open("POST", api_url + "/?r=getTicket", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify(dt));
+        });
     } else {
         document.getElementById("msg").innerHTML = "Please Login To Play..";
         msgctr = 15;
