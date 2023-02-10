@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,30 +17,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //require_once getcwd() . '/' . APPLICATION . "/controllers/Crout.php";
 require_once controller;
 
-class main extends CAaskController {
+class main extends CAaskController
+{
 
     //put your code here
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
 
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
         try {
-            $sql=$this->ask_mysqli->select("hostgame",$_SESSION["db_1"]);
-            $result=$this->adminDB[$_SESSION["db_1"]]->query($sql);
-            $array=array();
-            while($row=$result->fetch_assoc())
-            {
-                array_push($array, $row);
+            // $sql=$this->ask_mysqli->select("hostgame",$_SESSION["db_1"]);
+            // $result=$this->adminDB[$_SESSION["db_1"]]->query($sql);
+            // $array=array();
+            // while($row=$result->fetch_assoc())
+            // {
+            //     array_push($array, $row);
+            // }
+
+            // $this->isLoadView(array("header" => null, "main" => "result", "footer" => null, "error" => "page_404"), false, array("row"=>$array));
+            $date = date("Y-m-d");
+            if (!empty($_POST["indate"])) {
+                $date = $_POST["indate"];
             }
-            $this->isLoadView(array("header" => null, "main" => "download", "footer" => null, "error" => "page_404"), false, array("row"=>$array));
+            $response = $this->postJsonRespon(api_url . "/?r=getResultDatewise", array("date" => $date));
+            $this->isLoadView(array("header" => null, "main" => "result", "footer" => null, "error" => "page_404"), false, array("date" => $date, "response" => $response));
         } catch (Exception $ex) {
             echo $ex->getMessage();
             error_log($ex, 3, "error.log");
@@ -48,24 +59,27 @@ class main extends CAaskController {
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         //parent::execute();
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         //parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         //parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         //parent::distory();
         return;
     }
-
 }
