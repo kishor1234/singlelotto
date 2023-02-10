@@ -33,13 +33,13 @@
                         <table border="0" width="100%" id="table2">
                             <tr>
                                 <td align="right" width="50%">Select Date :<input type="date" id="indate" name="indate" autocomplete=off value="<?= $date ?>" min="<?= date('Y-m-d', (strtotime('-7 day', strtotime(date("Y-m-d"))))) ?>" max="<?= date("Y-m-d") ?>"></td>
-                                <td colspan=" 3" align="left"><button type="submit" id="btnok" class="buttongreen">Get Results</button>
+                                <td colspan=" 3" align="left"><button type="submit" id="btnok" class="buttongreen">Get Boll</button>
                             </tr>
                         </table>
 
                         <table border="0" width="100%" id="table1" cellspacing="1" cellpadding="2">
                             <tr>
-                                <td align="center" class="tdseries"><?= date('l', strtotime($date)) . " " . date("F, d, Y", strtotime($date)) ?>&nbsp;Results</td>
+                                <td align="center" class="tdseries"><?= date('l', strtotime($date)) . " " . date("F, d, Y", strtotime($date)) ?>&nbsp;Boll</td>
                             </tr>
                             <?php
                             $jsonResponse = json_decode($response, true);
