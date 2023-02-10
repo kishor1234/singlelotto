@@ -5,20 +5,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <title> <?= company ?> RESULTS</title>
     <!-- <link rel="stylesheet" href="assets/yatara/css/style.css" type="text/css"> -->
+    
     <link rel="stylesheet" href="assets/yatara/css/main.css" type="text/css">
+
 </head>
 
 <body bgcolor="#FFCCFF" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
-    <table border="0" width="100%" cellspacing="0" cellpadding="0">
-        <tr>
-            <td width="7%" align=center><img class="img-board" src="<?= image ?>" border="5" align=middle></td>
-            <td style="display: none;" class="tdtitle" width="14%" valign="top">&nbsp;<?= company ?></td>
-            <td id="agentdet" class="tdtitle"></td>
-            <td class="tdtitleright" valign="top">
-                <a href="/?r=download"><input type="button" class="buttonlogout" value="Download"></a>
-            </td>
-        </tr>
-    </table>
+    <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; ">
+
+        <img style=" width: 80%; height:auto; " src="/header.jpg" border="5" align=middle>
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="7%" align=center></td>
+                <td style="display: none;" class="tdtitle" width="14%" valign="top">&nbsp;<?= company ?></td>
+                <td id="agentdet" class="tdtitle"></td>
+                <td class="tdtitleright" valign="top">
+                    <a href="/?r=download"><input type="button" class="buttonlogout" value="Download"></a>
+                </td>
+            </tr>
+        </table>
+    </div>
     <form method="POST" action="/" name="taxform">
         <div align="center">
             <table border="0" cellpadding="2" id="table1" cellspacing="0" width="100%">
@@ -26,8 +32,8 @@
                     <td align="center">
                         <table border="0" width="100%" id="table2">
                             <tr>
-                                <td align="right" width="50%">Select Date :<input type="date" id="indate" name="indate" autocomplete=off value="<?= $date ?>" min="<?= date('Y-m-d', (strtotime('-7 day', strtotime(date("Y-m-d"))))) ?>"  max="<?= date("Y-m-d") ?>"></td>
-                                    <td colspan=" 3" align="left"><button type="submit" id="btnok" class="buttongreen">Get Results</button>
+                                <td align="right" width="50%">Select Date :<input type="date" id="indate" name="indate" autocomplete=off value="<?= $date ?>" min="<?= date('Y-m-d', (strtotime('-7 day', strtotime(date("Y-m-d"))))) ?>" max="<?= date("Y-m-d") ?>"></td>
+                                <td colspan=" 3" align="left"><button type="submit" id="btnok" class="buttongreen">Get Results</button>
                             </tr>
                         </table>
 
