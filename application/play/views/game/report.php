@@ -25,7 +25,7 @@
     <form method="POST" action="/?r=report" name="taxform" onsubmit="return funcrepvalid();">
         <table border="0" width="100%" id="table2">
             <tr>
-                <td  align="center" nowrap>Show Report :&nbsp; <input type="date" id="fromdate" name="fromdate" autocomplete=off value="<?= $sdate ?>" max="<?= date("Y-m-d") ?>">
+                <td align="center" nowrap>Show Report :&nbsp; <input type="date" id="fromdate" name="fromdate" autocomplete=off value="<?= $sdate ?>" max="<?= date("Y-m-d") ?>">
                     To :&nbsp;
                     <input type="date" id="todate" name="todate" autocomplete=off value="<?= $edate ?>" max="<?= date("Y-m-d") ?>">&nbsp;&nbsp;
                     <button id="btnok" class="buttongreen">Show</button>
@@ -42,7 +42,7 @@
 
 
                             <table border="0" width="100%" id="table1" cellspacing="1" cellpadding="2">
-                                <tr >
+                                <tr>
                                     <td style="background: blue;" align="center" class="tdseries"><?= $line ?></td>
                                 </tr>
                                 <tr>
@@ -50,10 +50,10 @@
                                         <table align='center' width='40%' border=2 bgcolor='#003366' bordercolor=white cellpadding=5>
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Terminal Sale: </td>
-                                                <td align='right' width='40%' class='tdseries'><?= number_format($rdata["totalNetPoint"]- $rdata["cancelPoint"], 2) ?></td>
+                                                <td align='right' width='40%' class='tdseries'><?= number_format($rdata["totalNetPoint"] - $rdata["cancelPoint"], 2) ?></td>
                                             </tr>
                                             <!--<tr style="background-color: red !important;"><td align='right' width='60%' class='tdseries2'>Cancelled Point: </td><td align='right' width='40%' class='tdseries2' ><?= $rdata["cancelPoint"] ?></td></tr>-->
-                                            
+
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Terminal Win : </td>
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($rdata["winPoint"], 2) ?></td>
@@ -64,7 +64,7 @@
                                             </tr> -->
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Final Amount: </td>
-                                                <?php $final=(float)$rdata["totalNetPoint"]-(float)$rdata["winPoint"];?>
+                                                <?php $final = (float)$rdata["totalNetPoint"] - (float)$rdata["winPoint"]; ?>
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($final, 2) ?></td>
                                             </tr>
                                         </table>
@@ -98,7 +98,7 @@
                         <td align="center">
 
                             <table border="0" width="100%" id="table1" cellspacing="1" cellpadding="2">
-                                <tr >
+                                <tr>
                                     <td style="background: blue;" align="center" class="tdseries"><?= $line ?></td>
                                 </tr>
                                 <tr>
@@ -106,7 +106,7 @@
                                         <table align='center' width='40%' border=2 bgcolor='#003366' bordercolor=white cellpadding=5>
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Terminal Sale: </td>
-                                                <?php $tsele=$rdata["totalNetPoint"] - $rdata["cancelPoint"];?>
+                                                <?php $tsele = $rdata["totalNetPoint"] - $rdata["cancelPoint"]; ?>
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($tsele, 2) ?></td>
                                             </tr>
                                             <tr>
@@ -117,21 +117,21 @@
                                                 <td align='right' width='60%' class='tdseries'>Terminal Commission : </td>
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($rdata["totalPoint"], 2) ?></td>
                                             </tr>
-                                            
+
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Cancel Point: </td>
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($rdata["cancelPoint"], 2) ?></td>
                                             </tr>
-                                            <tr >
+                                            <tr>
                                                 <td style="background: blue;" align='right' width='60%' class='tdseries'>Company Payable : </td>
                                                 <?php
-                                                $snap = ((float) $tsele - (float) $rdata["totalPoint"]-(float) $rdata["winPoint"]);
+                                                $snap = ((float) $tsele - (float) $rdata["totalPoint"] - (float) $rdata["winPoint"]);
                                                 ?>
                                                 <td style="background: blue;" align='right' width='40%' class='tdseries'><?= number_format($snap, 2) ?></td>
                                             </tr>
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Lotto Game GST (28%) :</td>
-                                                <?php $gst = ($tsele=$rdata["totalNetPoint"] - $rdata["cancelPoint"]) * 0.28;
+                                                <?php $gst = ($tsele = $rdata["totalNetPoint"] - $rdata["cancelPoint"]) * 0.28;
                                                 $total = (float)$rdata["totalNetPoint"] - $gst; ?>
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($gst, 2) ?></td>
                                             </tr>
@@ -158,8 +158,10 @@
         var company = "<?= company ?>";
         var image = api_url + "<?= image ?>";
     </script>
-    <script src="assets/yatara/main.js" type="text/javascript"></script>
-    <script src="assets/yatara/render.js" type="text/javascript"></script>
+    <!-- <script src="assets/yatara/main.js" type="text/javascript"></script>
+    <script src="assets/yatara/render.js" type="text/javascript"></script> -->
+    <script src="assets/yatara/nwmain.js" type="text/javascript"></script>
+    <script src="assets/yatara/render3.js" type="text/javascript"></script>
     <style>
         .tdtitle {
             font-size: 24px !important;
