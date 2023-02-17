@@ -59,7 +59,7 @@ class posTicketTst extends CAaskController
             $ticket = array();
             while ($row = $result->fetch_assoc()) {
                 // ob_start();
-                $this->isLoadView(array("header" => "webheader", "main" => "posticketPrint", "footer" => "webfooter", "error" => "page_404"), false, array("row" => $row));
+                $this->isLoadView(array("header" => "webheader", "main" => "posticketPrintTSN", "footer" => "webfooter", "error" => "page_404"), false, array("row" => $row));
                 // $content = ob_get_contents();
                 // ob_end_clean();
                 // array_push($ticket, array("barcode" => $barcode, "ticket" => $content));
