@@ -856,10 +856,10 @@ function BalanceStart() {
 }
 
 function funccancel(tsn) {
-    var _0x18A89 = Confirm("Are You Sure..!");
-    _0x18A89.then(function (response) {
-        var retur = response.response;
-        if (retur === 0) {
+    var _0x18A89 = confirm("Are You Sure..!");
+    // _0x18A89.then(function (response) {
+    //     var retur = response.response;
+        if (_0x18A89) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
@@ -880,7 +880,7 @@ function funccancel(tsn) {
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(JSON.stringify({ "action": "cancelbet", "tsn": tsn, "userid": userid }));
         }
-    });
+    // });
 
 }
 function funclastbet1() {
@@ -3368,7 +3368,7 @@ function rePrintModal(lasttsn) {
 
                 // Write the response content to the new window
                 printWindow.document.write(this.responseText);
-                
+
                 // Wait for the new window to finish loading
                 printWindow.onload = function () {
                     // Call the print method to open the print dialog
@@ -3520,14 +3520,14 @@ function loadOldSeries() {
 function reclaim(barcode) {
 
     var _0x18A89 = confirm("Are You Sure Want to Claim ..!");
-    _0x18A89.then(function (response) {
-        var retur = response.response;
-        if (retur === 0) {
+    // _0x18A89.then(function (response) {
+    //     var retur = response.response;
+    if (_0x18A89) {
 
 
-            claminBet(barcode);
-        }
-    });
+        claminBet(barcode);
+    }
+    // });
 
 
 
