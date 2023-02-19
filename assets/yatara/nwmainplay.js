@@ -1019,7 +1019,7 @@ function direactClaim() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            var table = "<table id='myTable'><tr><th>Claim</th><th>Bet Time</th><th>Draw Time</th><th>Points</th><th>Status</th></tr>";
+            var table = "<table id='myTable'><tr><th>Claim</th><th>Bet Time</th><th>Bet Points</th><th>Win Points</th><th>Status</th></tr>";
             if (this.responseText != "false") {
 
                 var jsonData = JSON.parse(this.responseText);
