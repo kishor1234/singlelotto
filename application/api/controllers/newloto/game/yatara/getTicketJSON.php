@@ -367,7 +367,8 @@ class getTicketJSON extends CAaskController {
                                 $temp = array();
                                 if ($val == 0) {
                                     $finalPoint = (int) $myPoint["multiplier"][$pkey] * (int) $value;
-                                    array_push($temp, array($platStruct[$pkey] + $index => $finalPoint));
+                                    // array_push($temp, array($platStruct[$pkey] + $index => $finalPoint));
+                                    array_push($temp, array("position"=>$platStruct[$pkey] + $index,"amount"=> $finalPoint));
                                     //update query
                                     $_2key = $platStruct[$pkey];
                                     $sql = $this->ask_mysqli->updateINC(array("`" . $row["gametimeid"] . "`" => $finalPoint), "`" . $_2key . "`") . $this->ask_mysqli->whereSingle(array("number" => sprintf("%02d", $index))) . "\n";
@@ -377,7 +378,8 @@ class getTicketJSON extends CAaskController {
                                 } else {
                                     $finalPoint = (int) $myPoint["multiplier"][$pkey] * (int) $value;
                                     $sindex = ($platStruct[$pkey] + ($totalPointinSeries * $val) + $index);
-                                    array_push($temp, array($sindex => $finalPoint));
+                                    // array_push($temp, array(""$sindex => $finalPoint));
+                                    array_push($temp, array("position"=>$sindex,"amount"=> $finalPoint));
                                     //update query
                                     $_2key = $platStruct[$pkey] + ($totalPointinSeries * $val);
                                     $sql = $this->ask_mysqli->updateINC(array("`" . $row["gametimeid"] . "`" => $finalPoint), "`" . $_2key . "`") . $this->ask_mysqli->whereSingle(array("number" => sprintf("%02d", $index))) . "\n";
@@ -390,10 +392,11 @@ class getTicketJSON extends CAaskController {
                                 if ($val == 0) {
                                     $finalPoint = (int) $myPoint["multiplier"][$pkey] * (int) $value;
                                     $indval=$platStruct[$pkey] + $index;
-                                    if($indval===0){
-                                        $indval="_0";
-                                    }
-                                    array_push($temp, array($indval => $finalPoint));
+                                    // if($indval===0){
+                                    //     $indval="_0";
+                                    // }
+                                    // array_push($temp, array($indval => $finalPoint));
+                                    array_push($temp, array("position"=>$indval,"amount"=> $finalPoint));
                                     //update query
                                     $_2key = $platStruct[$pkey];
                                     $sql = $this->ask_mysqli->updateINC(array("`" . $row["gametimeid"] . "`" => $finalPoint), "`" . $_2key . "`") . $this->ask_mysqli->whereSingle(array("number" => sprintf("%02d", $index))) . "\n";
@@ -403,12 +406,7 @@ class getTicketJSON extends CAaskController {
                                 } else {
                                     $finalPoint = (int) $myPoint["multiplier"][$pkey] * (int) $value;
                                     $sindex = ($platStruct[$pkey] + ($totalPointinSeries * $val) + $index);
-                                    // $indval=$platStruct[$pkey] + $index;
-                                    if($sindex===0){
-                                        $sindex="_0";
-                                    }
-                                    // array_push($temp, array($indval => $finalPoint));
-                                    array_push($temp, array($sindex => $finalPoint));
+                                    array_push($temp, array("position"=>$sindex,"amount"=> $finalPoint));
                                     //update query
                                     $_2key = $platStruct[$pkey] + ($totalPointinSeries * $val);
                                     $sql = $this->ask_mysqli->updateINC(array("`" . $row["gametimeid"] . "`" => $finalPoint), "`" . $_2key . "`") . $this->ask_mysqli->whereSingle(array("number" => sprintf("%02d", $index))) . "\n";
