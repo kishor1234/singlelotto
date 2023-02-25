@@ -403,6 +403,11 @@ class getTicketJSON extends CAaskController {
                                 } else {
                                     $finalPoint = (int) $myPoint["multiplier"][$pkey] * (int) $value;
                                     $sindex = ($platStruct[$pkey] + ($totalPointinSeries * $val) + $index);
+                                    // $indval=$platStruct[$pkey] + $index;
+                                    if($sindex===0){
+                                        $sindex="_0";
+                                    }
+                                    // array_push($temp, array($indval => $finalPoint));
                                     array_push($temp, array($sindex => $finalPoint));
                                     //update query
                                     $_2key = $platStruct[$pkey] + ($totalPointinSeries * $val);
@@ -444,7 +449,7 @@ class getTicketJSON extends CAaskController {
 
 
                     foreach ($finalArray as $key => $valArray) {
-                        $valArray["point"] = json_encode($valArray["point"]);
+                        // $valArray["point"] = json_encode($valArray["point"]);
                         $valArray["comission"] = $row["comission"];
                         $valArray["trno"] = $trno;
                         $amt = $valArray["amount"];
