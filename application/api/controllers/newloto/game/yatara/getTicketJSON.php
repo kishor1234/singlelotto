@@ -389,7 +389,11 @@ class getTicketJSON extends CAaskController {
                             } else {
                                 if ($val == 0) {
                                     $finalPoint = (int) $myPoint["multiplier"][$pkey] * (int) $value;
-                                    array_push($temp, array($platStruct[$pkey] + $index => $finalPoint));
+                                    $indval=$platStruct[$pkey] + $index;
+                                    if($indval===0){
+                                        $indval="_0";
+                                    }
+                                    array_push($temp, array($indval => $finalPoint));
                                     //update query
                                     $_2key = $platStruct[$pkey];
                                     $sql = $this->ask_mysqli->updateINC(array("`" . $row["gametimeid"] . "`" => $finalPoint), "`" . $_2key . "`") . $this->ask_mysqli->whereSingle(array("number" => sprintf("%02d", $index))) . "\n";
