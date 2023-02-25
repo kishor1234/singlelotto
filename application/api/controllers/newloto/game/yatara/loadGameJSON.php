@@ -75,7 +75,12 @@ class loadGameJSON extends CAaskController
         } else {
             $id = $last["id"] - 1;
         }
-        $last2 = $this->module->getSingleGameTiemByid($id + 1);
+        if($id<0){
+            $last2 = $this->module->getSingleGameTiemByid($id + 2);
+        }else{
+            $last2 = $this->module->getSingleGameTiemByid($id + 1);
+        }
+        
         $data2["drawid"] = $last2;
         $last = $this->module->getSingleGameTiemByid($id);
         // $data2["drawid"] = $last;
