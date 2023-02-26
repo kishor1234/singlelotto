@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: application/json');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -58,13 +58,14 @@ class posTicketJSON extends CAaskController
             $barcode = $rows["game"];
             $ticket = array();
             while ($row = $result->fetch_assoc()) {
-                ob_start();
-                //$this->isLoadView(array("header" => "webheader", "main" => "posticketPrint", "footer" => "webfooter", "error" => "page_404"), false, array("row" => $row));
-                $content = ob_get_contents();
-                ob_end_clean();
+                // ob_start();
+                // //$this->isLoadView(array("header" => "webheader", "main" => "posticketPrint", "footer" => "webfooter", "error" => "page_404"), false, array("row" => $row));
+                // $content = ob_get_contents();
+                // ob_end_clean();
+                $row["point"] = json_decode($row["point"], true);
                 array_push($ticket, array("barcode" => $barcode, "ticket" => $row));
-                $content = "";
-                echo $content;
+                // $content = "";
+                // echo $content;
             }
             echo json_encode(array("status" => "1", "message" => "success", "ticket" => $ticket));
         } else {

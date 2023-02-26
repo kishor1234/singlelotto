@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: application/json');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -65,6 +65,7 @@ class posTicketTstJSON extends CAaskController
                 // array_push($ticket, array("barcode" => $barcode, "ticket" => $content));
                 // $content = "";
                 // echo $content;
+                $row["point"] = json_decode($row["point"], true);
                 array_push($ticket, array("barcode" => $barcode, "ticket" => $row));
             }
             echo json_encode(array("status" => "1", "message" => "success", "ticket" => $ticket));
