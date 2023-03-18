@@ -64,7 +64,7 @@
                                             </tr> -->
                                             <tr>
                                                 <td align='right' width='60%' class='tdseries'>Final Amount: </td>
-                                                <?php $final = (float)$rdata["totalNetPoint"] - (float)$rdata["winPoint"]; ?>
+                                                <?php $final = (float)$rdata["totalNetPoint"] -(float)$rdata["cancelPoint"]- (float)$rdata["winPoint"]; ?>
                                                 <td align='right' width='40%' class='tdseries'><?= number_format($final, 2) ?></td>
                                             </tr>
                                         </table>
