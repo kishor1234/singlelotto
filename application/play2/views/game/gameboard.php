@@ -1445,8 +1445,11 @@
 
                 console.log("animation", animation);
                 //document.getElementById("ani_rel").location.reload();
-                document.getElementById('ani_rel').contentWindow.location.reload()
-                animation.style.display = "block";
+                var iframe = document.getElementById("ani_rel");
+                iframe.src = iframe.src;
+
+                // document.getElementById('ani_rel').contentWindow.location.reload()
+                // animation.style.display = "block";
                 setTimeout(function() {
                     animation.style.display = "none";
                 }, 35000)

@@ -901,7 +901,7 @@
                                                         <tr>
                                                             <td style="width:100px;">
                                                                 <button class="bottombtn" id="btnbg0" style="height: 30px; background-color:#f6accd;border:#f6accd" onclick="btnlow_Click();">Reset</button>
-                                                                
+
                                                             </td>
 
                                                             <td style="width:100px; height: 30px;">
@@ -1247,7 +1247,7 @@
                 document.getElementById("claim-msg").innerHTML = "";
             }
             document.addEventListener('keydown', function(event) {
-                
+
                 if (event.code === "Escape" || event.code === "Tab" || event.code === "Space") {
                     //do something
                     closebtn();
@@ -1445,7 +1445,11 @@
 
                 console.log("animation", animation);
                 //document.getElementById("ani_rel").location.reload();
-                document.getElementById('ani_rel').contentWindow.location.reload()
+                var iframe = document.getElementById("ani_rel");
+                iframe.src = iframe.src;
+
+                // document.getElementById('ani_rel').contentWindow.location.reload();
+                // iframe.src = iframe.src;
                 animation.style.display = "block";
                 setTimeout(function() {
                     animation.style.display = "none";
