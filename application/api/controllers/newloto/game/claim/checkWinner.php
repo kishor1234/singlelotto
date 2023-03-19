@@ -9,7 +9,8 @@
 
 require_once controller;
 
-class checkWinner extends CAaskController {
+class checkWinner extends CAaskController
+{
 
     //put your code here
     public $amount = 0;
@@ -20,17 +21,20 @@ class checkWinner extends CAaskController {
     public $wnumber = 0;
     public $no;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function create() {
+    public function create()
+    {
         parent::create();
 
         return;
     }
 
-    public function initialize() {
+    public function initialize()
+    {
         parent::initialize();
         //$this->sad = "<img src='https://i0.wp.com/www.aktricks.in/wp-content/uploads/2018/03/3ae816da-3a55-4bac-a613-b5dd5c1dfac5.jpg' style='height:100px;'>";
         $this->sad = "<center><h1 style='color:red;'>No Wining Point!</h1></center>";
@@ -39,7 +43,8 @@ class checkWinner extends CAaskController {
         return;
     }
 
-    public function execute() {
+    public function execute()
+    {
         parent::execute();
         try {
 
@@ -99,6 +104,14 @@ class checkWinner extends CAaskController {
 
 
                     $p = json_decode($row1["point"], true);
+                    $newArray = [];
+                    foreach ($p as $item) {
+                        if (isset($item["position"]) && isset($item["amount"]))
+                            $newArray[$item["position"]] = $item["amount"];
+                    }
+                    if (!empty($newArray)) {
+                        $p = $newArray;
+                    }
                     foreach ($p as $k => $v) {
                         foreach ($v as $k1 => $v1) {
                             foreach ($ResultArray as $key => $val) {
@@ -207,22 +220,26 @@ class checkWinner extends CAaskController {
         return;
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         return;
     }
 
-    public function reader() {
+    public function reader()
+    {
         parent::reader();
         return;
     }
 
-    public function distory() {
+    public function distory()
+    {
         parent::distory();
         return;
     }
 
-    function getRecip($array) {
+    function getRecip($array)
+    {
         $r = null;
         if (!empty($array["winPoint"])) {
             ob_start();
@@ -232,5 +249,4 @@ class checkWinner extends CAaskController {
         }
         return $r;
     }
-
 }
