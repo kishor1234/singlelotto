@@ -9,7 +9,7 @@
 
 require_once controller;
 
-class checkWinnerJSON extends CAaskController
+class checkWinner extends CAaskController
 {
 
     //put your code here
