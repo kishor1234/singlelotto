@@ -9,7 +9,7 @@
 
 require_once controller;
 
-class checkWinner extends CAaskController
+class checkWinnerJSON extends CAaskController
 {
 
     //put your code here
@@ -104,14 +104,20 @@ class checkWinner extends CAaskController
 
 
                     $p = json_decode($row1["point"], true);
-                    $newArray = [];
+
+
+                    $newp = [];
                     foreach ($p as $item) {
-                        if (isset($item["position"]) && isset($item["amount"]))
+                        if (isset($item["position"]) && isset($item["amount"])) {
+                            $newArray = [];
                             $newArray[$item["position"]] = $item["amount"];
+                            array_push($newp, $newArray);
+                        }
                     }
-                    if (!empty($newArray)) {
-                        $p = $newArray;
+                    if (!empty($newp)) {
+                        $p = $newp;
                     }
+                    
                     foreach ($p as $k => $v) {
                         foreach ($v as $k1 => $v1) {
                             foreach ($ResultArray as $key => $val) {
